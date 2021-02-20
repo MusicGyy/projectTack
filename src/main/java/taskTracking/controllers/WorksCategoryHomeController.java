@@ -2,19 +2,11 @@ package taskTracking.controllers;
 
 import com.github.saacsos.FXRouter;
 import javafx.event.ActionEvent;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class Controller {
-    @FXML private ImageView image;
-    @FXML
-    public void initialize() {
-        image.setImage(new Image("/your_image.jpg"));
-    }
+public class WorksCategoryHomeController {
+
     public void handleBackButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("home");
@@ -22,6 +14,16 @@ public class Controller {
             System.err.println("ไปที่หน้า home ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
-
     }
+
+    public void handleGeneralWorkControllerButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("GeneralWork");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า member_card_detail ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+
 }

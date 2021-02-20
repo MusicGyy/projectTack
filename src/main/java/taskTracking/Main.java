@@ -2,9 +2,6 @@ package taskTracking;
 
 import com.github.saacsos.FXRouter;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -24,6 +21,9 @@ public class Main extends Application {
     private static void configRoute() {
         FXRouter.when("home", "home.fxml");
         FXRouter.when("ImageFee", "ImageFee.fxml");
+        FXRouter.when("workCategoryHome", "workCategoryHome.fxml");
+        FXRouter.when("GeneralWork", "GeneralWork.fxml");
+        FXRouter.when("updateGeneralWorks", "updateGeneralWorks.fxml");
     }
 
 
