@@ -9,24 +9,26 @@
 <AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.GeneralWorkController">
    <children>
       <TextField fx:id="Name" layoutX="307.0" layoutY="112.0" />
-      <Button fx:id="submit" layoutX="324.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="72.0" prefWidth="149.0" text="Submit" />
-      <ChoiceBox fx:id="priorityCB" layoutX="579.0" layoutY="246.0" prefHeight="37.0" prefWidth="48.0" />
+      <Button fx:id="submit" layoutX="375.0" layoutY="565.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="72.0" prefWidth="149.0" text="AddWorks" />
+      <ChoiceBox fx:id="priorityCB" layoutX="699.0" layoutY="290.0" prefHeight="37.0" prefWidth="48.0" />
       <Label fx:id="statusLabel" layoutX="310.0" layoutY="361.0" prefHeight="50.0" prefWidth="193.0" />
       <Label layoutX="114.0" layoutY="99.0" prefHeight="50.0" prefWidth="89.0" text="Work Name" />
       <Label layoutX="114.0" layoutY="164.0" prefHeight="50.0" prefWidth="89.0" text="Day" />
       <Label layoutX="114.0" layoutY="240.0" prefHeight="50.0" prefWidth="89.0" text="Time start" />
-      <Label layoutX="114.0" layoutY="309.0" prefHeight="50.0" prefWidth="89.0" text="Time Finish" />
-      <Label layoutX="582.0" layoutY="189.0" prefHeight="50.0" prefWidth="89.0" text="priority" />
-      <Button layoutX="601.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="26.0" prefWidth="52.0" text="back" />
+      <Label layoutX="702.0" layoutY="228.0" prefHeight="50.0" prefWidth="89.0" text="priority" />
+      <Button layoutX="671.0" layoutY="552.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="26.0" prefWidth="52.0" text="back" />
       <ChoiceBox fx:id="year" layoutX="307.0" layoutY="176.0" prefHeight="26.0" prefWidth="58.0" />
-      <ChoiceBox fx:id="month" layoutX="392.0" layoutY="176.0" prefHeight="17.0" prefWidth="58.0" />
-      <ChoiceBox fx:id="day" layoutX="474.0" layoutY="176.0" prefHeight="26.0" prefWidth="58.0" />
+      <ChoiceBox fx:id="month" layoutX="438.0" layoutY="176.0" prefHeight="17.0" prefWidth="58.0" />
+      <ChoiceBox fx:id="day" layoutX="564.0" layoutY="176.0" prefHeight="26.0" prefWidth="58.0" />
       <ChoiceBox fx:id="hourStart" layoutX="306.0" layoutY="252.0" prefHeight="26.0" prefWidth="58.0" />
-      <ChoiceBox fx:id="minStart" layoutX="392.0" layoutY="253.0" prefHeight="26.0" prefWidth="58.0" />
-      <ChoiceBox fx:id="secStart" layoutX="474.0" layoutY="252.0" prefHeight="26.0" prefWidth="58.0" />
-      <ChoiceBox fx:id="hourFin" layoutX="306.0" layoutY="321.0" prefHeight="26.0" prefWidth="58.0" />
-      <ChoiceBox fx:id="minFin" layoutX="392.0" layoutY="322.0" prefHeight="26.0" prefWidth="58.0" />
-      <ChoiceBox fx:id="secFin" layoutX="474.0" layoutY="323.0" prefHeight="26.0" prefWidth="58.0" />
-      <Button layoutX="601.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleUpdateGeneralWorksControllerButton" text="UpdateGeneral" />
+      <ChoiceBox fx:id="minStart" layoutX="438.0" layoutY="253.0" prefHeight="26.0" prefWidth="58.0" />
+      <ChoiceBox fx:id="secStart" layoutX="564.0" layoutY="253.0" prefHeight="26.0" prefWidth="58.0" />
+      <Button layoutX="649.0" layoutY="512.0" mnemonicParsing="false" onAction="#handleUpdateGeneralWorksControllerButton" text="UpdateGeneral" />
+      <Label layoutX="272.0" layoutY="181.0" text="year" />
+      <Label layoutX="387.0" layoutY="181.0" text="month " />
+      <Label layoutX="525.0" layoutY="180.0" text="day" />
+      <Label layoutX="271.0" layoutY="256.0" text="hour" />
+      <Label layoutX="387.0" layoutY="258.0" text="minute" />
+      <Label layoutX="507.0" layoutY="257.0" text="secound" />
    </children>
 </AnchorPane>

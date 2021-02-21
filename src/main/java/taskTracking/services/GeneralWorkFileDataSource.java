@@ -76,7 +76,7 @@ public class GeneralWorkFileDataSource implements DataSource {
                     String line = "GeneralWork" + ","
                             + work.getName() + ","
                             + work.getMadeDate()+ ","
-                            + work.getStartDate() + ","
+                            + work.getStartTime() + ","
                             + work.getLastDate() + ","
                             + work.getPriority() + ","
                             + work.getStatus();

@@ -1,15 +1,13 @@
 package taskTracking.model.WorksCategory;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class GeneralWork {
     private String name; // ชื่องาน
     private String madeDate; //วันที่ทำ
-    private String startDate; // เวลาเริ่มทำ
+    private String startTime; // เวลาเริ่มทำ
     private String lastDate; // เวลาสิ้นสุดการทำ
     private String priority; // ลำดับความสาคัญของงาน
     private String status; // สถานะของงาน (ยังไม่เริ่ม, กาลังทา, เสร็จสิ้นแล้ว)
+
 
     public GeneralWork() {
     }
@@ -20,48 +18,30 @@ public class GeneralWork {
         this.status = "Not started" ;
     }
 
-    public GeneralWork(String name, String startDate, String lastDate, String priority) {
+    public GeneralWork(String name, String madeDate, String startTime, String priority) {
         this.name = name;
-        this.startDate = startDate;
+        this.madeDate = madeDate;
+        this.startTime = startTime;
+        this.priority = priority;
+        this.status = "Not started" ;
+    }
+
+    public GeneralWork(String name, String madeDate, String startTime, String lastDate, String priority) {
+        this.name = name;
+        this.madeDate = madeDate;
+        this.startTime = startTime;
         this.lastDate = lastDate;
         this.priority = priority;
         this.status = "Not started" ; // Not started, Doing, Finished
     }
 
-    public GeneralWork(String name, String madeDate, String startDate, String lastDate, String priority) {
+    public GeneralWork(String name, String madeDate, String startTime, String lastDate, String priority, String status) {
         this.name = name;
         this.madeDate = madeDate;
-        this.startDate = startDate;
-        this.lastDate = lastDate;
-        this.priority = priority;
-        this.status = "Not started" ; // Not started, Doing, Finished
-    }
-
-    public GeneralWork(String name, String madeDate, String startDate, String lastDate, String priority, String status) {
-        this.name = name;
-        this.madeDate = madeDate;
-        this.startDate = startDate;
+        this.startTime = startTime;
         this.lastDate = lastDate;
         this.priority = priority;
         this.status = status;
-    }
-
-    public String dayTime(){
-        DateTimeFormatter timeMillis = DateTimeFormatter.ofPattern("yyyy/MM/dd-HH:mm:ss");
-        LocalDateTime date = LocalDateTime.now();
-        return timeMillis.format(date) ;
-    }
-
-    public String day(){
-        DateTimeFormatter timeMillis = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDateTime date = LocalDateTime.now();
-        return timeMillis.format(date) ;
-    }
-
-    public String Time(){
-        DateTimeFormatter timeMillis = DateTimeFormatter.ofPattern("HH:mm:ss");
-        LocalDateTime date = LocalDateTime.now();
-        return timeMillis.format(date) ;
     }
 
 
@@ -81,12 +61,12 @@ public class GeneralWork {
         this.madeDate = madeDate;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
     public String getLastDate() {
@@ -115,7 +95,7 @@ public class GeneralWork {
 
     @Override
     public String toString() {
-        return name + "," + madeDate + "," + startDate + "," + lastDate + "," + priority + "," + status;
+        return name + "," + madeDate + "," + startTime + "," + lastDate + "," + priority + "," + status;
     }
 }
 

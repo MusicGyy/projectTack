@@ -11,5 +11,4 @@ public class WeeklyWork extends GeneralWork{
         this.weeklyDate = weeklyDate;
     }
 
-    //setter and getter
 }
