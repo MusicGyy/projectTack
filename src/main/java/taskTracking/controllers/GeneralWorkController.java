@@ -4,14 +4,13 @@ import com.github.saacsos.FXRouter;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import taskTracking.model.WorksCategory.CategoryWork;
 import taskTracking.model.WorksCategory.GeneralWork;
+import taskTracking.services.CategoryFileDataSource;
 import taskTracking.services.DataList;
 import taskTracking.services.DataSource;
 import taskTracking.services.GeneralWorkFileDataSource;
@@ -25,24 +24,27 @@ public class GeneralWorkController {
     @FXML
     ChoiceBox<Integer> year, month, day, hourStart, minStart, secStart;
     @FXML
-    ChoiceBox<String> priorityCB;
+    ChoiceBox<String> priorityCB,categoryWorkCB;
     @FXML
     Button submit;
     @FXML
     Label statusLabel;
 
     private GeneralWork generalWork;
-    private DataList dataList;
-    private DataSource workDataSource;
+    private DataList dataList,categoryDataList;
+    private DataSource workDataSource,categoryDataSource;
 
     @FXML
     public void initialize() {
         Platform.runLater((Runnable)new Runnable() {
             @Override
             public void run() {
-                workDataSource = new GeneralWorkFileDataSource("data", "works.csv");
+                workDataSource = new GeneralWorkFileDataSource("data", "generalWorks.csv");
+                categoryDataSource = new CategoryFileDataSource("data","category.csv");
+
+                categoryDataList = categoryDataSource.getData();
                 dataList = workDataSource.getData();
-                //priorityCB.getItems().addAll("1","2","3"); // ระดับความสำคัญ
+
                 for (int i = 1; i <= 3; i++){
                     priorityCB.getItems().add(String.valueOf(i));}
                 for (int i = 2021; i <= 2031; i++){
@@ -52,17 +54,16 @@ public class GeneralWorkController {
                 for (int i = 1; i <= 31; i++){
                     day.getItems().add(i);}
                 for (int i = 0; i <= 23; i++){
-                    hourStart.getItems().add(i);
-//                    hourFin.getItems().add(i);
-                    }
+                    hourStart.getItems().add(i);}
                 for (int i = 0; i <= 59; i++){
-                    minStart.getItems().add(i);
-//                    minFin.getItems().add(i);
-                    }
+                    minStart.getItems().add(i);}
                 for (int i = 0; i <= 59; i++){
-                    secStart.getItems().add(i);
-//                    secFin.getItems().add(i);
-                    }
+                    secStart.getItems().add(i);}
+
+                categoryWorkCB.getItems().add("ไม่เลือก");
+                for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList()) {
+                    categoryWorkCB.getItems().add(categoryWork.getName());
+                }
             }
         });
     }
@@ -131,13 +132,20 @@ public class GeneralWorkController {
 //        else if ((month.getValue()==4 || month.getValue()==6 || month.getValue()==11 || month.getValue()==9) && day.getValue() > 30)
 //            statusLabel.setText("กรุณาเลือกวันใหม่");
 //        else {
-            generalWork = new GeneralWork(Name.getText(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
-                    hourStart.getValue() + ":" + minStart.getValue() + ":" + secStart.getValue(), priorityCB.getValue());
+        if (categoryWorkCB.getItems().equals("ไม่เลือก"))
+            generalWork = new GeneralWork(null,Name.getText(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
+                    hourStart.getValue() + ":" + minStart.getValue() + ":" + secStart.getValue(), priorityCB.getValue(),"Not Started");
+        else {
+            generalWork = new GeneralWork(categoryWorkCB.getValue(), Name.getText(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
+                    hourStart.getValue() + ":" + minStart.getValue() + ":" + secStart.getValue(), priorityCB.getValue(), "Not Started");
 
 
+            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "GeneralWork");
+        }
             System.out.println(generalWork.toString());
-            dataList.addWork(generalWork);
+            dataList.addGeneralWork(generalWork);     //<----- Add อยู่นี่
             workDataSource.setData(dataList);
+            categoryDataSource.setData(categoryDataList);
             statusLabel.setText("");
         }
 //    }

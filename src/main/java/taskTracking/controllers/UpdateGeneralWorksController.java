@@ -8,8 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import taskTracking.model.WorksCategory.GeneralWork;
 import taskTracking.services.DataList;
 import taskTracking.services.DataSource;
@@ -41,7 +39,7 @@ public class UpdateGeneralWorksController {
         Platform.runLater((Runnable)new Runnable() {
             @Override
             public void run() {
-                dataSource = new GeneralWorkFileDataSource("data", "works.csv");
+                dataSource = new GeneralWorkFileDataSource("data", "generalWorks.csv");
                 generalList = dataSource.getData();
                 for (int i = 0; i <= 23; i++){
                     hourFin.getItems().add(i);
@@ -52,7 +50,9 @@ public class UpdateGeneralWorksController {
                 for (int i = 0; i <= 59; i++){
                     secFin.getItems().add(i);
                 }
-                updateStatus.getItems().addAll("Not started", "Doing", "Finished");
+                for (GeneralWork generalWork: generalList.getGeneralWorkArrayList())
+                    System.out.println(generalWork.toString());
+                updateStatus.getItems().addAll( "Doing", "Finished");
                 showStudentData();
             }
         });
@@ -72,7 +72,7 @@ public class UpdateGeneralWorksController {
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
-        configs.add(new StringConfiguration("title:Made Date", "field:madeDate"));
+        configs.add(new StringConfiguration("title:MadeDate", "field:madeDate"));
         configs.add(new StringConfiguration("title:Start Time", "field:startTime"));
         configs.add(new StringConfiguration("title:Finished Time", "field:lastDate"));
         configs.add(new StringConfiguration("title:Priority", "field:priority"));

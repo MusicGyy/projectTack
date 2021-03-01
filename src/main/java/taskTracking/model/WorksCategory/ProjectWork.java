@@ -3,8 +3,22 @@ package taskTracking.model.WorksCategory;
 public class ProjectWork extends GeneralWork{
     private String ProjectLeader;
 
-    public ProjectWork(String name, String startDate, String lastDate, String priority, String projectLeader) {
-        super(name, startDate, lastDate, priority);
+
+    public ProjectWork(String category,String name, String projectLeader, String madeDate, String priority, String status) {
+        super(category,name, madeDate, priority, status);
         ProjectLeader = projectLeader;
+    }
+
+    public String getProjectLeader() {
+        return ProjectLeader;
+    }
+
+    public void setProjectLeader(String projectLeader) {
+        ProjectLeader = projectLeader;
+    }
+
+    @Override
+    public String toString() {
+        return getCategory() +","+getName() + "," + ProjectLeader + "," + getMadeDate() + "," + getPriority() + "," + getStatus();
     }
 }

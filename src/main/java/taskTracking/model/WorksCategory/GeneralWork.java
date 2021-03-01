@@ -7,41 +7,46 @@ public class GeneralWork {
     private String lastDate; // เวลาสิ้นสุดการทำ
     private String priority; // ลำดับความสาคัญของงาน
     private String status; // สถานะของงาน (ยังไม่เริ่ม, กาลังทา, เสร็จสิ้นแล้ว)
+    private String category;
 
 
-    public GeneralWork() {
+    public GeneralWork(){
     }
 
-    public GeneralWork(String name, String priority) {
+
+    public GeneralWork(String category,String name, String priority, String status) {  /// ForwardWork
         this.name = name;
         this.priority = priority;
-        this.status = "Not started" ;
+        this.status = status ;
+        this.category = category;
     }
 
-    public GeneralWork(String name, String madeDate, String startTime, String priority) {
+    public GeneralWork(String category,String name, String madeDate, String priority, String status) { /// ProjectWork
+        this.name = name;
+        this.madeDate = madeDate;
+        this.priority = priority;
+        this.status = status;
+        this.category = category;
+    }
+
+    public GeneralWork(String category,String name, String madeDate, String startTime, String priority, String status) {  /// GeneralWork
         this.name = name;
         this.madeDate = madeDate;
         this.startTime = startTime;
         this.priority = priority;
-        this.status = "Not started" ;
+        this.status = status;
+        this.category = category;
     }
 
-    public GeneralWork(String name, String madeDate, String startTime, String lastDate, String priority) {
-        this.name = name;
-        this.madeDate = madeDate;
-        this.startTime = startTime;
-        this.lastDate = lastDate;
-        this.priority = priority;
-        this.status = "Not started" ; // Not started, Doing, Finished
-    }
 
-    public GeneralWork(String name, String madeDate, String startTime, String lastDate, String priority, String status) {
+    public GeneralWork(String category, String name, String madeDate, String startTime, String lastDate, String priority, String status) {
         this.name = name;
         this.madeDate = madeDate;
         this.startTime = startTime;
         this.lastDate = lastDate;
         this.priority = priority;
         this.status = status;
+        this.category = category;
     }
 
 
@@ -93,9 +98,16 @@ public class GeneralWork {
         this.status = status;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
-        return name + "," + madeDate + "," + startTime + "," + lastDate + "," + priority + "," + status;
+        return category + "," + name + "," + madeDate + "," + startTime + "," + lastDate + "," + priority + "," + status;
     }
 }
-

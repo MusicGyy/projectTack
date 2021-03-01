@@ -1,16 +1,16 @@
 package taskTracking.services;
 
-
+import taskTracking.model.WorksCategory.CategoryWork;
 import taskTracking.model.WorksCategory.GeneralWork;
 
 import java.io.*;
 
-public class GeneralWorkFileDataSource implements DataSource {
+public class CategoryFileDataSource implements DataSource{
     private String fileDirectoryName;
     private String fileName;
     private DataList dataList;
 
-    public GeneralWorkFileDataSource(String fileDirectoryName, String fileName) {
+    public CategoryFileDataSource(String fileDirectoryName, String fileName){
         this.fileDirectoryName = fileDirectoryName;
         this.fileName = fileName;
         checkFileIsExisted();
@@ -32,7 +32,6 @@ public class GeneralWorkFileDataSource implements DataSource {
         }
     }
 
-
     public void readData() throws IOException {
         String filePath = fileDirectoryName + File.separator + fileName;
         File file = new File(filePath);
@@ -41,10 +40,8 @@ public class GeneralWorkFileDataSource implements DataSource {
         String line = "";
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
-            if (data[0].equals("GeneralWork")){
-                GeneralWork generalWork = new GeneralWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(),data[6].trim(),data[7].trim());
-                dataList.addGeneralWork(generalWork);
-            }
+            CategoryWork categoryWork = new CategoryWork(data[0].trim(),Integer.parseInt(data[1].trim()), Integer.parseInt(data[2].trim()), Integer.parseInt(data[3].trim()), Integer.parseInt(data[4].trim()), Integer.parseInt(data[5].trim()));
+            dataList.addCategory(categoryWork);
         }
         reader.close();
     }
@@ -70,18 +67,16 @@ public class GeneralWorkFileDataSource implements DataSource {
         try {
             fileWriter = new FileWriter(file);
             BufferedWriter writer = new BufferedWriter(fileWriter);
-            for (GeneralWork work : list.getGeneralWorkArrayList()) {
-                    String line = "GeneralWork" + ","
-                            + work.getCategory()+ ","
-                            + work.getName() + ","
-                            + work.getMadeDate()+ ","
-                            + work.getStartTime() + ","
-                            + work.getLastDate() + ","
-                            + work.getPriority() + ","
-                            + work.getStatus();
+            for (CategoryWork work : list.getCategoryArrayList()) {
+                String line = work.getName() + ","
+                        + work.getAll()+ ","
+                        + work.getCountGeneral() + ","
+                        + work.getCountWeekly() + ","
+                        + work.getCountForward() + ","
+                        + work.getCountProject();
 
-                    writer.append(line);
-                    writer.newLine();
+                writer.append(line);
+                writer.newLine();
 
             }
 

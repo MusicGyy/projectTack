@@ -1,16 +1,15 @@
 package taskTracking.services;
 
-
-import taskTracking.model.WorksCategory.GeneralWork;
+import taskTracking.model.WorksCategory.ForwardWork;
 
 import java.io.*;
 
-public class GeneralWorkFileDataSource implements DataSource {
+public class ForwardWorkFileDataSource implements DataSource{
     private String fileDirectoryName;
     private String fileName;
     private DataList dataList;
 
-    public GeneralWorkFileDataSource(String fileDirectoryName, String fileName) {
+    public ForwardWorkFileDataSource(String fileDirectoryName, String fileName){
         this.fileDirectoryName = fileDirectoryName;
         this.fileName = fileName;
         checkFileIsExisted();
@@ -32,7 +31,6 @@ public class GeneralWorkFileDataSource implements DataSource {
         }
     }
 
-
     public void readData() throws IOException {
         String filePath = fileDirectoryName + File.separator + fileName;
         File file = new File(filePath);
@@ -41,10 +39,12 @@ public class GeneralWorkFileDataSource implements DataSource {
         String line = "";
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
-            if (data[0].equals("GeneralWork")){
-                GeneralWork generalWork = new GeneralWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(),data[6].trim(),data[7].trim());
-                dataList.addGeneralWork(generalWork);
+            if (data[0].equals("ForwardWork")){
+                ForwardWork forwardWork = new ForwardWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(),data[6].trim(),data[7].trim());
+                dataList.addForwardWork(forwardWork);
             }
+            else{}
+
         }
         reader.close();
     }
@@ -70,18 +70,18 @@ public class GeneralWorkFileDataSource implements DataSource {
         try {
             fileWriter = new FileWriter(file);
             BufferedWriter writer = new BufferedWriter(fileWriter);
-            for (GeneralWork work : list.getGeneralWorkArrayList()) {
-                    String line = "GeneralWork" + ","
-                            + work.getCategory()+ ","
-                            + work.getName() + ","
-                            + work.getMadeDate()+ ","
-                            + work.getStartTime() + ","
-                            + work.getLastDate() + ","
-                            + work.getPriority() + ","
-                            + work.getStatus();
+            for (ForwardWork work : list.getForwardWorksArrayList()) {
+                String line = "ForwardWork" + ","
+                        + work.getCategory() + ","
+                        + work.getName() + ","
+                        + work.getResponsiblePerson()+ ","
+                        + work.getAssignedDate() + ","
+                        + work.getAssignedTime() + ","
+                        + work.getPriority() + ","
+                        + work.getStatus();
 
-                    writer.append(line);
-                    writer.newLine();
+                writer.append(line);
+                writer.newLine();
 
             }
 

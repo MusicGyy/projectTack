@@ -1,16 +1,15 @@
 package taskTracking.services;
 
-
-import taskTracking.model.WorksCategory.GeneralWork;
+import taskTracking.model.WorksCategory.ProjectWork;
 
 import java.io.*;
 
-public class GeneralWorkFileDataSource implements DataSource {
+public class ProjectWorkFileDataSource implements DataSource{
     private String fileDirectoryName;
     private String fileName;
     private DataList dataList;
 
-    public GeneralWorkFileDataSource(String fileDirectoryName, String fileName) {
+    public ProjectWorkFileDataSource(String fileDirectoryName, String fileName){
         this.fileDirectoryName = fileDirectoryName;
         this.fileName = fileName;
         checkFileIsExisted();
@@ -32,7 +31,6 @@ public class GeneralWorkFileDataSource implements DataSource {
         }
     }
 
-
     public void readData() throws IOException {
         String filePath = fileDirectoryName + File.separator + fileName;
         File file = new File(filePath);
@@ -41,10 +39,12 @@ public class GeneralWorkFileDataSource implements DataSource {
         String line = "";
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
-            if (data[0].equals("GeneralWork")){
-                GeneralWork generalWork = new GeneralWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(),data[6].trim(),data[7].trim());
-                dataList.addGeneralWork(generalWork);
+            if (data[0].equals("ProjectWork")){
+                ProjectWork projectWork = new ProjectWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(), data[6].trim());
+                dataList.addProjectWork(projectWork);
             }
+            else{}
+
         }
         reader.close();
     }
@@ -70,25 +70,25 @@ public class GeneralWorkFileDataSource implements DataSource {
         try {
             fileWriter = new FileWriter(file);
             BufferedWriter writer = new BufferedWriter(fileWriter);
-            for (GeneralWork work : list.getGeneralWorkArrayList()) {
-                    String line = "GeneralWork" + ","
-                            + work.getCategory()+ ","
-                            + work.getName() + ","
-                            + work.getMadeDate()+ ","
-                            + work.getStartTime() + ","
-                            + work.getLastDate() + ","
-                            + work.getPriority() + ","
-                            + work.getStatus();
+            for (ProjectWork work : list.getProjectWorkArrayList()) {
+                String line = "ProjectWork" + ","
+                        + work.getCategory()+ ","
+                        + work.getName() + ","
+                        + work.getProjectLeader()+ ","
+                        + work.getMadeDate() + ","
+                        + work.getPriority() + ","
+                        + work.getStatus();
 
-                    writer.append(line);
-                    writer.newLine();
+                writer.append(line);
+                writer.newLine();
 
             }
 
             writer.close();
         } catch (IOException e) {
             System.err.println("Cannot write " + filePath);
-        }
-    }
 
+        }
+
+    }
 }

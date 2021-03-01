@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.Profile">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.ProfileController">
    <children>
-      <Label layoutX="675.0" layoutY="689.0" text="6210450563">
+      <Label layoutX="675.0" layoutY="689.0" text="ID: 6210450563">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="372.0" layoutY="689.0" prefHeight="35.0" prefWidth="234.0" text="ชื่อ นายณัฐดนัย  คุ้มศิริ">
+      <Label layoutX="372.0" layoutY="689.0" prefHeight="35.0" prefWidth="234.0" text="ชื่อ: นายณัฐดนัย  คุ้มศิริ">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="903.0" layoutY="689.0" text="ชื่อเล่น ฟี">
+      <Label layoutX="903.0" layoutY="689.0" text="ชื่อเล่น: ฟี">
          <font>
             <Font size="24.0" />
          </font>

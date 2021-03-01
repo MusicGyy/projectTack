@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.UpdateProjectWorksController">
+   <children>
+      <Button layoutX="706.0" layoutY="913.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="194.0" text="BackToHome" />
+      <TableView fx:id="showTableP" layoutX="72.0" layoutY="163.0" prefHeight="418.0" prefWidth="334.0" />
+      <Button layoutX="707.0" layoutY="855.0" mnemonicParsing="false" onAction="#handleBackToProjectWorkButton" prefHeight="34.0" prefWidth="193.0" text="BackToProjectWork" />
+      <Button fx:id="updateProject" layoutX="569.0" layoutY="786.0" mnemonicParsing="false" onAction="#handleUpdateProjectButton" prefHeight="35.0" prefWidth="186.0" text="UpdateProject" />
+      <Label layoutX="508.0" layoutY="178.0" text="Work Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="508.0" layoutY="229.0" prefHeight="48.0" prefWidth="207.0" text="Leader Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="508.0" layoutY="300.0" prefHeight="48.0" prefWidth="120.0" text="Start Date">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="workNameLabel" layoutX="829.0" layoutY="178.0" prefHeight="27.0" prefWidth="221.0" text="....">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="leaderNameLabel" layoutX="829.0" layoutY="229.0" prefHeight="48.0" prefWidth="221.0" text="....">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="startDateLabel" layoutX="829.0" layoutY="293.0" prefHeight="48.0" prefWidth="221.0" text="....">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="updateStatusP" layoutX="585.0" layoutY="723.0" prefWidth="150.0" />
+      <Label layoutX="644.0" layoutY="684.0" text="Status" />
+      <Label layoutX="504.0" layoutY="474.0" prefHeight="48.0" prefWidth="90.0" text="Priority">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="priorityPLabel" layoutX="829.0" layoutY="467.0" prefHeight="48.0" prefWidth="221.0" text="....">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="508.0" layoutY="389.0" prefHeight="48.0" prefWidth="120.0" text="End date ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="endDateLabel" layoutX="829.0" layoutY="382.0" prefHeight="48.0" prefWidth="221.0" text="....">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="500.0" layoutY="581.0" prefHeight="50.0" prefWidth="89.0" text="End Date" />
+      <ChoiceBox fx:id="EndYear" layoutX="695.0" layoutY="593.0" prefHeight="26.0" prefWidth="58.0" />
+      <ChoiceBox fx:id="EndMonth" layoutX="826.0" layoutY="593.0" prefHeight="17.0" prefWidth="58.0" />
+      <ChoiceBox fx:id="EndDay" layoutX="952.0" layoutY="593.0" prefHeight="26.0" prefWidth="58.0" />
+      <Label layoutX="660.0" layoutY="598.0" text="year" />
+      <Label layoutX="775.0" layoutY="598.0" text="month " />
+      <Label layoutX="913.0" layoutY="597.0" text="day" />
+   </children>
+</AnchorPane>

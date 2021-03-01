@@ -20,7 +20,34 @@ public class WorksCategoryHomeController {
         try {
             FXRouter.goTo("GeneralWork");
         } catch (IOException e) {
-            System.err.println("ไปที่หน้า member_card_detail ไม่ได้");
+            System.err.println("ไปที่หน้า GeneralWork ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    public void handleForwardWorksControllerButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("forwardWork");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า forwardWork ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    public void handleProjectControllerButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("projectWork");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า projectWork ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    public void handleWeeklyWorkControllerButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("weeklyWork");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า weeklyWork ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
