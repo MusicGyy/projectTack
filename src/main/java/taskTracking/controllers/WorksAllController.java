@@ -64,6 +64,7 @@ public class WorksAllController {
         showTableF.setItems(forwardWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
+        configs.add(new StringConfiguration("title:Category Name", "field:category"));
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
         configs.add(new StringConfiguration("title:Name of person in charge", "field:responsiblePerson"));
         configs.add(new StringConfiguration("title:Assigned Date", "field:assignedDate"));
@@ -87,6 +88,7 @@ public class WorksAllController {
         showTable.setItems(generalWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
+        configs.add(new StringConfiguration("title:Category Name", "field:category"));
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
         configs.add(new StringConfiguration("title:MadeDate", "field:madeDate"));
         configs.add(new StringConfiguration("title:Start Time", "field:startTime"));
@@ -110,9 +112,10 @@ public class WorksAllController {
         showTableW.setItems(weeklyWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
+        configs.add(new StringConfiguration("title:Category Name", "field:category"));
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
-        configs.add(new StringConfiguration("title:Start Date", "field:weeklyDate"));
-        configs.add(new StringConfiguration("title:Date Update", "field:weeklyDateUpdate"));
+        configs.add(new StringConfiguration("title:Date", "field:madeDate"));
+//        configs.add(new StringConfiguration("title:Date Update", "field:weeklyDateUpdate"));
         configs.add(new StringConfiguration("title:Start Time", "field:startTime"));
         configs.add(new StringConfiguration("title:End Time", "field:lastDate"));
         configs.add(new StringConfiguration("title:Priority", "field:priority"));
@@ -134,6 +137,7 @@ public class WorksAllController {
         showTableP.setItems(projectWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
+        configs.add(new StringConfiguration("title:Category Name", "field:category"));
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
         configs.add(new StringConfiguration("title:Start Date", "field:madeDate"));
         configs.add(new StringConfiguration("title:Leader Name", "field:ProjectLeader"));
@@ -157,7 +161,7 @@ public class WorksAllController {
         showTableC.setItems(categoryWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
-        configs.add(new StringConfiguration("title:Category Name", "field:name"));
+        configs.add(new StringConfiguration("title:Category Name", "field:nameC"));
         configs.add(new StringConfiguration("title:Total number of tasks", "field:all"));
         configs.add(new StringConfiguration("title:Total number of General tasks", "field:countGeneral"));
         configs.add(new StringConfiguration("title:Total number of Weekly tasks", "field:countWeekly"));

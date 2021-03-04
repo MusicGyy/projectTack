@@ -40,7 +40,7 @@ public class DataList {
     public boolean checkCategory(String name){
         for (CategoryWork categoryWork : categoryArrayList)
         {
-            if(name.equals(categoryWork.getName())){
+            if(name.equals(categoryWork.getNameC())){
                 return false;
             }
         }
@@ -50,7 +50,7 @@ public class DataList {
     public void addWorkToCategory(String name,String typeName){
         for (CategoryWork categoryWork : categoryArrayList)
         {
-            if(categoryWork.getName().equals(name)){
+            if(categoryWork.getNameC().equals(name)){
                 switch (typeName) {
                     case "GeneralWork":
                         categoryWork.addCountGeneral();

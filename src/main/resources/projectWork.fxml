@@ -4,34 +4,70 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.ProjectWorkController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.ProjectWorkController">
    <children>
+      <ImageView fitHeight="1024.0" fitWidth="1280.0">
+         <image>
+            <Image url="@project.jpg" />
+         </image>
+      </ImageView>
       <TextField fx:id="PName" layoutX="317.0" layoutY="122.0" />
-      <Label layoutX="124.0" layoutY="109.0" prefHeight="50.0" prefWidth="89.0" text="Work Name" />
+      <Label layoutX="124.0" layoutY="109.0" prefHeight="50.0" prefWidth="89.0" text="Work Name">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
       <Label layoutX="491.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" text="Project Work">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="124.0" layoutY="186.0" prefHeight="50.0" prefWidth="89.0" text="Leader Name" />
+      <Label layoutX="124.0" layoutY="186.0" prefHeight="50.0" prefWidth="89.0" text="Leader Name">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
       <TextField fx:id="LeaderName" layoutX="317.0" layoutY="199.0" />
-      <Label layoutX="124.0" layoutY="262.0" prefHeight="50.0" prefWidth="89.0" text="Start date " />
-      <ChoiceBox fx:id="StartYear" layoutX="319.0" layoutY="274.0" prefHeight="26.0" prefWidth="58.0" />
-      <ChoiceBox fx:id="StartMonth" layoutX="450.0" layoutY="274.0" prefHeight="17.0" prefWidth="58.0" />
-      <ChoiceBox fx:id="StartDay" layoutX="576.0" layoutY="274.0" prefHeight="26.0" prefWidth="58.0" />
-      <Label layoutX="284.0" layoutY="279.0" text="year" />
-      <Label layoutX="399.0" layoutY="279.0" text="month " />
-      <Label layoutX="537.0" layoutY="278.0" text="day" />
-      <Button fx:id="Psubmit" layoutX="361.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="56.0" prefWidth="149.0" text="AddWorks" />
-      <ChoiceBox fx:id="PpriorityCB" layoutX="709.0" layoutY="300.0" prefHeight="37.0" prefWidth="48.0" />
-      <Label fx:id="PStatusLabel" layoutX="316.0" layoutY="319.0" prefHeight="50.0" prefWidth="193.0" text="...." />
-      <Label layoutX="712.0" layoutY="238.0" prefHeight="50.0" prefWidth="89.0" text="priority" />
-      <Button layoutX="664.0" layoutY="485.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="56.0" prefWidth="127.0" text="back" />
-      <Button layoutX="664.0" layoutY="402.0" mnemonicParsing="false" onAction="#handleUpdateProjectWorksControllerButton" prefHeight="56.0" prefWidth="127.0" text="UpdateProject" />
+      <Button fx:id="pSubmit" layoutX="361.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="56.0" prefWidth="149.0" text="AddWorks">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <ChoiceBox fx:id="pPriorityCB" layoutX="709.0" layoutY="300.0" prefHeight="37.0" prefWidth="48.0" />
+      <Label fx:id="PStatusLabel" layoutX="316.0" layoutY="319.0" prefHeight="50.0" prefWidth="218.0" text="...." textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Label layoutX="712.0" layoutY="238.0" prefHeight="50.0" prefWidth="89.0" text="priority" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Button layoutX="664.0" layoutY="485.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="56.0" prefWidth="127.0" text="back">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="664.0" layoutY="402.0" mnemonicParsing="false" onAction="#handleUpdateProjectWorksControllerButton" prefHeight="56.0" prefWidth="127.0" text="UpdateProject">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
       <ChoiceBox fx:id="categoryWorkCB" layoutX="664.0" layoutY="183.0" prefWidth="150.0" />
-      <Label layoutX="725.0" layoutY="164.0" text="Label" />
+      <Label layoutX="709.0" layoutY="159.0" text="Category" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Label layoutX="821.0" layoutY="265.0" prefHeight="17.0" prefWidth="113.0" text="3 = Very important " textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="821.0" layoutY="292.0" prefHeight="17.0" prefWidth="127.0" text="2 = Medium priority  " textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="821.0" layoutY="319.0" prefHeight="17.0" prefWidth="113.0" text="1 = Less important  " textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
    </children>
 </AnchorPane>

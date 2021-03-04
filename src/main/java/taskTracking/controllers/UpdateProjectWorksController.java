@@ -23,11 +23,11 @@ public class UpdateProjectWorksController {
     @FXML
     TableView<ProjectWork> showTableP;
     @FXML
-    ChoiceBox<Integer> EndYear, EndMonth, EndDay;
+    ChoiceBox<Integer> EndYear, EndMonth, EndDay,sYear,sMonth,sDay;
     @FXML
     ChoiceBox<String> updateStatusP;
     @FXML
-    Label workNameLabel, leaderNameLabel, startDateLabel, endDateLabel, priorityPLabel;
+    Label workNameLabel, leaderNameLabel, startDateLabel, endDateLabel, priorityPLabel,categoryLabel,statusLabel;
     @FXML
     Button updateProject;
 
@@ -46,6 +46,15 @@ public class UpdateProjectWorksController {
                 }
                 for (int i = 1; i <= 31; i++) {
                     EndDay.getItems().add(i);
+                }
+                for (int i = 2021; i <= 2031; i++) {
+                    sYear.getItems().add(i);
+                }
+                for (int i = 1; i <= 12; i++) {
+                    sMonth.getItems().add(i);
+                }
+                for (int i = 1; i <= 31; i++) {
+                    sDay.getItems().add(i);
                 }
                 updateStatusP.getItems().addAll("Doing", "Finished");
                 showStudentData();
@@ -66,9 +75,10 @@ public class UpdateProjectWorksController {
         showTableP.setItems(projectWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
+        configs.add(new StringConfiguration("title:Category Name", "field:category"));
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
-        configs.add(new StringConfiguration("title:Start Date", "field:madeDate"));
         configs.add(new StringConfiguration("title:Leader Name", "field:ProjectLeader"));
+        configs.add(new StringConfiguration("title:Start Date", "field:madeDate"));
         configs.add(new StringConfiguration("title:Finished Time", "field:lastDate"));
         configs.add(new StringConfiguration("title:Priority", "field:priority"));
         configs.add(new StringConfiguration("title:Status", "field:status"));
@@ -86,12 +96,24 @@ public class UpdateProjectWorksController {
 
     private void showSelectedProjectWork(ProjectWork projectWork) {
         selectedProjectWork = projectWork;
-        workNameLabel.setText(projectWork.getName());
-        priorityPLabel.setText(projectWork.getPriority());
-        startDateLabel.setText(projectWork.getMadeDate());
-        leaderNameLabel.setText(projectWork.getProjectLeader());
-        endDateLabel.setText(projectWork.getLastDate());
-        updateProject.setDisable(false);
+        if (projectWork.getStatus().equals("Finished")) {
+            workNameLabel.setText(projectWork.getName());
+            priorityPLabel.setText(projectWork.getPriority());
+            startDateLabel.setText(projectWork.getMadeDate());
+            leaderNameLabel.setText(projectWork.getProjectLeader());
+            endDateLabel.setText(projectWork.getLastDate());
+            categoryLabel.setText(projectWork.getCategory());
+            updateProject.setDisable(true);
+        }
+        else {
+            workNameLabel.setText(projectWork.getName());
+            priorityPLabel.setText(projectWork.getPriority());
+            startDateLabel.setText(projectWork.getMadeDate());
+            leaderNameLabel.setText(projectWork.getProjectLeader());
+            endDateLabel.setText(projectWork.getLastDate());
+            categoryLabel.setText(projectWork.getCategory());
+            updateProject.setDisable(false);
+        }
     }
 
     private void clearSelectedStudent() {
@@ -101,6 +123,7 @@ public class UpdateProjectWorksController {
         startDateLabel.setText("....");
         leaderNameLabel.setText("....");
         endDateLabel.setText("....");
+        categoryLabel.setText("....");
 
         updateProject.setDisable(true);
     }
@@ -126,11 +149,52 @@ public class UpdateProjectWorksController {
     }
 
     public void handleUpdateProjectButton(ActionEvent actionEvent) {
-        selectedProjectWork.setStatus(updateStatusP.getValue());
-        selectedProjectWork.setLastDate(EndYear.getValue()+"/"+EndMonth.getValue()+"/"+EndDay.getValue());
+        if (updateStatusP.getValue()!=null)
+            selectedProjectWork.setStatus(updateStatusP.getValue());
+        if (EndDay.getValue()!=null && EndMonth.getValue()!=null && EndYear.getValue()!=null && sDay.getValue()!=null && sMonth.getValue()!=null && sYear.getValue()!=null)
+        {
+            if(EndYear.getValue() > sYear.getValue()) {
+                if ((sMonth.getValue()==2 && sDay.getValue() >= 29) || ((sMonth.getValue()==4 || sMonth.getValue()==6 || sMonth.getValue()==8 || sMonth.getValue()==11) && sDay.getValue() >30) ||
+                        (EndMonth.getValue()==2 && EndDay.getValue() >= 29) || ((EndMonth.getValue()==4 || EndMonth.getValue()==6 || EndMonth.getValue()==8 || EndMonth.getValue()==11) && EndDay.getValue() >30)) {
+                    statusLabel.setText(("Please select a new date.!!"));
+                }
+                else {
+                selectedProjectWork.setLastDate(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
+                selectedProjectWork.setMadeDate(sYear.getValue() + "/" + sMonth.getValue() + "/" + sDay.getValue());
+                }
+            }
+            else if (EndYear.getValue().equals(sYear.getValue()) && EndMonth.getValue() > sMonth.getValue()){
+                if ((sMonth.getValue()==2 && sDay.getValue() >= 29) || ((sMonth.getValue()==4 || sMonth.getValue()==6 || sMonth.getValue()==8 || sMonth.getValue()==11) && sDay.getValue() >30) ||
+                        (EndMonth.getValue()==2 && EndDay.getValue() >= 29) || ((EndMonth.getValue()==4 || EndMonth.getValue()==6 || EndMonth.getValue()==8 || EndMonth.getValue()==11) && EndDay.getValue() >30)) {
+                    statusLabel.setText(("Please select a new date.!!"));
+                }
+                else {
+                    selectedProjectWork.setLastDate(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
+                    selectedProjectWork.setMadeDate(sYear.getValue() + "/" + sMonth.getValue() + "/" + sDay.getValue());
+                }
+            }
+            else if (EndYear.getValue().equals(sYear.getValue()) && EndMonth.getValue().equals(sMonth.getValue()) && EndDay.getValue() > sDay.getValue()){
+                if ((sMonth.getValue()==2 && sDay.getValue() >= 29) || ((sMonth.getValue()==4 || sMonth.getValue()==6 || sMonth.getValue()==8 || sMonth.getValue()==11) && sDay.getValue() >30) ||
+                        (EndMonth.getValue()==2 && EndDay.getValue() >= 29) || ((EndMonth.getValue()==4 || EndMonth.getValue()==6 || EndMonth.getValue()==8 || EndMonth.getValue()==11) && EndDay.getValue() >30)) {
+                    statusLabel.setText(("Please select a new date.!!"));
+                }
+                else {
+                    selectedProjectWork.setLastDate(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
+                    selectedProjectWork.setMadeDate(sYear.getValue() + "/" + sMonth.getValue() + "/" + sDay.getValue());
+                }
+            }
+            else {
+                statusLabel.setText("Please select a new date.!!");
+            }
+        }
         clearSelectedStudent();
+        EndYear.setValue(null);
+        EndMonth.setValue(null);
+        EndDay.setValue(null);
+        updateStatusP.setValue(null);
         showTableP.refresh();
         showTableP.getSelectionModel().clearSelection();
+        statusLabel.setText("");
 
         dataSource.setData(projectDataList);
     }

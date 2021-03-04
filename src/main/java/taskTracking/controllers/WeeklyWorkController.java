@@ -46,28 +46,35 @@ public class WeeklyWorkController {
                     priorityWCB.getItems().add(String.valueOf(i));}
                 weeklyDate.getItems().addAll("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
 
-                categoryWorkCB.getItems().add("ไม่เลือก");
+                categoryWorkCB.getItems().add("Not choose");
                 for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList()) {
-                    categoryWorkCB.getItems().add(categoryWork.getName());
+                    categoryWorkCB.getItems().add(categoryWork.getNameC());
                 }
             }
         });
     }
 
     @FXML public void handleSubmitAction(ActionEvent event) throws IOException {
-        if (categoryWorkCB.getItems().equals("ไม่เลือก"))
-            weeklyWork = new WeeklyWork(null,WName.getText(), weeklyDate.getValue(),"","","", priorityWCB.getValue(),"Not Started");
+        if (categoryWorkCB.getValue()==null || WName.getText().isEmpty() || weeklyDate.getValue()==null || priorityWCB.getValue()==null)
+            statusWLabel.setText("Please complete all information.!!");
         else {
-            weeklyWork = new WeeklyWork(categoryWorkCB.getValue(), WName.getText(), weeklyDate.getValue(), "", "", "", priorityWCB.getValue(), "Not Started");
-            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "WeeklyWork");
+            if (categoryWorkCB.getItems().equals("Not choose"))
+                weeklyWork = new WeeklyWork(null, WName.getText(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started");
+            else {
+                weeklyWork = new WeeklyWork(categoryWorkCB.getValue(), WName.getText(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started");
+                categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "WeeklyWork");
 
+            }
+
+            dataList.addWeeklyWork(weeklyWork);     //<----- Add อยู่นี่
+            workDataSource.setData(dataList);
+            categoryDataSource.setData(categoryDataList);
+            WName.clear();
+            weeklyDate.setValue(null);
+            priorityWCB.setValue(null);
+            categoryWorkCB.setValue(null);
+            statusWLabel.setText("");
         }
-
-        System.out.println(weeklyWork.toString());
-        dataList.addWeeklyWork(weeklyWork);     //<----- Add อยู่นี่
-        workDataSource.setData(dataList);
-        categoryDataSource.setData(categoryDataList);
-        statusWLabel.setText("");
     }
 
     public void handleBackButton(ActionEvent actionEvent) {

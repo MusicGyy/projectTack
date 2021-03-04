@@ -3,7 +3,7 @@ package taskTracking.model.WorksCategory;
 import java.util.ArrayList;
 
 public class CategoryWork {
-    private String name;
+    private String nameC;
     private int all;
     private int countGeneral;
     private int countWeekly;
@@ -13,8 +13,8 @@ public class CategoryWork {
     public CategoryWork() {
     }
 
-    public CategoryWork(String name, int all, int countGeneral, int countWeekly, int countForward, int countProject) {
-        this.name = name;
+    public CategoryWork(String nameC, int all, int countGeneral, int countWeekly, int countForward, int countProject) {
+        this.nameC = nameC;
         this.all = all;
         this.countGeneral = countGeneral;
         this.countWeekly = countWeekly;
@@ -35,12 +35,12 @@ public class CategoryWork {
         this.countProject += 1;
     }
 
-    public String getName() {
-        return name;
+    public String getNameC() {
+        return nameC;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameC(String nameC) {
+        this.nameC = nameC;
     }
 
     public int getAll() {
@@ -85,6 +85,6 @@ public class CategoryWork {
 
     @Override
     public String toString() {
-        return name +","+ all +","+ countGeneral +","+ countWeekly +","+ countForward +","+ countProject;
+        return nameC +","+ all +","+ countGeneral +","+ countWeekly +","+ countForward +","+ countProject;
     }
 }

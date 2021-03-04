@@ -1,6 +1,5 @@
 package taskTracking.services;
 
-import taskTracking.model.WorksCategory.ProjectWork;
 import taskTracking.model.WorksCategory.WeeklyWork;
 
 import java.io.*;
@@ -41,10 +40,9 @@ public class WeeklyWorkFileDataSource implements DataSource {
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
             if (data[0].equals("WeeklyWork")){
-                WeeklyWork weeklyWork = new WeeklyWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(), data[6].trim(), data[7].trim(), data[8].trim());
+                WeeklyWork weeklyWork = new WeeklyWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(), data[6].trim(), data[7].trim());
                 dataList.addWeeklyWork(weeklyWork);
             }
-            else{}
 
         }
         reader.close();
@@ -75,8 +73,7 @@ public class WeeklyWorkFileDataSource implements DataSource {
                 String line = "WeeklyWork" + ","
                         + work.getCategory()+ ","
                         + work.getName() + ","
-                        + work.getWeeklyDate()+ ","
-                        + work.getWeeklyDateUpdate()+ ","
+                        + work.getMadeDate()+ ","
                         + work.getStartTime() + ","
                         + work.getLastDate() + ","
                         + work.getPriority() + ","

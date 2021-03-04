@@ -22,7 +22,7 @@ public class GeneralWorkController {
     @FXML
     TextField Name;
     @FXML
-    ChoiceBox<Integer> year, month, day, hourStart, minStart, secStart;
+    ChoiceBox<Integer> year, month, day;
     @FXML
     ChoiceBox<String> priorityCB,categoryWorkCB;
     @FXML
@@ -53,102 +53,49 @@ public class GeneralWorkController {
                     month.getItems().add(i);}
                 for (int i = 1; i <= 31; i++){
                     day.getItems().add(i);}
-                for (int i = 0; i <= 23; i++){
-                    hourStart.getItems().add(i);}
-                for (int i = 0; i <= 59; i++){
-                    minStart.getItems().add(i);}
-                for (int i = 0; i <= 59; i++){
-                    secStart.getItems().add(i);}
 
-                categoryWorkCB.getItems().add("ไม่เลือก");
+
+                categoryWorkCB.getItems().add("Not choose");
                 for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList()) {
-                    categoryWorkCB.getItems().add(categoryWork.getName());
+                    categoryWorkCB.getItems().add(categoryWork.getNameC());
                 }
             }
         });
     }
 
     @FXML public void handleSubmitAction(ActionEvent event) throws IOException {
-//        if (Name.getText().isEmpty())
-//            statusLabel.setText("ยังไม่ได้เขียนชื่อ!!");
-//        else if (year.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกปี!!");
-//        else if (month.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกเดือน!!");
-//        else if (day.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกวัน!!");
-//        else if (minFin.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกนาทีที่ทำงานเสร็จ!!");
-//        else if (secFin.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกวินาทีที่ทำงานเสร็จ!!");
-//        else if (priorityCB.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกลำดับความสำคัญ!!");
-//        else if (month.getValue()==2 && day.getValue() > 28)
-//            statusLabel.setText("กรุณาเลือกวันใหม่");
-//        else if ((month.getValue()==4 || month.getValue()==6 || month.getValue()==11 || month.getValue()==9) && day.getValue() > 30)
-//            statusLabel.setText("กรุณาเลือกวันใหม่");
-//        else if (hourStart.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกชั่วโมงเริ่มทำงาน!!");
-//        else if (minStart.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกนาทีเริ่มทำงาน!!");
-//        else if (secStart.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกวินาทีเริ่มทำงาน!!");
-//        else if (hourFin.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกชั่วโมงที่ทำงานเสร็จ!!");
-//        else if (hourFin.getValue().equals(hourStart.getValue()))
-//            statusLabel.setText("ยังไม่เลือกนาทีที่ทำงานเสร็จ!!");
-//            if (minFin.getValue() < minStart.getValue())
-//                statusLabel.setText("กรุณาเลือกนาทีใหม่!!");
-//            else if (minFin.getValue().equals(minStart.getValue()))
-//                if (secFin.getValue() < secStart.getValue())
-//                    statusLabel.setText("กรุณาเลือกวินาทีใหม่!!");
-//        else if (hourFin.getValue() < hourStart.getValue())
-//            statusLabel.setText("กรุณาเลือกชั่วโมงใหม่!!");
-//        else if (minFin.getValue() < minStart.getValue())
-//            statusLabel.setText("กรุณาเลือกนาทีใหม่!!");
-//        else if (minFin.getValue().equals(minStart.getValue()))
-//            if (secFin.getValue() < secStart.getValue() || secFin.getValue().equals(secStart.getValue()))
-//                statusLabel.setText("กรุณาเลือกวินาทีใหม่!!");
-//        else if (hourFin.getValue()==hourStart.getValue()){
-//            statusLabel.setText("ยังไม่เลือกนาทีที่ทำงานเสร็จ!!");
-//            if (minFin.getValue() < minStart.getValue()){
-//                statusLabel.setText("กรุณาเลือกนาทีใหม่่!!");
-//            }
-//            else if (minFin.getValue().equals(minStart.getValue())){
-//                statusLabel.setText("ยังไม่เลือกวินาทีที่ทำงานเสร็จ!!");
-//                if (secFin.getValue() < secStart.getValue() || secFin.getValue().equals(secStart.getValue())){
-//                    statusLabel.setText("กรุณาเลือกวินาทีใหม่!!");
-//                }
-//            }
-//        }
-//        else if (minFin.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกนาทีที่ทำงานเสร็จ!!");
-//        else if (secFin.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกวินาทีที่ทำงานเสร็จ!!");
-//        else if (priorityCB.getValue()==null)
-//            statusLabel.setText("ยังไม่เลือกลำดับความสำคัญ!!");
-//        else if (month.getValue()==2 && day.getValue() > 28)
-//            statusLabel.setText("กรุณาเลือกวันใหม่");
-//        else if ((month.getValue()==4 || month.getValue()==6 || month.getValue()==11 || month.getValue()==9) && day.getValue() > 30)
-//            statusLabel.setText("กรุณาเลือกวันใหม่");
-//        else {
-        if (categoryWorkCB.getItems().equals("ไม่เลือก"))
-            generalWork = new GeneralWork(null,Name.getText(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
-                    hourStart.getValue() + ":" + minStart.getValue() + ":" + secStart.getValue(), priorityCB.getValue(),"Not Started");
-        else {
-            generalWork = new GeneralWork(categoryWorkCB.getValue(), Name.getText(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
-                    hourStart.getValue() + ":" + minStart.getValue() + ":" + secStart.getValue(), priorityCB.getValue(), "Not Started");
+        if (Name.getText().isEmpty() || year.getValue()==null || month.getValue()==null || day.getValue()==null ||
+                priorityCB.getValue()==null || categoryWorkCB.getValue()==null)
+            statusLabel.setText("Please complete all information.!!");
 
-
-            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "GeneralWork");
+        else if ((month.getValue()==2 && day.getValue() >= 29) || ((month.getValue()==4 || month.getValue()==6 || month.getValue()==8 || month.getValue()==11) && day.getValue() >30)) {
+            statusLabel.setText(("Please select a new date.!!"));
         }
-            System.out.println(generalWork.toString());
+
+        else {
+            if (categoryWorkCB.getItems().equals("Not choose"))
+                generalWork = new GeneralWork(null, Name.getText(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
+                        "","", priorityCB.getValue(), "Not Started");
+            else {
+                generalWork = new GeneralWork(categoryWorkCB.getValue(), Name.getText(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
+                        "","", priorityCB.getValue(), "Not Started");
+
+
+                categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "GeneralWork");
+            }
+
             dataList.addGeneralWork(generalWork);     //<----- Add อยู่นี่
             workDataSource.setData(dataList);
             categoryDataSource.setData(categoryDataList);
+            Name.clear();
+            year.setValue(null);
+            month.setValue(null);
+            day.setValue(null);
+            priorityCB.setValue(null);
+            categoryWorkCB.setValue(null);
             statusLabel.setText("");
         }
-//    }
+    }
 
     public void handleBackButton(ActionEvent actionEvent) {
         try {

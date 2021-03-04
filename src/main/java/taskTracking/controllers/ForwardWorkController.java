@@ -22,13 +22,13 @@ public class ForwardWorkController {
     @FXML
     TextField FName, namePerson;
     @FXML
-    ChoiceBox<Integer> Fyear, Fmonth, Fday, FhourStart, FminStart, FsecStart;
+    ChoiceBox<Integer> fYear, fMonth, fDay, fHourStart, fMinStart;
     @FXML
-    ChoiceBox<String> FpriorityCB,categoryWorkCB;
+    ChoiceBox<String> fPriorityCB,categoryWorkCB;
     @FXML
-    Button Fsubmit;
+    Button fSubmit;
     @FXML
-    Label FstatusLabel;
+    Label fStatusLabel,textForUse;
 
     private ForwardWork forwardWork;
     private DataList dataList,categoryDataList;
@@ -47,55 +47,70 @@ public class ForwardWorkController {
                 dataList = workDataSource.getData();
 
                 for (int i = 1; i <= 3; i++){
-                    FpriorityCB.getItems().add(String.valueOf(i));}
+                    fPriorityCB.getItems().add(String.valueOf(i));}
                 for (int i = 2021; i <= 2031; i++){
-                    Fyear.getItems().add(i);}
+                    fYear.getItems().add(i);}
                 for (int i = 1; i <= 12; i++){
-                    Fmonth.getItems().add(i);}
-                for (int i = 1; i <= 31; i++){
-                    Fday.getItems().add(i);}
+                    fMonth.getItems().add(i);}
+                for (int i = 1; i <= 31; i++) {
+                    fDay.getItems().add(i);
+                }
                 for (int i = 0; i <= 23; i++){
-                    FhourStart.getItems().add(i);
+                    fHourStart.getItems().add(i);
                 }
                 for (int i = 0; i <= 59; i++){
-                    FminStart.getItems().add(i);
-                }
-                for (int i = 0; i <= 59; i++){
-                    FsecStart.getItems().add(i);
+                    fMinStart.getItems().add(i);
                 }
 
-
-                categoryWorkCB.getItems().add("ไม่เลือก");
+                textForUse.setText("Warning!!. If Month = 2 Day <= 28 \n" +
+                        "If Month = 4,6,8,11 Day <= 30");
+                categoryWorkCB.getItems().add("Not choose");
                 for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList()) {
-                    categoryWorkCB.getItems().add(categoryWork.getName());
+                    categoryWorkCB.getItems().add(categoryWork.getNameC());
                 }
             }
         });
     }
 
     @FXML public void handleSubmitAction(ActionEvent event) throws IOException {
-        if (categoryWorkCB.getItems().equals("ไม่เลือก"))
-            forwardWork = new ForwardWork(null,FName.getText(),namePerson.getText() ,Fyear.getValue() + "/" + Fmonth.getValue() + "/" + Fday.getValue(),
-                    FhourStart.getValue() + ":" + FminStart.getValue() + ":" + FsecStart.getValue(),
-                    FpriorityCB.getValue(), "Not Started");
-        else {
-            forwardWork = new ForwardWork(categoryWorkCB.getValue(), FName.getText(), namePerson.getText(), Fyear.getValue() + "/" + Fmonth.getValue() + "/" + Fday.getValue(),
-                    FhourStart.getValue() + ":" + FminStart.getValue() + ":" + FsecStart.getValue(),
-                    FpriorityCB.getValue(), "Not Started");
+        if (FName.getText().isEmpty() || namePerson.getText().isEmpty() || fYear.getValue()==null || fMonth.getValue()==null || fDay.getValue()==null ||
+                fHourStart.getValue()==null || fMinStart.getValue()==null || fPriorityCB.getValue()==null || categoryWorkCB.getValue()==null)
+            fStatusLabel.setText("Please complete all information.!!");
 
-            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ForwardWork");
-
+        else if ((fMonth.getValue()==2 && fDay.getValue() >= 29) || ((fMonth.getValue()==4 || fMonth.getValue()==6 || fMonth.getValue()==8 || fMonth.getValue()==11) && fDay.getValue() >30)){
+            fStatusLabel.setText(("Please select a new date.!!"));
         }
 
+        else {
+            if (categoryWorkCB.getItems().equals("Not choose"))
+                forwardWork = new ForwardWork(null, FName.getText(), namePerson.getText(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
+                        fHourStart.getValue() + ":" + fMinStart.getValue(),
+                        fPriorityCB.getValue(), "Not Started");
+            else {
+                forwardWork = new ForwardWork(categoryWorkCB.getValue(), FName.getText(), namePerson.getText(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
+                        fHourStart.getValue() + ":" + fMinStart.getValue(),
+                        fPriorityCB.getValue(), "Not Started");
+
+                categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ForwardWork");
+
+            }
 
 
-        System.out.println(forwardWork.toString());
-        dataList.addForwardWork(forwardWork);
-        workDataSource.setData(dataList);
-        categoryDataSource.setData(categoryDataList);
-        FstatusLabel.setText("");
+            dataList.addForwardWork(forwardWork);
+            workDataSource.setData(dataList);
+            categoryDataSource.setData(categoryDataList);
+            FName.clear();
+            namePerson.clear();
+            fYear.setValue(null);
+            fMonth.setValue(null);
+            fDay.setValue(null);
+            fHourStart.setValue(null);
+            fMinStart.setValue(null);
+            fPriorityCB.setValue(null);
+            categoryWorkCB.setValue(null);
+            fStatusLabel.setText("");
+        }
     }
-//    }
 
     public void handleBackButton(ActionEvent actionEvent) {
         try {

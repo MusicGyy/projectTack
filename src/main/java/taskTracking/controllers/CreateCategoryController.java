@@ -39,18 +39,25 @@ public class CreateCategoryController {
     }
 
     @FXML public void handleCreateButtonAction(ActionEvent event) throws IOException {
-        if(dataList.checkCategory(createCategoryText.getText())) {
-            categoryWork = new CategoryWork(createCategoryText.getText(), 0, 0, 0, 0, 0);
+        if (createCategoryText.getText().isEmpty())
+        {
+            statusCategory.setText("Please enter the name of the desired category.!!");
 
-
-            System.out.println(categoryWork.toString());
-            dataList.addCategory(categoryWork);
-            workDataSource.setData(dataList);
-            createCategoryText.clear();
-            statusCategory.setText("....");
         }
         else {
-            statusCategory.setText("ชื่อซ้ำ!!....พิมพ์ใหม่!!");
+            if (dataList.checkCategory(createCategoryText.getText())) {
+                categoryWork = new CategoryWork(createCategoryText.getText(), 0, 0, 0, 0, 0);
+
+
+//            System.out.println(categoryWork.toString());
+                dataList.addCategory(categoryWork);
+                workDataSource.setData(dataList);
+                createCategoryText.clear();
+                statusCategory.setText("....");
+            }
+            else {
+                statusCategory.setText("Repeat category name, please enter it again.!!");
+            }
         }
     }
 

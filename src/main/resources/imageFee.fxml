@@ -7,21 +7,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.ProfileController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.ProfileController">
    <children>
-      <Label layoutX="675.0" layoutY="689.0" text="ID: 6210450563">
+      <ImageView fitHeight="1024.0" fitWidth="1280.0">
+         <image>
+            <Image url="@profile.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="716.0" layoutY="689.0" text="ID: 6210450563" textFill="WHITE">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="372.0" layoutY="689.0" prefHeight="35.0" prefWidth="234.0" text="ชื่อ: นายณัฐดนัย  คุ้มศิริ">
+      <Label layoutX="372.0" layoutY="689.0" prefHeight="35.0" prefWidth="306.0" text="ชื่อ: นายณัฐดนัย  คุ้มศิริ" textFill="WHITE">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="903.0" layoutY="689.0" text="ชื่อเล่น: ฟี">
+      <Label layoutX="980.0" layoutY="689.0" text="ชื่อเล่น: ฟี" textFill="WHITE">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
       <ImageView fx:id="image" fitHeight="438.0" fitWidth="477.0" layoutX="468.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
@@ -30,7 +35,7 @@
          </image></ImageView>
       <Button layoutX="1073.0" layoutY="834.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="80.0" prefWidth="94.0" text="back">
          <font>
-            <Font size="22.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
       </Button>
    </children>

@@ -25,7 +25,7 @@ public class UpdateForwardWorksController {
     @FXML
     ChoiceBox<String> updateStatusF;
     @FXML
-    Label workNameLabel,responsiblePersonLabel,assignedDateLabel,assignedTimeLabel,priorityFLabel;
+    Label workNameLabel,responsiblePersonLabel,assignedDateLabel,assignedTimeLabel,priorityFLabel,categoryLabel;
     @FXML
     Button updateForward;
     @FXML
@@ -57,6 +57,7 @@ public class UpdateForwardWorksController {
         showTableF.setItems(forwardWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
+        configs.add(new StringConfiguration("title:Category Name", "field:category"));
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
         configs.add(new StringConfiguration("title:Name of person in charge", "field:responsiblePerson"));
         configs.add(new StringConfiguration("title:Assigned Date", "field:assignedDate"));
@@ -77,12 +78,25 @@ public class UpdateForwardWorksController {
 
     private void showSelectedForwardWork(ForwardWork forwardWork) {
         selectedForwardWork = forwardWork;
-        workNameLabel.setText(forwardWork.getName());
-        responsiblePersonLabel.setText(forwardWork.getResponsiblePerson());
-        priorityFLabel.setText(forwardWork.getPriority());
-        assignedDateLabel.setText(forwardWork.getAssignedDate());
-        assignedTimeLabel.setText(forwardWork.getAssignedTime());
-        updateForward.setDisable(false);
+        if (forwardWork.getStatus().equals("Finished")) {
+            workNameLabel.setText(forwardWork.getName());
+            responsiblePersonLabel.setText(forwardWork.getResponsiblePerson());
+            priorityFLabel.setText(forwardWork.getPriority());
+            assignedDateLabel.setText(forwardWork.getAssignedDate());
+            assignedTimeLabel.setText(forwardWork.getAssignedTime());
+            categoryLabel.setText(forwardWork.getCategory());
+            updateForward.setDisable(true);
+        }
+
+        else {
+            workNameLabel.setText(forwardWork.getName());
+            responsiblePersonLabel.setText(forwardWork.getResponsiblePerson());
+            priorityFLabel.setText(forwardWork.getPriority());
+            assignedDateLabel.setText(forwardWork.getAssignedDate());
+            assignedTimeLabel.setText(forwardWork.getAssignedTime());
+            categoryLabel.setText(forwardWork.getCategory());
+            updateForward.setDisable(false);
+        }
     }
 
     private void clearSelectedStudent() {
@@ -92,6 +106,7 @@ public class UpdateForwardWorksController {
         responsiblePersonLabel.setText("....");
         assignedDateLabel.setText("....");
         assignedTimeLabel.setText("....");
+        categoryLabel.setText("....");
 
         updateForward.setDisable(true);
     }
@@ -121,6 +136,8 @@ public class UpdateForwardWorksController {
             selectedForwardWork.setStatus(updateStatusF.getValue());
         if(!addResponsiblePerson.getText().isEmpty())
             selectedForwardWork.addResponsiblePerson(addResponsiblePerson.getText());
+        addResponsiblePerson.clear();
+        updateStatusF.setValue(null);
         clearSelectedStudent();
         showTableF.refresh();
         showTableF.getSelectionModel().clearSelection();

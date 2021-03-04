@@ -1,6 +1,7 @@
 ณัฐดนัย คุ้มศิริ 6210450563 
 
 **Sprint 2**
+
 * ทำให้ project เป็น maven project
 * เปลี่ยน package sample เป็นชื่อที่เหมาะสม กับบริบทของโปรเจครายวิชา
 * นำ FXRouter มาใช้ เพื่อช่วยในการเปลี่ยนหน้า
@@ -37,3 +38,11 @@
 * เพิ่มหน้า update ของ forward works และการทำงานใน controller
 * เพิ่มหน้า update ของ project works และการทำงานใน controller
 * เพิ่มหน้า Show งานทั้งหมด "WorksAll"
+
+**Sprint 5**
+
+* แก้ไขหน้า Input ของ general work, weekly work, forward work และ project work
+* เพิ่มเงื่อนไข การ Input ค่าเข้าไปเก็บข้อมูล ของ general work, weekly work, forward work และ project work
+* เพิ่มเงื่อนไข การ Input ค่าเข้าไปเก็บข้อมูล ของ Update general work, Update weekly work, Update forward work และ Update project work
+* เพิ่ม extra ข้อ 15.4 ในหน้า add งาน general work, weekly work, forward work และ project work
+* ตกแต่ง เพิ่ม background ในทุกหน้าที่มีข้อมูล

@@ -29,6 +29,7 @@ public class GeneralWork {
         this.category = category;
     }
 
+
     public GeneralWork(String category,String name, String madeDate, String startTime, String priority, String status) {  /// GeneralWork
         this.name = name;
         this.madeDate = madeDate;
@@ -37,6 +38,8 @@ public class GeneralWork {
         this.status = status;
         this.category = category;
     }
+
+
 
 
     public GeneralWork(String category, String name, String madeDate, String startTime, String lastDate, String priority, String status) {
@@ -48,6 +51,12 @@ public class GeneralWork {
         this.status = status;
         this.category = category;
     }
+
+    public void addWeeklyDate (String madeDate){
+        if (!this.madeDate.contains(madeDate))
+            this.madeDate = getMadeDate() + " | " + madeDate;
+    }
+
 
 
     public String getName() {

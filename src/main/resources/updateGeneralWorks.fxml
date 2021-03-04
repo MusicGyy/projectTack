@@ -4,66 +4,134 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.UpdateGeneralWorksController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.UpdateGeneralWorksController">
    <children>
-      <Button layoutX="685.0" layoutY="707.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="194.0" text="BackToHome" />
+      <ImageView fitHeight="1024.0" fitWidth="1280.0">
+         <image>
+            <Image url="@genneral.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="710.0" layoutY="797.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="194.0" text="BackToHome">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
       <TableView fx:id="showTable" layoutX="52.0" layoutY="143.0" prefHeight="418.0" prefWidth="334.0" />
-      <Button layoutX="685.0" layoutY="653.0" mnemonicParsing="false" onAction="#handleBackToGeneralWorkButton" prefHeight="34.0" prefWidth="193.0" text="BackToGeneralWork" />
-      <Label layoutX="392.0" layoutY="36.0" prefHeight="35.0" prefWidth="220.0" text="UpdateGeneralWork">
+      <Button layoutX="710.0" layoutY="743.0" mnemonicParsing="false" onAction="#handleBackToGeneralWorkButton" prefHeight="34.0" prefWidth="193.0" text="BackToGeneralWork">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Label layoutX="392.0" layoutY="36.0" prefHeight="35.0" prefWidth="260.0" text="UpdateGeneralWork" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="updateGeneral" layoutX="539.0" layoutY="574.0" mnemonicParsing="false" onAction="#handleUpdateGeneralButton" prefHeight="35.0" prefWidth="186.0" text="UpdateGeneral" />
-      <Label layoutX="488.0" layoutY="158.0" text="WorkName">
+      <Button fx:id="updateGeneral" layoutX="573.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleUpdateGeneralButton" prefHeight="35.0" prefWidth="186.0" text="UpdateGeneral">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Label layoutX="488.0" layoutY="158.0" text="WorkName" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="488.0" layoutY="209.0" prefHeight="48.0" prefWidth="90.0" text="MadeDate">
+      <Label layoutX="488.0" layoutY="190.0" prefHeight="48.0" prefWidth="90.0" text="MadeDate" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="488.0" layoutY="280.0" prefHeight="48.0" prefWidth="90.0" text="TimeStart">
+      <Label layoutX="488.0" layoutY="238.0" prefHeight="48.0" prefWidth="90.0" text="TimeStart" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="workNameLabel" layoutX="626.0" layoutY="163.0" prefHeight="27.0" prefWidth="230.0" text="....">
+      <Label fx:id="workNameLabel" layoutX="626.0" layoutY="163.0" prefHeight="27.0" prefWidth="230.0" text="...." textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="madeDateLabel" layoutX="626.0" layoutY="209.0" prefHeight="48.0" prefWidth="230.0" text="....">
+      <Label fx:id="madeDateLabel" layoutX="626.0" layoutY="190.0" prefHeight="48.0" prefWidth="230.0" text="...." textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="timeStartLabel" layoutX="626.0" layoutY="280.0" prefHeight="48.0" prefWidth="230.0" text="....">
+      <Label fx:id="timeStartLabel" layoutX="626.0" layoutY="238.0" prefHeight="48.0" prefWidth="230.0" text="...." textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="hourFin" layoutX="461.0" layoutY="431.0" prefHeight="26.0" prefWidth="54.0" />
-      <ChoiceBox fx:id="secFin" layoutX="755.0" layoutY="430.0" prefHeight="26.0" prefWidth="54.0" />
-      <ChoiceBox fx:id="minFin" layoutX="605.0" layoutY="430.0" prefHeight="26.0" prefWidth="54.0" />
-      <Label layoutX="414.0" layoutY="434.0" text="hour" />
-      <Label layoutX="537.0" layoutY="436.0" text="minute" />
-      <Label layoutX="677.0" layoutY="436.0" text="secound" />
-      <ChoiceBox fx:id="updateStatus" layoutX="565.0" layoutY="512.0" prefWidth="150.0" />
-      <Label layoutX="624.0" layoutY="487.0" text="Status" />
-      <Label layoutX="488.0" layoutY="352.0" prefHeight="48.0" prefWidth="90.0" text="Priority">
+      <ChoiceBox fx:id="hourFin" layoutX="656.0" layoutY="523.0" prefHeight="26.0" prefWidth="54.0" />
+      <ChoiceBox fx:id="minFin" layoutX="826.0" layoutY="522.0" prefHeight="26.0" prefWidth="54.0" />
+      <Label layoutX="601.0" layoutY="527.0" text="hour" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="765.0" layoutY="527.0" text="minute" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <ChoiceBox fx:id="updateStatus" layoutX="590.0" layoutY="602.0" prefWidth="150.0" />
+      <Label layoutX="649.0" layoutY="577.0" text="Status" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="488.0" layoutY="334.0" prefHeight="48.0" prefWidth="90.0" text="Priority" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="priorityLabel" layoutX="626.0" layoutY="352.0" prefHeight="48.0" prefWidth="230.0" text="....">
+      <Label fx:id="priorityLabel" layoutX="626.0" layoutY="334.0" prefHeight="48.0" prefWidth="230.0" text="...." textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="557.0" layoutY="105.0" text="Category" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="categoryLabel" layoutX="730.0" layoutY="95.0" prefHeight="48.0" prefWidth="194.0" text="...." textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="488.0" layoutY="286.0" prefHeight="48.0" prefWidth="90.0" text="End Time" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="endTimeLabel" layoutX="625.0" layoutY="286.0" prefHeight="48.0" prefWidth="230.0" text="...." textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="474.0" layoutY="512.0" prefHeight="48.0" prefWidth="104.0" text="updateEndTime" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="hourS" layoutX="656.0" layoutY="485.0" prefHeight="26.0" prefWidth="54.0" />
+      <ChoiceBox fx:id="minS" layoutX="826.0" layoutY="484.0" prefHeight="26.0" prefWidth="54.0" />
+      <Label layoutX="601.0" layoutY="489.0" text="hour" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="765.0" layoutY="489.0" text="minute" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="474.0" layoutY="474.0" prefHeight="48.0" prefWidth="114.0" text="updateStartTime" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="statusLabel" layoutX="683.0" layoutY="426.0" prefHeight="48.0" prefWidth="251.0" text="...." textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
    </children>

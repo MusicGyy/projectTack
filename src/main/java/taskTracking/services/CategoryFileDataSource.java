@@ -68,7 +68,7 @@ public class CategoryFileDataSource implements DataSource{
             fileWriter = new FileWriter(file);
             BufferedWriter writer = new BufferedWriter(fileWriter);
             for (CategoryWork work : list.getCategoryArrayList()) {
-                String line = work.getName() + ","
+                String line = work.getNameC() + ","
                         + work.getAll()+ ","
                         + work.getCountGeneral() + ","
                         + work.getCountWeekly() + ","

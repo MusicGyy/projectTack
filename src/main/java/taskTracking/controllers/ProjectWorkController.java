@@ -22,11 +22,9 @@ public class ProjectWorkController {
     @FXML
     TextField PName,LeaderName;
     @FXML
-    ChoiceBox<Integer> StartYear,StartMonth,StartDay;
+    ChoiceBox<String> pPriorityCB,categoryWorkCB;
     @FXML
-    ChoiceBox<String> PpriorityCB,categoryWorkCB;
-    @FXML
-    Button Psubmit;
+    Button pSubmit;
     @FXML
     Label PStatusLabel;
 
@@ -45,39 +43,45 @@ public class ProjectWorkController {
                 categoryDataList = categoryDataSource.getData();
                 dataList = workDataSource.getData();
                 for (int i = 1; i <= 3; i++){
-                    PpriorityCB.getItems().add(String.valueOf(i));}
-                for (int i = 2021; i <= 2031; i++){
-                    StartYear.getItems().add(i);}
-                for (int i = 1; i <= 12; i++){
-                    StartMonth.getItems().add(i);}
-                for (int i = 1; i <= 31; i++){
-                    StartDay.getItems().add(i);}
+                    pPriorityCB.getItems().add(String.valueOf(i));}
 
-                categoryWorkCB.getItems().add("ไม่เลือก");
+                categoryWorkCB.getItems().add("Not choose");
                 for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList()) {
-                    categoryWorkCB.getItems().add(categoryWork.getName());
+                    categoryWorkCB.getItems().add(categoryWork.getNameC());
                 }
             }
         });
     }
 
     @FXML public void handleSubmitAction(ActionEvent event) throws IOException {
-        if (categoryWorkCB.getItems().equals("ไม่เลือก"))
-            projectWork = new ProjectWork(null,PName.getText(),LeaderName.getText() ,
-                    StartYear.getValue() + "/" + StartMonth.getValue() + "/" + StartDay.getValue(), PpriorityCB.getValue(),"Not Started");
+        if (PName.getText().isEmpty() || LeaderName.getText().isEmpty() || pPriorityCB.getValue()==null || categoryWorkCB.getValue()==null)
+            PStatusLabel.setText("Please complete all information.!!");
+
+//        else if ((StartMonth.getValue()==2 && StartDay.getValue() >= 29) || ((StartMonth.getValue()==4 || StartMonth.getValue()==6 || StartMonth.getValue()==8 || StartMonth.getValue()==11) && StartDay.getValue() >30)) {
+//            PStatusLabel.setText(("Please select a new date.!!"));
+//        }
+
         else {
-            projectWork = new ProjectWork(categoryWorkCB.getValue(), PName.getText(), LeaderName.getText(),
-                    StartYear.getValue() + "/" + StartMonth.getValue() + "/" + StartDay.getValue(), PpriorityCB.getValue(), "Not Started");
+            if (categoryWorkCB.getItems().equals("Not choose"))
+                projectWork = new ProjectWork(null, PName.getText(), LeaderName.getText(),
+                        "", pPriorityCB.getValue(), "Not Started");
+            else {
+                projectWork = new ProjectWork(categoryWorkCB.getValue(), PName.getText(), LeaderName.getText(),
+                        "", pPriorityCB.getValue(), "Not Started");
 
-            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ProjectWork");
+                categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ProjectWork");
 
+            }
+
+            dataList.addProjectWork(projectWork);
+            workDataSource.setData(dataList);
+            categoryDataSource.setData(categoryDataList);
+            PName.clear();
+            LeaderName.clear();
+            pPriorityCB.setValue(null);
+            categoryWorkCB.setValue(null);
+            PStatusLabel.setText("");
         }
-
-        System.out.println(projectWork.toString());
-        dataList.addProjectWork(projectWork);
-        workDataSource.setData(dataList);
-        categoryDataSource.setData(categoryDataList);
-        PStatusLabel.setText("");
     }
 
     public void handleBackButton(ActionEvent actionEvent) {
