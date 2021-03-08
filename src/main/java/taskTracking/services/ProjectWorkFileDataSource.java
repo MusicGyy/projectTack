@@ -40,7 +40,7 @@ public class ProjectWorkFileDataSource implements DataSource{
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
             if (data[0].equals("ProjectWork")){
-                ProjectWork projectWork = new ProjectWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(), data[6].trim());
+                ProjectWork projectWork = new ProjectWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(), data[6].trim(),data[7].trim());
                 dataList.addProjectWork(projectWork);
             }
             else{}
@@ -76,6 +76,7 @@ public class ProjectWorkFileDataSource implements DataSource{
                         + work.getName() + ","
                         + work.getProjectLeader()+ ","
                         + work.getMadeDate() + ","
+                        + work.getStartTime() + ","
                         + work.getPriority() + ","
                         + work.getStatus();
 

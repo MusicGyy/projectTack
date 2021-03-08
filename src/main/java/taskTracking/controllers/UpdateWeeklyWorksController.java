@@ -190,5 +190,13 @@ public class UpdateWeeklyWorksController {
         }
     }
 
-    ///เวลาจบไปอยู่ช่องเริ่ม
+    public void handleShowWorkAllButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("worksAll");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า worksAll ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
 }

@@ -62,8 +62,6 @@ public class ForwardWorkController {
                     fMinStart.getItems().add(i);
                 }
 
-                textForUse.setText("Warning!!. If Month = 2 Day <= 28 \n" +
-                        "If Month = 4,6,8,11 Day <= 30");
                 categoryWorkCB.getItems().add("Not choose");
                 for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList()) {
                     categoryWorkCB.getItems().add(categoryWork.getNameC());

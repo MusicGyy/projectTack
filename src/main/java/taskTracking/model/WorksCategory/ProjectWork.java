@@ -4,8 +4,8 @@ public class ProjectWork extends GeneralWork{
     private String ProjectLeader;
 
 
-    public ProjectWork(String category,String name, String projectLeader, String madeDate, String priority, String status) {
-        super(category,name, madeDate, priority, status);
+    public ProjectWork(String category,String name, String projectLeader, String madeDate,String startTime, String priority, String status) {
+        super(category,name, madeDate,startTime, priority, status);
         ProjectLeader = projectLeader;
     }
 
@@ -19,6 +19,6 @@ public class ProjectWork extends GeneralWork{
 
     @Override
     public String toString() {
-        return getCategory() +","+getName() + "," + ProjectLeader + "," + getMadeDate() + "," + getPriority() + "," + getStatus();
+        return getCategory() +","+ getName() + "," + ProjectLeader + "," + getMadeDate() + "," +  getStartTime() + "," + getPriority() + "," + getStatus();
     }
 }

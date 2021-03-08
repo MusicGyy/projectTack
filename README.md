@@ -46,3 +46,10 @@
 * เพิ่มเงื่อนไข การ Input ค่าเข้าไปเก็บข้อมูล ของ Update general work, Update weekly work, Update forward work และ Update project work
 * เพิ่ม extra ข้อ 15.4 ในหน้า add งาน general work, weekly work, forward work และ project work
 * ตกแต่ง เพิ่ม background ในทุกหน้าที่มีข้อมูล
+
+**Sprint 6**
+
+* เพิ่มปุ่มไปหน้า WorksAll  ในหน้า  Update   งานทั้งหมด
+* เพิ่มปุ่มไปหน้า Update งานต่างๆ ในหน้า WorksAll
+* 14.4 (extra 5 คะแนน)เพิ่มระบบ filter เพื่อเลือกการแสดงผลรายการงานตามสถานะของงาน (ยังไม่เริ่ม, กำลังทำ, เสร็จสิ้น) ในหน้าของ workAll
+* 14.3 (extra 5 คะแนน) มีระบบ filter เพื่อแสดงผลเฉพาะรายการงานในวันที่ระบุ ในหน้าของ workAll

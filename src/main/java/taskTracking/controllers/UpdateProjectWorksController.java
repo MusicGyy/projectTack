@@ -79,7 +79,7 @@ public class UpdateProjectWorksController {
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
         configs.add(new StringConfiguration("title:Leader Name", "field:ProjectLeader"));
         configs.add(new StringConfiguration("title:Start Date", "field:madeDate"));
-        configs.add(new StringConfiguration("title:Finished Time", "field:lastDate"));
+        configs.add(new StringConfiguration("title:Finished Time", "field:startTime"));
         configs.add(new StringConfiguration("title:Priority", "field:priority"));
         configs.add(new StringConfiguration("title:Status", "field:status"));
 
@@ -101,7 +101,7 @@ public class UpdateProjectWorksController {
             priorityPLabel.setText(projectWork.getPriority());
             startDateLabel.setText(projectWork.getMadeDate());
             leaderNameLabel.setText(projectWork.getProjectLeader());
-            endDateLabel.setText(projectWork.getLastDate());
+            endDateLabel.setText(projectWork.getStartTime());
             categoryLabel.setText(projectWork.getCategory());
             updateProject.setDisable(true);
         }
@@ -110,7 +110,7 @@ public class UpdateProjectWorksController {
             priorityPLabel.setText(projectWork.getPriority());
             startDateLabel.setText(projectWork.getMadeDate());
             leaderNameLabel.setText(projectWork.getProjectLeader());
-            endDateLabel.setText(projectWork.getLastDate());
+            endDateLabel.setText(projectWork.getStartTime());
             categoryLabel.setText(projectWork.getCategory());
             updateProject.setDisable(false);
         }
@@ -159,7 +159,7 @@ public class UpdateProjectWorksController {
                     statusLabel.setText(("Please select a new date.!!"));
                 }
                 else {
-                selectedProjectWork.setLastDate(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
+                selectedProjectWork.setStartTime(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
                 selectedProjectWork.setMadeDate(sYear.getValue() + "/" + sMonth.getValue() + "/" + sDay.getValue());
                 }
             }
@@ -169,7 +169,7 @@ public class UpdateProjectWorksController {
                     statusLabel.setText(("Please select a new date.!!"));
                 }
                 else {
-                    selectedProjectWork.setLastDate(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
+                    selectedProjectWork.setStartTime(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
                     selectedProjectWork.setMadeDate(sYear.getValue() + "/" + sMonth.getValue() + "/" + sDay.getValue());
                 }
             }
@@ -179,7 +179,7 @@ public class UpdateProjectWorksController {
                     statusLabel.setText(("Please select a new date.!!"));
                 }
                 else {
-                    selectedProjectWork.setLastDate(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
+                    selectedProjectWork.setStartTime(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
                     selectedProjectWork.setMadeDate(sYear.getValue() + "/" + sMonth.getValue() + "/" + sDay.getValue());
                 }
             }
@@ -188,6 +188,9 @@ public class UpdateProjectWorksController {
             }
         }
         clearSelectedStudent();
+        sYear.setValue(null);
+        sMonth.setValue(null);
+        sDay.setValue(null);
         EndYear.setValue(null);
         EndMonth.setValue(null);
         EndDay.setValue(null);
@@ -197,5 +200,14 @@ public class UpdateProjectWorksController {
         statusLabel.setText("");
 
         dataSource.setData(projectDataList);
+    }
+
+    public void handleShowWorkAllButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("worksAll");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า worksAll ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
     }
 }

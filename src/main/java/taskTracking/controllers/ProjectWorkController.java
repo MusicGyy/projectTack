@@ -64,10 +64,10 @@ public class ProjectWorkController {
         else {
             if (categoryWorkCB.getItems().equals("Not choose"))
                 projectWork = new ProjectWork(null, PName.getText(), LeaderName.getText(),
-                        "", pPriorityCB.getValue(), "Not Started");
+                        null,null, pPriorityCB.getValue(), "Not Started");
             else {
                 projectWork = new ProjectWork(categoryWorkCB.getValue(), PName.getText(), LeaderName.getText(),
-                        "", pPriorityCB.getValue(), "Not Started");
+                        null,null, pPriorityCB.getValue(), "Not Started");
 
                 categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ProjectWork");
 

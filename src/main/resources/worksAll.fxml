@@ -3,12 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.WorksAllController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.WorksAllController">
    <children>
       <ImageView fitHeight="1024.0" fitWidth="1280.0">
          <image>
@@ -44,5 +45,18 @@
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Label>
+      <Button layoutX="171.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleUpdateGeneralWorksControllerButton" text="Update General" />
+      <Button layoutX="518.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleUpdateWeeklyWorksControllerButton" text="Update Weekly" />
+      <Button layoutX="170.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateForwardWorksControllerButton" text="Update Forward" />
+      <Button layoutX="519.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateProjectWorksControllerButton" text="Update Project" />
+      <Button layoutX="837.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleCreateCategoryButton" text="Create Category" />
+      <TextField fx:id="searchText" layoutX="895.0" layoutY="93.0" prefHeight="26.0" prefWidth="287.0" promptText="Please enter the information you want to search." />
+      <Label layoutX="833.0" layoutY="97.0" text="Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="909.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleSearchButton" text="Search" />
+      <Button layoutX="1059.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleClearButton" text="Clear" />
    </children>
 </AnchorPane>

@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import taskTracking.model.WorksCategory.*;
 import taskTracking.services.*;
@@ -34,6 +35,8 @@ public class WorksAllController {
     TableView<ProjectWork> showTableP;
     @FXML
     TableView<CategoryWork> showTableC;
+    @FXML
+    TextField searchText;
 
     @FXML
     public void initialize() {
@@ -50,17 +53,20 @@ public class WorksAllController {
                 dataList3 = dataSource3.getData();
                 dataList4 = dataSource4.getData();
                 dataList5 = dataSource5.getData();
-                showStudentData();
-                showStudentData1();
-                showStudentData2();
-                showStudentData3();
+                showStudentData("");
+                showStudentData1("");
+                showStudentData2("");
+                showStudentData3("");
                 showStudentData4();
             }
         });
     }
 
-    private void showStudentData() {
-        forwardWorkObservableList = FXCollections.observableArrayList(dataList2.getForwardWorksArrayList());
+    private void showStudentData(String searchText) {
+        if (searchText.equals(""))
+            forwardWorkObservableList = FXCollections.observableArrayList(dataList2.getForwardWorksArrayList());
+        else
+            forwardWorkObservableList = FXCollections.observableArrayList(dataList2.searchForward(searchText));
         showTableF.setItems(forwardWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
@@ -83,9 +89,13 @@ public class WorksAllController {
         }
     }
 
-    private void showStudentData1() {
-        generalWorkObservableList = FXCollections.observableArrayList(dataList1.getGeneralWorkArrayList());
-        showTable.setItems(generalWorkObservableList);
+    private void showStudentData1(String searchText) {
+        if (searchText.equals(""))
+            generalWorkObservableList = FXCollections.observableArrayList(dataList1.getGeneralWorkArrayList());
+		else
+            generalWorkObservableList = FXCollections.observableArrayList(dataList1.searchGeneral(searchText));
+
+		showTable.setItems(generalWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
         configs.add(new StringConfiguration("title:Category Name", "field:category"));
@@ -107,15 +117,17 @@ public class WorksAllController {
         }
     }
 
-    private void showStudentData2() {
-        weeklyWorkObservableList = FXCollections.observableArrayList(dataList3.getWeeklyWorkArrayList());
+    private void showStudentData2(String searchText) {
+        if (searchText.equals(""))
+            weeklyWorkObservableList = FXCollections.observableArrayList(dataList3.getWeeklyWorkArrayList());
+        else
+            weeklyWorkObservableList = FXCollections.observableArrayList(dataList3.searchWeekly(searchText));
         showTableW.setItems(weeklyWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
         configs.add(new StringConfiguration("title:Category Name", "field:category"));
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
         configs.add(new StringConfiguration("title:Date", "field:madeDate"));
-//        configs.add(new StringConfiguration("title:Date Update", "field:weeklyDateUpdate"));
         configs.add(new StringConfiguration("title:Start Time", "field:startTime"));
         configs.add(new StringConfiguration("title:End Time", "field:lastDate"));
         configs.add(new StringConfiguration("title:Priority", "field:priority"));
@@ -132,16 +144,19 @@ public class WorksAllController {
         }
     }
 
-    private void showStudentData3() {
-        projectWorkObservableList = FXCollections.observableArrayList(dataList4.getProjectWorkArrayList());
+    private void showStudentData3(String searchText) {
+        if (searchText.equals(""))
+            projectWorkObservableList = FXCollections.observableArrayList(dataList4.getProjectWorkArrayList());
+        else
+            projectWorkObservableList = FXCollections.observableArrayList(dataList4.searchProject(searchText));
         showTableP.setItems(projectWorkObservableList);
 
         ArrayList<StringConfiguration> configs = new ArrayList<>();
         configs.add(new StringConfiguration("title:Category Name", "field:category"));
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
-        configs.add(new StringConfiguration("title:Start Date", "field:madeDate"));
         configs.add(new StringConfiguration("title:Leader Name", "field:ProjectLeader"));
-        configs.add(new StringConfiguration("title:Finished Time", "field:lastDate"));
+        configs.add(new StringConfiguration("title:Start Date", "field:madeDate"));
+        configs.add(new StringConfiguration("title:Finished Time", "field:startTime"));
         configs.add(new StringConfiguration("title:Priority", "field:priority"));
         configs.add(new StringConfiguration("title:Status", "field:status"));
 
@@ -179,12 +194,80 @@ public class WorksAllController {
         }
     }
 
+    public void handleSearchButton(ActionEvent actionEvent){
+        showStudentData(searchText.getText());
+        showStudentData1(searchText.getText());
+        showStudentData2(searchText.getText());
+        showStudentData3(searchText.getText());
+    }
+
+    private void clearSearchInput(){
+        searchText.clear();
+    }
+
+    public void handleClearButton(ActionEvent actionEvent){
+        clearSearchInput();
+        showStudentData("");
+        showStudentData1("");
+        showStudentData2("");
+        showStudentData3("");
+        showStudentData4();
+
+    }
+
+
+
     public void handleBackButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("home");
         }
         catch (IOException e) {
             System.err.println("ไปที่หน้า home ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    public void handleUpdateGeneralWorksControllerButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("updateGeneralWorks");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า updateGeneralWorks ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    public void handleUpdateForwardWorksControllerButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("updateForwardWorks");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า updateForwardWorks ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    public void handleUpdateProjectWorksControllerButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("updateProjectWorks");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า updateProjectWorks ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    public void handleUpdateWeeklyWorksControllerButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("updateWeeklyWorks");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า updateWeeklyWorks ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    public void handleCreateCategoryButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("createCategory");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า createCategory ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }

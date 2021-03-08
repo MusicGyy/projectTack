@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.UpdateForwardWorksController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.UpdateForwardWorksController">
    <children>
       <ImageView fitHeight="1024.0" fitWidth="1280.0" layoutX="6.0" layoutY="7.0">
          <image>
@@ -105,5 +105,10 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Button layoutX="826.0" layoutY="713.0" mnemonicParsing="false" onAction="#handleShowWorkAllButton" prefHeight="34.0" prefWidth="193.0" text="GoToWorkAll">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

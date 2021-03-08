@@ -20,6 +20,42 @@ public class DataList {
         this.categoryArrayList = new ArrayList<>();
     }
 
+    public ArrayList<GeneralWork> searchGeneral(String input){
+        ArrayList<GeneralWork> generalWorks = new ArrayList<>();
+        for (GeneralWork work : getGeneralWorkArrayList()){
+            if (work.getStatus().equals(input)  || work.getMadeDate().equals(input))
+                generalWorks.add(work);
+        }
+        return generalWorks;
+    }
+
+    public ArrayList<ForwardWork> searchForward(String input){
+        ArrayList<ForwardWork> forwardWorks = new ArrayList<>();
+        for (ForwardWork work : getForwardWorksArrayList()){
+            if (work.getStatus().equals(input)   ||  work.getAssignedDate().equals(input))
+                forwardWorks.add(work);
+        }
+        return forwardWorks;
+    }
+
+    public ArrayList<WeeklyWork> searchWeekly(String input){
+        ArrayList<WeeklyWork> weeklyWorks = new ArrayList<>();
+        for (WeeklyWork work : getWeeklyWorkArrayList()){
+            if (work.getStatus().equals(input) ||  work.getMadeDate().equals(input))
+                weeklyWorks.add(work);
+        }
+        return weeklyWorks;
+    }
+
+    public ArrayList<ProjectWork> searchProject(String input){
+        ArrayList<ProjectWork> projectWorks = new ArrayList<>();
+        for (ProjectWork work : getProjectWorkArrayList()){
+            if (work.getStatus().equals(input) || work.getMadeDate().equals(input) || work.getStartTime().equals(input))
+                projectWorks.add(work);
+        }
+        return projectWorks;
+    }
+
     public void addGeneralWork(GeneralWork generalWork) { this.generalWorkArrayList.add(generalWork); }
 
     public void addForwardWork(ForwardWork forwardWork){
