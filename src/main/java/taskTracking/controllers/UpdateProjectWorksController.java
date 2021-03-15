@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import taskTracking.model.WorksCategory.CategoryWork;
 import taskTracking.model.WorksCategory.ProjectWork;
 import taskTracking.services.*;
 
@@ -15,8 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class UpdateProjectWorksController {
-    private DataList projectDataList;
-    private DataSource dataSource;
+    private DataList projectDataList,categoryDataList;
+    private DataSource dataSource,categoryDataSource;
     private ProjectWork selectedProjectWork;
     private ObservableList<ProjectWork> projectWorkObservableList;
 
@@ -25,7 +26,7 @@ public class UpdateProjectWorksController {
     @FXML
     ChoiceBox<Integer> EndYear, EndMonth, EndDay,sYear,sMonth,sDay;
     @FXML
-    ChoiceBox<String> updateStatusP;
+    ChoiceBox<String> updateStatusP,categoryWorkCB;
     @FXML
     Label workNameLabel, leaderNameLabel, startDateLabel, endDateLabel, priorityPLabel,categoryLabel,statusLabel;
     @FXML
@@ -37,6 +38,9 @@ public class UpdateProjectWorksController {
             @Override
             public void run() {
                 dataSource = new ProjectWorkFileDataSource("data", "projectWorks.csv");
+                categoryDataSource = new CategoryFileDataSource("data","category.csv");
+
+                categoryDataList = categoryDataSource.getData();
                 projectDataList = dataSource.getData();
                 for (int i = 2021; i <= 2031; i++) {
                     EndYear.getItems().add(i);
@@ -57,6 +61,9 @@ public class UpdateProjectWorksController {
                     sDay.getItems().add(i);
                 }
                 updateStatusP.getItems().addAll("Doing", "Finished");
+                for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList()) {
+                    categoryWorkCB.getItems().add(categoryWork.getNameC());
+                }
                 showStudentData();
             }
         });
@@ -106,13 +113,26 @@ public class UpdateProjectWorksController {
             updateProject.setDisable(true);
         }
         else {
-            workNameLabel.setText(projectWork.getName());
-            priorityPLabel.setText(projectWork.getPriority());
-            startDateLabel.setText(projectWork.getMadeDate());
-            leaderNameLabel.setText(projectWork.getProjectLeader());
-            endDateLabel.setText(projectWork.getStartTime());
-            categoryLabel.setText(projectWork.getCategory());
-            updateProject.setDisable(false);
+            if (projectWork.getCategory().equals("Not choose")) {
+                workNameLabel.setText(projectWork.getName());
+                priorityPLabel.setText(projectWork.getPriority());
+                startDateLabel.setText(projectWork.getMadeDate());
+                leaderNameLabel.setText(projectWork.getProjectLeader());
+                endDateLabel.setText(projectWork.getStartTime());
+                categoryLabel.setText(projectWork.getCategory());
+                categoryWorkCB.setDisable(false);
+                updateProject.setDisable(false);
+            }
+            else {
+                workNameLabel.setText(projectWork.getName());
+                priorityPLabel.setText(projectWork.getPriority());
+                startDateLabel.setText(projectWork.getMadeDate());
+                leaderNameLabel.setText(projectWork.getProjectLeader());
+                endDateLabel.setText(projectWork.getStartTime());
+                categoryLabel.setText(projectWork.getCategory());
+                categoryWorkCB.setDisable(true);
+                updateProject.setDisable(false);
+            }
         }
     }
 
@@ -187,7 +207,12 @@ public class UpdateProjectWorksController {
                 statusLabel.setText("Please select a new date.!!");
             }
         }
+        if (categoryWorkCB.getValue()!= null){
+            selectedProjectWork.setCategory(categoryWorkCB.getValue());
+            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ProjectWork",selectedProjectWork.getName());
+        }
         clearSelectedStudent();
+        categoryWorkCB.setValue(null);
         sYear.setValue(null);
         sMonth.setValue(null);
         sDay.setValue(null);
@@ -199,6 +224,7 @@ public class UpdateProjectWorksController {
         showTableP.getSelectionModel().clearSelection();
         statusLabel.setText("");
 
+        categoryDataSource.setData(categoryDataList);
         dataSource.setData(projectDataList);
     }
 

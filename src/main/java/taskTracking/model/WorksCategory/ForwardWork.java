@@ -14,7 +14,7 @@ public class ForwardWork extends GeneralWork{
     }
 
     public void addResponsiblePerson (String responsiblePerson){
-        this.responsiblePerson = getResponsiblePerson() + " | " + responsiblePerson;
+        this.responsiblePerson = getResponsiblePerson() + "//" + responsiblePerson;
     }
 
     public String getResponsiblePerson() {

@@ -8,18 +8,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import taskTracking.model.WorksCategory.CategoryWork;
 import taskTracking.model.WorksCategory.GeneralWork;
-import taskTracking.services.DataList;
-import taskTracking.services.DataSource;
-import taskTracking.services.GeneralWorkFileDataSource;
-import taskTracking.services.StringConfiguration;
+import taskTracking.services.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class UpdateGeneralWorksController {
-    private DataList generalList;
-    private DataSource dataSource;
+    private DataList generalList,categoryDataList;
+    private DataSource dataSource,categoryDataSource;
     private GeneralWork selectedGeneralWork;
     private ObservableList<GeneralWork> generalObservableList;
 
@@ -28,7 +26,7 @@ public class UpdateGeneralWorksController {
     @FXML
     ChoiceBox<Integer> hourFin, minFin,hourS,minS;
     @FXML
-    ChoiceBox<String> updateStatus;
+    ChoiceBox<String> updateStatus,categoryWorkCB;
     @FXML
     Label workNameLabel,madeDateLabel,timeStartLabel,priorityLabel,categoryLabel,statusLabel,endTimeLabel;
     @FXML
@@ -40,6 +38,9 @@ public class UpdateGeneralWorksController {
             @Override
             public void run() {
                 dataSource = new GeneralWorkFileDataSource("data", "generalWorks.csv");
+                categoryDataSource = new CategoryFileDataSource("data","category.csv");
+
+                categoryDataList = categoryDataSource.getData();
                 generalList = dataSource.getData();
                 for (int i = 0; i <= 23; i++){
                     hourFin.getItems().add(i);
@@ -54,6 +55,8 @@ public class UpdateGeneralWorksController {
                     minS.getItems().add(i);
                 }
                 updateStatus.getItems().addAll( "Doing", "Finished");
+                for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList())
+                    categoryWorkCB.getItems().add(categoryWork.getNameC());
                 showStudentData();
             }
         });
@@ -104,13 +107,26 @@ public class UpdateGeneralWorksController {
 
         }
         else {
-            workNameLabel.setText(generalWork.getName());
-            priorityLabel.setText(generalWork.getPriority());
-            madeDateLabel.setText(generalWork.getMadeDate());
-            timeStartLabel.setText(generalWork.getStartTime());
-            categoryLabel.setText(generalWork.getCategory());
-            endTimeLabel.setText(generalWork.getLastDate());
-            updateGeneral.setDisable(false);
+            if (generalWork.getCategory().equals("Not choose")) {
+                workNameLabel.setText(generalWork.getName());
+                priorityLabel.setText(generalWork.getPriority());
+                madeDateLabel.setText(generalWork.getMadeDate());
+                timeStartLabel.setText(generalWork.getStartTime());
+                categoryLabel.setText(generalWork.getCategory());
+                endTimeLabel.setText(generalWork.getLastDate());
+                categoryWorkCB.setDisable(false);
+                updateGeneral.setDisable(false);
+            }
+            else {
+                workNameLabel.setText(generalWork.getName());
+                priorityLabel.setText(generalWork.getPriority());
+                madeDateLabel.setText(generalWork.getMadeDate());
+                timeStartLabel.setText(generalWork.getStartTime());
+                categoryLabel.setText(generalWork.getCategory());
+                endTimeLabel.setText(generalWork.getLastDate());
+                categoryWorkCB.setDisable(true);
+                updateGeneral.setDisable(false);
+            }
         }
     }
 
@@ -149,9 +165,9 @@ public class UpdateGeneralWorksController {
     public void handleUpdateGeneralButton(ActionEvent actionEvent) {
         if (updateStatus.getValue()!=null)
             selectedGeneralWork.setStatus(updateStatus.getValue());
-        else {
-            statusLabel.setText("");
-        }
+//        else {
+//            statusLabel.setText("");
+//        }
         if (hourFin.getValue()!=null && minFin.getValue()!=null && hourS.getValue()!=null && minS.getValue()!=null) {
             if (hourFin.getValue() == 0) {
                 selectedGeneralWork.setLastDate(hourFin.getValue() + ":" + minFin.getValue());
@@ -172,6 +188,12 @@ public class UpdateGeneralWorksController {
         else {
             statusLabel.setText("Please enter a new time.!!");
         }
+        if (categoryWorkCB.getValue()!= null){
+            selectedGeneralWork.setCategory(categoryWorkCB.getValue());
+            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "GeneralWork",selectedGeneralWork.getName());
+//            categoryDataList.addNameWorkToCategory(selectedGeneralWork.getName());
+        }
+
 
         clearSelectedStudent();
         hourFin.setValue(null);
@@ -184,7 +206,7 @@ public class UpdateGeneralWorksController {
         statusLabel.setText("");
 
         //CB.setVa(null)<-----เซต
-
+        categoryDataSource.setData(categoryDataList);
         dataSource.setData(generalList);
     }
 

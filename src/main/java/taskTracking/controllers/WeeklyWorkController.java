@@ -58,22 +58,27 @@ public class WeeklyWorkController {
         if (categoryWorkCB.getValue()==null || WName.getText().isEmpty() || weeklyDate.getValue()==null || priorityWCB.getValue()==null)
             statusWLabel.setText("Please complete all information.!!");
         else {
-            if (categoryWorkCB.getItems().equals("Not choose"))
-                weeklyWork = new WeeklyWork(null, WName.getText(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started");
-            else {
-                weeklyWork = new WeeklyWork(categoryWorkCB.getValue(), WName.getText(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started");
-                categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "WeeklyWork");
+            if (dataList.checkWorkName(WName.getText(), "WeeklyWork")) {
+                if (categoryWorkCB.getValue().equals("Not choose"))
+                    weeklyWork = new WeeklyWork("Not choose", WName.getText(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started");
+                else {
+                    weeklyWork = new WeeklyWork(categoryWorkCB.getValue(), WName.getText(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started");
+                    categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "WeeklyWork",WName.getText());
 
+                }
+
+                dataList.addWeeklyWork(weeklyWork);     //<----- Add อยู่นี่
+                workDataSource.setData(dataList);
+                categoryDataSource.setData(categoryDataList);
+                WName.clear();
+                weeklyDate.setValue(null);
+                priorityWCB.setValue(null);
+                categoryWorkCB.getSelectionModel().clearSelection();
+                statusWLabel.setText("");
             }
-
-            dataList.addWeeklyWork(weeklyWork);     //<----- Add อยู่นี่
-            workDataSource.setData(dataList);
-            categoryDataSource.setData(categoryDataList);
-            WName.clear();
-            weeklyDate.setValue(null);
-            priorityWCB.setValue(null);
-            categoryWorkCB.setValue(null);
-            statusWLabel.setText("");
+            else {
+                statusWLabel.setText("This work name is already use.!!");
+            }
         }
     }
 

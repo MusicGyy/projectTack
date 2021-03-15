@@ -1,5 +1,7 @@
 package taskTracking.model.WorksCategory;
 
+import com.sun.xml.internal.stream.buffer.AttributesHolder;
+
 public class GeneralWork {
     private String name; // ชื่องาน
     private String madeDate; //วันที่ทำ
@@ -13,8 +15,11 @@ public class GeneralWork {
     public GeneralWork(){
     }
 
+    public GeneralWork(String name) {
+        this.name = name;
+    }
 
-    public GeneralWork(String category,String name, String priority, String status) {  /// ForwardWork
+    public GeneralWork(String category, String name, String priority, String status) {  /// ForwardWork
         this.name = name;
         this.priority = priority;
         this.status = status ;
@@ -57,6 +62,26 @@ public class GeneralWork {
             this.madeDate = getMadeDate() + " | " + madeDate;
     }
 
+//    public String checkWorksName(String name){
+//        if (!this.name.equals(name))
+//            this.name = getName();
+//        return name;
+//    }
+
+
+//    public void addNameWork(String name){
+//        if (this.name.equals("null"))
+//            this.name =name;
+//        else
+//            this.name = getName() + "//" + name;
+//    }
+
+    public void addToTA(String name){
+        if (this.name.equals("null"))
+            this.name =getName().replace("null",name);
+        else
+            this.name = getName() + "//" + name;
+    }
 
 
     public String getName() {

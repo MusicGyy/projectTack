@@ -2,42 +2,106 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.HomeController">
     <children>
       <ImageView fitHeight="1024.0" fitWidth="1280.0">
          <image>
             <Image url="@home.jpg" />
          </image>
+         <effect>
+            <ColorAdjust brightness="-0.4" />
+         </effect>
       </ImageView>
         <Label layoutX="499.0" layoutY="102.0" prefHeight="42.0" prefWidth="371.0" text="Welcome to TaskTracking Application" textFill="WHITE">
             <font>
                 <Font name="System Bold Italic" size="20.0" />
             </font>
+         <effect>
+            <DropShadow color="#00ffe1" />
+         </effect>
         </Label>
-        <Button layoutX="597.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleImageFeeMemberCardButton" prefHeight="42.0" prefWidth="142.0" text="ProFile">
+        <Button layoutX="597.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleImageFeeMemberCardButton" prefHeight="42.0" prefWidth="142.0" stylesheets="@styles.css" text="ProFile">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Button>
-      <Button layoutX="597.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleWorkCategoryHomeButton" prefHeight="42.0" prefWidth="142.0" text="Works">
+         </font>
+         <effect>
+            <DropShadow color="RED">
+               <input>
+                  <Reflection fraction="0.68" topOpacity="0.29">
+                     <input>
+                        <ColorAdjust contrast="1.0" hue="1.0" saturation="-0.02" />
+                     </input>
+                  </Reflection>
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Button layoutX="597.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleWorkCategoryHomeButton" prefHeight="42.0" prefWidth="142.0" stylesheets="@styles.css" text="CreateWorks">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Button>
-      <Button layoutX="597.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleHowToUseButton" prefHeight="42.0" prefWidth="142.0" text="HowToUse">
+         </font>
+         <effect>
+            <DropShadow color="#1eff00">
+               <input>
+                  <ColorAdjust contrast="1.0" hue="1.0">
+                     <input>
+                        <Reflection fraction="0.68" />
+                     </input>
+                  </ColorAdjust>
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Button layoutX="597.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleHowToUseButton" prefHeight="42.0" prefWidth="142.0" stylesheets="@styles.css" text="HowToUse">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Button>
-      <Button layoutX="597.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleShowWorkAllButton" prefHeight="42.0" prefWidth="142.0" text="ShowWorkAll">
+         </font>
+         <effect>
+            <DropShadow color="#ff00d4">
+               <input>
+                  <ColorAdjust contrast="1.0" hue="1.0">
+                     <input>
+                        <Reflection />
+                     </input>
+                  </ColorAdjust>
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Button layoutX="597.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleShowWorkAllButton" prefHeight="42.0" prefWidth="142.0" stylesheets="@styles.css" text="ShowWorkAll">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Button>
-      <Button layoutX="597.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleCreateCategoryButton" prefHeight="42.0" prefWidth="142.0" text="CreateCategory">
+         </font>
+         <effect>
+            <DropShadow color="#f2ff00">
+               <input>
+                  <Reflection topOpacity="0.23">
+                     <input>
+                        <ColorAdjust contrast="1.0" hue="1.0" />
+                     </input>
+                  </Reflection>
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Button layoutX="597.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleCreateCategoryButton" prefHeight="42.0" prefWidth="142.0" stylesheets="@styles.css" text="CreateCategory">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <DropShadow color="#00d9ff">
+               <input>
+                  <Reflection>
+                     <input>
+                        <ColorAdjust contrast="1.0" hue="1.0" />
+                     </input>
+                  </Reflection>
+               </input>
+            </DropShadow>
+         </effect></Button>
     </children>
 </AnchorPane>

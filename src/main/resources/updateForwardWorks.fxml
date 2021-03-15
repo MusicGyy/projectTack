@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,12 +18,15 @@
             <Image url="@forward.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="695.0" layoutY="848.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="194.0" text="BackToHome">
+      <Button layoutX="695.0" layoutY="848.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="194.0" stylesheets="@styles-2.css" text="BackToHome">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
-      <TableView fx:id="showTableF" layoutX="62.0" layoutY="153.0" prefHeight="418.0" prefWidth="334.0" />
-      <Button layoutX="696.0" layoutY="791.0" mnemonicParsing="false" onAction="#handleBackToForwardWorkButton" prefHeight="34.0" prefWidth="193.0" text="BackToForwardWork">
+      <TableView fx:id="showTableF" layoutX="62.0" layoutY="153.0" prefHeight="418.0" prefWidth="334.0">
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect></TableView>
+      <Button layoutX="696.0" layoutY="791.0" mnemonicParsing="false" onAction="#handleBackToForwardWorkButton" prefHeight="34.0" prefWidth="193.0" stylesheets="@styles-2.css" text="BackToForwardWork">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
@@ -30,8 +34,11 @@
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
-      <Button fx:id="updateForward" layoutX="559.0" layoutY="712.0" mnemonicParsing="false" onAction="#handleUpdateForwardButton" prefHeight="35.0" prefWidth="186.0" text="UpdateForward">
+      <Button fx:id="updateForward" layoutX="559.0" layoutY="712.0" mnemonicParsing="false" onAction="#handleUpdateForwardButton" prefHeight="35.0" prefWidth="186.0" stylesheets="@styles-2.css" text="UpdateForward">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
@@ -39,76 +46,130 @@
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <Label layoutX="498.0" layoutY="219.0" prefHeight="48.0" prefWidth="251.0" text="Name of person in charge" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <Label layoutX="498.0" layoutY="290.0" prefHeight="48.0" prefWidth="175.0" text="Assigned Date" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <Label fx:id="workNameLabel" layoutX="819.0" layoutY="168.0" prefHeight="27.0" prefWidth="266.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <Label fx:id="responsiblePersonLabel" layoutX="819.0" layoutY="219.0" prefHeight="48.0" prefWidth="266.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <Label fx:id="assignedDateLabel" layoutX="819.0" layoutY="283.0" prefHeight="48.0" prefWidth="266.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <ChoiceBox fx:id="updateStatusF" layoutX="576.0" layoutY="622.0" prefWidth="150.0" />
       <Label layoutX="635.0" layoutY="599.0" text="Status" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Label>
+         </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect></Label>
       <Label layoutX="494.0" layoutY="464.0" prefHeight="48.0" prefWidth="90.0" text="Priority" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <Label fx:id="priorityFLabel" layoutX="819.0" layoutY="457.0" prefHeight="48.0" prefWidth="266.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <Label layoutX="498.0" layoutY="379.0" prefHeight="48.0" prefWidth="150.0" text="Assigned Time" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <Label fx:id="assignedTimeLabel" layoutX="819.0" layoutY="372.0" prefHeight="48.0" prefWidth="266.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
-      <TextField fx:id="addResponsiblePerson" layoutX="870.0" layoutY="622.0" />
-      <Label layoutX="889.0" layoutY="599.0" text="AddResponsiblePerson" textFill="WHITE">
+      <TextField fx:id="addResponsiblePerson" layoutX="870.0" layoutY="622.0" prefHeight="25.0" prefWidth="334.0" promptText="Please fill in the names of responsible persons (one by one).">
+         <effect>
+            <DropShadow color="#02ff52" />
+         </effect></TextField>
+      <Label layoutX="973.0" layoutY="599.0" text="AddResponsiblePerson" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Label>
+         </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect></Label>
       <Label layoutX="602.0" layoutY="108.0" text="Category" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
       <Label fx:id="categoryLabel" layoutX="775.0" layoutY="98.0" prefHeight="48.0" prefWidth="194.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
       </Label>
-      <Button layoutX="826.0" layoutY="713.0" mnemonicParsing="false" onAction="#handleShowWorkAllButton" prefHeight="34.0" prefWidth="193.0" text="GoToWorkAll">
+      <Button layoutX="826.0" layoutY="713.0" mnemonicParsing="false" onAction="#handleShowWorkAllButton" prefHeight="34.0" prefWidth="193.0" stylesheets="@styles-2.css" text="GoToWorkAll">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
+      <ChoiceBox fx:id="categoryWorkCB" layoutX="374.0" layoutY="622.0" prefWidth="150.0" />
+      <Label layoutX="424.0" layoutY="599.0" text="Category" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#00ff51" />
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

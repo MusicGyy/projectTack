@@ -12,6 +12,6 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="614.0" layoutY="500.0" mnemonicParsing="false" onAction="#handleBackButton" text="back" />
+      <Button layoutX="629.0" layoutY="491.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="94.0" stylesheets="@styles-2.css" text="back" />
    </children>
 </AnchorPane>

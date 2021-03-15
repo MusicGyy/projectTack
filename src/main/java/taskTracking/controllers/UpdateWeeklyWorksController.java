@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import taskTracking.model.WorksCategory.CategoryWork;
 import taskTracking.model.WorksCategory.WeeklyWork;
 import taskTracking.services.*;
 
@@ -15,8 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class UpdateWeeklyWorksController {
-    private DataList weeklyList;
-    private DataSource dataSource;
+    private DataList weeklyList,categoryDataList;
+    private DataSource dataSource,categoryDataSource;
     private WeeklyWork selectedWeeklyWork;
     private ObservableList<WeeklyWork> weeklyWorkObservableList;
 
@@ -25,7 +26,7 @@ public class UpdateWeeklyWorksController {
     @FXML
     ChoiceBox<Integer> hourSTW,minuteSTW,hourETW,minuteETW;
     @FXML
-    ChoiceBox<String> dateUpdate,updateStatusW;
+    ChoiceBox<String> dateUpdate,updateStatusW,categoryWorkCB;
     @FXML
     Label workNameWLabel,startDateLabel,timeStartLabel,timeEndLabel,priorityWLabel,statusLabel,categoryLabel;
     @FXML
@@ -39,6 +40,9 @@ public class UpdateWeeklyWorksController {
             @Override
             public void run() {
                 dataSource = new WeeklyWorkFileDataSource("data", "weeklyWorks.csv");
+                categoryDataSource = new CategoryFileDataSource("data","category.csv");
+
+                categoryDataList = categoryDataSource.getData();
                 weeklyList = dataSource.getData();
 //                System.out.println(weeklyList.getWeeklyWorkArrayList().get(0).toString());
                 for (int i = 0; i <= 23; i++){
@@ -55,6 +59,8 @@ public class UpdateWeeklyWorksController {
                 }
                 dateUpdate.getItems().addAll("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
                 updateStatusW.getItems().addAll( "Doing", "Finished");
+                for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList())
+                    categoryWorkCB.getItems().add(categoryWork.getNameC());
                 showStudentData();
             }
         });
@@ -106,13 +112,26 @@ public class UpdateWeeklyWorksController {
             updateWeekly.setDisable(true);
         }
         else {
-            workNameWLabel.setText(weeklyWork.getName());
-            priorityWLabel.setText(weeklyWork.getPriority());
-            startDateLabel.setText(weeklyWork.getMadeDate());
-            timeStartLabel.setText(weeklyWork.getStartTime());
-            timeEndLabel.setText(weeklyWork.getLastDate());
-            categoryLabel.setText(weeklyWork.getCategory());
-            updateWeekly.setDisable(false);
+            if (weeklyWork.getCategory().equals("Not choose")) {
+                workNameWLabel.setText(weeklyWork.getName());
+                priorityWLabel.setText(weeklyWork.getPriority());
+                startDateLabel.setText(weeklyWork.getMadeDate());
+                timeStartLabel.setText(weeklyWork.getStartTime());
+                timeEndLabel.setText(weeklyWork.getLastDate());
+                categoryLabel.setText(weeklyWork.getCategory());
+                categoryWorkCB.setDisable(false);
+                updateWeekly.setDisable(false);
+            }
+            else {
+                workNameWLabel.setText(weeklyWork.getName());
+                priorityWLabel.setText(weeklyWork.getPriority());
+                startDateLabel.setText(weeklyWork.getMadeDate());
+                timeStartLabel.setText(weeklyWork.getStartTime());
+                timeEndLabel.setText(weeklyWork.getLastDate());
+                categoryLabel.setText(weeklyWork.getCategory());
+                categoryWorkCB.setDisable(true);
+                updateWeekly.setDisable(false);
+            }
         }
     }
     private void clearSelectedStudent() {
@@ -152,6 +171,10 @@ public class UpdateWeeklyWorksController {
             selectedWeeklyWork.setStatus(updateStatusW.getValue());
         if (dateUpdate.getValue()!=null)
             selectedWeeklyWork.addWeeklyDate(dateUpdate.getValue());
+        if (categoryWorkCB.getValue()!= null){
+            selectedWeeklyWork.setCategory(categoryWorkCB.getValue());
+            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ForwardWork",selectedWeeklyWork.getName());
+        }
         if (hourETW.getValue()!=null && minuteETW.getValue()!=null && hourSTW.getValue()!=null && minuteSTW.getValue()!=null)
         {
             if (hourETW.getValue()==0){
@@ -174,6 +197,7 @@ public class UpdateWeeklyWorksController {
                 }
 
 //            System.out.println(selectedWeeklyWork.toString());
+            categoryDataSource.setData(categoryDataList);
             dataSource.setData(weeklyList);
             clearSelectedStudent();
             hourSTW.setValue(null);
@@ -182,6 +206,7 @@ public class UpdateWeeklyWorksController {
             minuteETW.setValue(null);
             dateUpdate.setValue(null);
             updateStatusW.setValue(null);
+            categoryWorkCB.setValue(null);
             showTableW.refresh();
             showTableW.getSelectionModel().clearSelection();
             statusLabel.setText("");

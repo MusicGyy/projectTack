@@ -13,7 +13,7 @@ public class WeeklyWork extends GeneralWork{
 
 
 //    public void addWeeklyDate (String madeDate){
-//        if (!madeDate.contains(getMadeDate()))
+//        if(! madeDate.contains(getMadeDate()))
 //
 //    }
 

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,16 +17,19 @@
             <Image url="@project.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="706.0" layoutY="913.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="194.0" text="BackToHome">
+      <Button layoutX="706.0" layoutY="913.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="194.0" stylesheets="@styles-2.css" text="BackToHome">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
-      <TableView fx:id="showTableP" layoutX="72.0" layoutY="163.0" prefHeight="418.0" prefWidth="334.0" />
-      <Button layoutX="707.0" layoutY="855.0" mnemonicParsing="false" onAction="#handleBackToProjectWorkButton" prefHeight="34.0" prefWidth="193.0" text="BackToProjectWork">
+      <TableView fx:id="showTableP" layoutX="72.0" layoutY="163.0" prefHeight="418.0" prefWidth="334.0">
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect></TableView>
+      <Button layoutX="707.0" layoutY="855.0" mnemonicParsing="false" onAction="#handleBackToProjectWorkButton" prefHeight="34.0" prefWidth="193.0" stylesheets="@styles-2.css" text="BackToProjectWork">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
-      <Button fx:id="updateProject" layoutX="569.0" layoutY="786.0" mnemonicParsing="false" onAction="#handleUpdateProjectButton" prefHeight="35.0" prefWidth="186.0" text="UpdateProject">
+      <Button fx:id="updateProject" layoutX="569.0" layoutY="786.0" mnemonicParsing="false" onAction="#handleUpdateProjectButton" prefHeight="35.0" prefWidth="186.0" stylesheets="@styles-2.css" text="UpdateProject">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
@@ -33,95 +37,152 @@
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label layoutX="508.0" layoutY="219.0" prefHeight="48.0" prefWidth="207.0" text="Leader Name" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label layoutX="508.0" layoutY="274.0" prefHeight="48.0" prefWidth="120.0" text="Start Date" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label fx:id="workNameLabel" layoutX="829.0" layoutY="178.0" prefHeight="27.0" prefWidth="221.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label fx:id="leaderNameLabel" layoutX="829.0" layoutY="219.0" prefHeight="48.0" prefWidth="221.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label fx:id="startDateLabel" layoutX="829.0" layoutY="267.0" prefHeight="48.0" prefWidth="221.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <ChoiceBox fx:id="updateStatusP" layoutX="585.0" layoutY="723.0" prefWidth="150.0" />
-      <Label layoutX="644.0" layoutY="684.0" text="Status" textFill="WHITE">
+      <Label layoutX="642.0" layoutY="693.0" text="Status" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Label>
+         </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect></Label>
       <Label layoutX="508.0" layoutY="379.0" prefHeight="48.0" prefWidth="90.0" text="Priority" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label fx:id="priorityPLabel" layoutX="829.0" layoutY="372.0" prefHeight="48.0" prefWidth="221.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label layoutX="508.0" layoutY="329.0" prefHeight="48.0" prefWidth="120.0" text="End date " textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label fx:id="endDateLabel" layoutX="829.0" layoutY="322.0" prefHeight="48.0" prefWidth="221.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label layoutX="500.0" layoutY="581.0" prefHeight="50.0" prefWidth="89.0" text="End Date" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="14.0" />
-         </font></Label>
+         </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect></Label>
       <ChoiceBox fx:id="EndYear" layoutX="695.0" layoutY="593.0" prefHeight="26.0" prefWidth="58.0" />
       <ChoiceBox fx:id="EndMonth" layoutX="826.0" layoutY="593.0" prefHeight="17.0" prefWidth="58.0" />
       <ChoiceBox fx:id="EndDay" layoutX="952.0" layoutY="593.0" prefHeight="26.0" prefWidth="58.0" />
       <Label layoutX="660.0" layoutY="598.0" text="year" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Label>
+         </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect></Label>
       <Label layoutX="775.0" layoutY="598.0" text="month " textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Label>
+         </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect></Label>
       <Label layoutX="913.0" layoutY="597.0" text="day" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
-         </font></Label>
+         </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect></Label>
       <Label layoutX="571.0" layoutY="111.0" text="Category" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label fx:id="categoryLabel" layoutX="745.0" layoutY="101.0" prefHeight="48.0" prefWidth="194.0" text="...." textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label layoutX="402.0" layoutY="46.0" prefHeight="35.0" prefWidth="260.0" text="UpdateProjectWork" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label layoutX="500.0" layoutY="542.0" prefHeight="50.0" prefWidth="89.0" text="Start Date" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <ChoiceBox fx:id="sYear" layoutX="695.0" layoutY="554.0" prefHeight="26.0" prefWidth="58.0" />
       <ChoiceBox fx:id="sMonth" layoutX="826.0" layoutY="554.0" prefHeight="17.0" prefWidth="58.0" />
@@ -130,26 +191,55 @@
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label layoutX="775.0" layoutY="559.0" text="month " textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
       <Label layoutX="913.0" layoutY="558.0" text="day" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
       </Label>
-      <Label fx:id="statusLabel" layoutX="753.0" layoutY="494.0" prefHeight="48.0" prefWidth="272.0" text="...." textFill="RED">
+      <Label fx:id="statusLabel" layoutX="753.0" layoutY="494.0" prefHeight="48.0" prefWidth="302.0" text="...." textFill="RED">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Label>
-      <Button layoutX="793.0" layoutY="787.0" mnemonicParsing="false" onAction="#handleShowWorkAllButton" prefHeight="34.0" prefWidth="193.0" text="GoToWorkAll">
+      <Button layoutX="793.0" layoutY="787.0" mnemonicParsing="false" onAction="#handleShowWorkAllButton" prefHeight="34.0" prefWidth="193.0" stylesheets="@styles-2.css" text="GoToWorkAll">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
+      <ChoiceBox fx:id="categoryWorkCB" layoutX="395.0" layoutY="723.0" prefWidth="150.0" />
+      <Label layoutX="445.0" layoutY="693.0" text="Category" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#7700ff" />
+         </effect>
+      </Label>
+      <Label layoutX="651.0" layoutY="493.0" prefHeight="50.0" prefWidth="89.0" text="StatusError:" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

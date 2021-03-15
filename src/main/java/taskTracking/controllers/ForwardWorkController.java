@@ -80,33 +80,36 @@ public class ForwardWorkController {
         }
 
         else {
-            if (categoryWorkCB.getItems().equals("Not choose"))
-                forwardWork = new ForwardWork(null, FName.getText(), namePerson.getText(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
-                        fHourStart.getValue() + ":" + fMinStart.getValue(),
-                        fPriorityCB.getValue(), "Not Started");
-            else {
-                forwardWork = new ForwardWork(categoryWorkCB.getValue(), FName.getText(), namePerson.getText(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
-                        fHourStart.getValue() + ":" + fMinStart.getValue(),
-                        fPriorityCB.getValue(), "Not Started");
+            if (dataList.checkWorkName(FName.getText(),"ForwardWork")) {
+                if (categoryWorkCB.getValue().equals("Not choose"))
+                    forwardWork = new ForwardWork("Not choose", FName.getText(), namePerson.getText(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
+                            fHourStart.getValue() + ":" + fMinStart.getValue(),
+                            fPriorityCB.getValue(), "Not Started");
+                else {
+                    forwardWork = new ForwardWork(categoryWorkCB.getValue(), FName.getText(), namePerson.getText(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
+                            fHourStart.getValue() + ":" + fMinStart.getValue(),
+                            fPriorityCB.getValue(), "Not Started");
 
-                categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ForwardWork");
+                    categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ForwardWork",FName.getText());
 
+                }
+                dataList.addForwardWork(forwardWork);
+                workDataSource.setData(dataList);
+                categoryDataSource.setData(categoryDataList);
+                FName.clear();
+                namePerson.clear();
+                fYear.setValue(null);
+                fMonth.setValue(null);
+                fDay.setValue(null);
+                fHourStart.setValue(null);
+                fMinStart.setValue(null);
+                fPriorityCB.setValue(null);
+                categoryWorkCB.getSelectionModel().clearSelection();
+                fStatusLabel.setText("");
             }
-
-
-            dataList.addForwardWork(forwardWork);
-            workDataSource.setData(dataList);
-            categoryDataSource.setData(categoryDataList);
-            FName.clear();
-            namePerson.clear();
-            fYear.setValue(null);
-            fMonth.setValue(null);
-            fDay.setValue(null);
-            fHourStart.setValue(null);
-            fMinStart.setValue(null);
-            fPriorityCB.setValue(null);
-            categoryWorkCB.setValue(null);
-            fStatusLabel.setText("");
+            else {
+                fStatusLabel.setText(("This work name is already use.!!"));
+            }
         }
     }
 

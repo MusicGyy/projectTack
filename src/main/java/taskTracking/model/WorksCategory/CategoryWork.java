@@ -1,8 +1,7 @@
 package taskTracking.model.WorksCategory;
 
-import java.util.ArrayList;
 
-public class CategoryWork {
+public class CategoryWork extends GeneralWork{
     private String nameC;
     private int all;
     private int countGeneral;
@@ -13,7 +12,8 @@ public class CategoryWork {
     public CategoryWork() {
     }
 
-    public CategoryWork(String nameC, int all, int countGeneral, int countWeekly, int countForward, int countProject) {
+    public CategoryWork(String nameC, int all, int countGeneral, int countWeekly, int countForward, int countProject,String name) {
+        super(name);
         this.nameC = nameC;
         this.all = all;
         this.countGeneral = countGeneral;
@@ -34,6 +34,11 @@ public class CategoryWork {
     public void addCountProject(){
         this.countProject += 1;
     }
+
+//    public void addToTextA(String nameC){
+//        this.
+//    }
+
 
     public String getNameC() {
         return nameC;
@@ -79,12 +84,10 @@ public class CategoryWork {
         return countProject;
     }
 
-    public void setCountProject(int countProject) {
-        this.countProject = countProject;
-    }
+    public void setCountProject(int countProject) {this.countProject = countProject; }
 
     @Override
     public String toString() {
-        return nameC +","+ all +","+ countGeneral +","+ countWeekly +","+ countForward +","+ countProject;
+        return nameC +","+ all +","+ countGeneral +","+ countWeekly +","+ countForward +","+ countProject+","+getName();
     }
 }

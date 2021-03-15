@@ -53,16 +53,17 @@ public class WorksAllController {
                 dataList3 = dataSource3.getData();
                 dataList4 = dataSource4.getData();
                 dataList5 = dataSource5.getData();
-                showStudentData("");
-                showStudentData1("");
-                showStudentData2("");
-                showStudentData3("");
-                showStudentData4();
+                showForwardWorks("");
+                showGeneralWorks("");
+                showWeeklyWorks("");
+                showProjectWorks("");
+                showCategoryAll();
             }
         });
     }
 
-    private void showStudentData(String searchText) {
+    private void showForwardWorks(String searchText) {
+        showTableF.getColumns().clear();
         if (searchText.equals(""))
             forwardWorkObservableList = FXCollections.observableArrayList(dataList2.getForwardWorksArrayList());
         else
@@ -89,7 +90,8 @@ public class WorksAllController {
         }
     }
 
-    private void showStudentData1(String searchText) {
+    private void showGeneralWorks(String searchText) {
+        showTable.getColumns().clear();
         if (searchText.equals(""))
             generalWorkObservableList = FXCollections.observableArrayList(dataList1.getGeneralWorkArrayList());
 		else
@@ -117,7 +119,8 @@ public class WorksAllController {
         }
     }
 
-    private void showStudentData2(String searchText) {
+    private void showWeeklyWorks(String searchText) {
+        showTableW.getColumns().clear();
         if (searchText.equals(""))
             weeklyWorkObservableList = FXCollections.observableArrayList(dataList3.getWeeklyWorkArrayList());
         else
@@ -144,7 +147,8 @@ public class WorksAllController {
         }
     }
 
-    private void showStudentData3(String searchText) {
+    private void showProjectWorks(String searchText) {
+        showTableP.getColumns().clear();
         if (searchText.equals(""))
             projectWorkObservableList = FXCollections.observableArrayList(dataList4.getProjectWorkArrayList());
         else
@@ -171,7 +175,8 @@ public class WorksAllController {
         }
     }
 
-    private void showStudentData4() {
+    private void showCategoryAll() {
+        showTableC.getColumns().clear();
         categoryWorkObservableList = FXCollections.observableArrayList(dataList5.getCategoryArrayList());
         showTableC.setItems(categoryWorkObservableList);
 
@@ -195,10 +200,10 @@ public class WorksAllController {
     }
 
     public void handleSearchButton(ActionEvent actionEvent){
-        showStudentData(searchText.getText());
-        showStudentData1(searchText.getText());
-        showStudentData2(searchText.getText());
-        showStudentData3(searchText.getText());
+        showForwardWorks(searchText.getText());
+        showGeneralWorks(searchText.getText());
+        showWeeklyWorks(searchText.getText());
+        showProjectWorks(searchText.getText());
     }
 
     private void clearSearchInput(){
@@ -207,11 +212,11 @@ public class WorksAllController {
 
     public void handleClearButton(ActionEvent actionEvent){
         clearSearchInput();
-        showStudentData("");
-        showStudentData1("");
-        showStudentData2("");
-        showStudentData3("");
-        showStudentData4();
+        showForwardWorks("");
+        showGeneralWorks("");
+        showWeeklyWorks("");
+        showProjectWorks("");
+        showCategoryAll();
 
     }
 

@@ -40,7 +40,7 @@ public class CategoryFileDataSource implements DataSource{
         String line = "";
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
-            CategoryWork categoryWork = new CategoryWork(data[0].trim(),Integer.parseInt(data[1].trim()), Integer.parseInt(data[2].trim()), Integer.parseInt(data[3].trim()), Integer.parseInt(data[4].trim()), Integer.parseInt(data[5].trim()));
+            CategoryWork categoryWork = new CategoryWork(data[0].trim(),Integer.parseInt(data[1].trim()), Integer.parseInt(data[2].trim()), Integer.parseInt(data[3].trim()), Integer.parseInt(data[4].trim()), Integer.parseInt(data[5].trim()),data[6].trim());
             dataList.addCategory(categoryWork);
         }
         reader.close();
@@ -73,7 +73,8 @@ public class CategoryFileDataSource implements DataSource{
                         + work.getCountGeneral() + ","
                         + work.getCountWeekly() + ","
                         + work.getCountForward() + ","
-                        + work.getCountProject();
+                        + work.getCountProject() + ","
+                        + work.getName();
 
                 writer.append(line);
                 writer.newLine();

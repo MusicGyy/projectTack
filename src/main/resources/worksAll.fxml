@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,14 +17,26 @@
             <Image url="@worksAll.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="1111.0" layoutY="512.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="50.0" prefWidth="110.0" text="back">
+      <Button layoutX="1111.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="110.0" stylesheets="@styles-2.css" text="back">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
-      <TableView fx:id="showTable" layoutX="83.0" layoutY="93.0" prefHeight="363.0" prefWidth="266.0" />
-      <TableView fx:id="showTableW" layoutX="431.0" layoutY="93.0" prefHeight="363.0" prefWidth="266.0" />
-      <TableView fx:id="showTableP" layoutX="431.0" layoutY="592.0" prefHeight="363.0" prefWidth="266.0" />
-      <TableView fx:id="showTableF" layoutX="83.0" layoutY="592.0" prefHeight="363.0" prefWidth="266.0" />
+      <TableView fx:id="showTable" layoutX="83.0" layoutY="93.0" prefHeight="363.0" prefWidth="266.0">
+         <effect>
+            <DropShadow color="RED" />
+         </effect></TableView>
+      <TableView fx:id="showTableW" layoutX="431.0" layoutY="93.0" prefHeight="363.0" prefWidth="266.0">
+         <effect>
+            <DropShadow color="#ddff00" />
+         </effect></TableView>
+      <TableView fx:id="showTableP" layoutX="431.0" layoutY="592.0" prefHeight="363.0" prefWidth="266.0">
+         <effect>
+            <DropShadow color="#0026ff" />
+         </effect></TableView>
+      <TableView fx:id="showTableF" layoutX="83.0" layoutY="592.0" prefHeight="363.0" prefWidth="266.0">
+         <effect>
+            <DropShadow color="#00fa0e" />
+         </effect></TableView>
       <Label layoutX="179.0" layoutY="66.0" text="GeneralWorks" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
@@ -40,23 +53,29 @@
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Label>
-      <TableView fx:id="showTableC" layoutX="755.0" layoutY="369.0" prefHeight="363.0" prefWidth="266.0" />
+      <TableView fx:id="showTableC" layoutX="755.0" layoutY="369.0" prefHeight="363.0" prefWidth="266.0">
+         <effect>
+            <DropShadow color="#00ff95" />
+         </effect></TableView>
       <Label layoutX="851.0" layoutY="342.0" text="CategoryAll" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Label>
-      <Button layoutX="171.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleUpdateGeneralWorksControllerButton" text="Update General" />
-      <Button layoutX="518.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleUpdateWeeklyWorksControllerButton" text="Update Weekly" />
-      <Button layoutX="170.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateForwardWorksControllerButton" text="Update Forward" />
-      <Button layoutX="519.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateProjectWorksControllerButton" text="Update Project" />
-      <Button layoutX="837.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleCreateCategoryButton" text="Create Category" />
-      <TextField fx:id="searchText" layoutX="895.0" layoutY="93.0" prefHeight="26.0" prefWidth="287.0" promptText="Please enter the information you want to search." />
+      <Button layoutX="171.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleUpdateGeneralWorksControllerButton" prefHeight="26.0" prefWidth="104.0" stylesheets="@styles-2.css" text="Update General" />
+      <Button layoutX="518.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleUpdateWeeklyWorksControllerButton" stylesheets="@styles-2.css" text="Update Weekly" />
+      <Button layoutX="170.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateForwardWorksControllerButton" stylesheets="@styles-2.css" text="Update Forward" />
+      <Button layoutX="519.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateProjectWorksControllerButton" stylesheets="@styles-2.css" text="Update Project" />
+      <Button layoutX="837.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleCreateCategoryButton" stylesheets="@styles-2.css" text="Create Category" />
+      <TextField fx:id="searchText" layoutX="895.0" layoutY="93.0" prefHeight="26.0" prefWidth="287.0" promptText="Please enter the information you want to search.">
+         <effect>
+            <DropShadow color="#00ffdb" />
+         </effect></TextField>
       <Label layoutX="833.0" layoutY="97.0" text="Search" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="909.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleSearchButton" text="Search" />
-      <Button layoutX="1059.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleClearButton" text="Clear" />
+      <Button layoutX="909.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleSearchButton" stylesheets="@styles-2.css" text="Search" />
+      <Button layoutX="1059.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleClearButton" stylesheets="@styles-2.css" text="Clear" />
    </children>
 </AnchorPane>

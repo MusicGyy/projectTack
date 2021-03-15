@@ -2,12 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.WorksCategoryHomeController">
+<AnchorPane prefHeight="1024.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taskTracking.controllers.WorksCategoryHomeController">
    <children>
       <ImageView fitHeight="1024.0" fitWidth="1280.0">
          <image>
@@ -18,29 +19,47 @@
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
+         <effect>
+            <DropShadow color="#00ff14" />
+         </effect>
       </Label>
-      <Button layoutX="437.0" layoutY="208.0" mnemonicParsing="false" onAction="#handleGeneralWorkControllerButton" prefHeight="50.0" prefWidth="158.0" text="General Works ">
+      <Button layoutX="437.0" layoutY="208.0" mnemonicParsing="false" onAction="#handleGeneralWorkControllerButton" prefHeight="50.0" prefWidth="158.0" style="-fx-background-radius: 30;" stylesheets="@styles.css" text="General Works ">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
+         <effect>
+            <DropShadow color="RED" />
+         </effect>
       </Button>
-      <Button layoutX="437.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleWeeklyWorkControllerButton" prefHeight="50.0" prefWidth="158.0" text="Works of the week ">
+      <Button layoutX="437.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleWeeklyWorkControllerButton" prefHeight="50.0" prefWidth="158.0" stylesheets="@styles.css" text="Works of the week ">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
+         <effect>
+            <DropShadow color="#2eff00" />
+         </effect>
       </Button>
-      <Button layoutX="437.0" layoutY="387.0" mnemonicParsing="false" onAction="#handleForwardWorksControllerButton" prefHeight="50.0" prefWidth="158.0" text="Forward Works ">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font></Button>
-      <Button layoutX="437.0" layoutY="472.0" mnemonicParsing="false" onAction="#handleProjectControllerButton" prefHeight="50.0" prefWidth="158.0" text="Project Works ">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font></Button>
-      <Button layoutX="713.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="36.0" prefWidth="67.0" text="Back">
+      <Button layoutX="437.0" layoutY="387.0" mnemonicParsing="false" onAction="#handleForwardWorksControllerButton" prefHeight="50.0" prefWidth="158.0" stylesheets="@styles.css" text="Forward Works ">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
+         <effect>
+            <DropShadow color="#0026ff" />
+         </effect></Button>
+      <Button layoutX="437.0" layoutY="472.0" mnemonicParsing="false" onAction="#handleProjectControllerButton" prefHeight="50.0" prefWidth="158.0" stylesheets="@styles.css" text="Project Works ">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ff00ee" />
+         </effect></Button>
+      <Button layoutX="713.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="36.0" prefWidth="67.0" stylesheets="@styles-2.css" text="Back">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow color="#00bfff" />
+         </effect>
       </Button>
    </children>
 </AnchorPane>

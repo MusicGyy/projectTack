@@ -62,25 +62,30 @@ public class ProjectWorkController {
 //        }
 
         else {
-            if (categoryWorkCB.getItems().equals("Not choose"))
-                projectWork = new ProjectWork(null, PName.getText(), LeaderName.getText(),
-                        null,null, pPriorityCB.getValue(), "Not Started");
-            else {
-                projectWork = new ProjectWork(categoryWorkCB.getValue(), PName.getText(), LeaderName.getText(),
-                        null,null, pPriorityCB.getValue(), "Not Started");
+            if (dataList.checkWorkName(PName.getText(), "ProjectWork")) {
+                if (categoryWorkCB.getValue().equals("Not choose"))
+                    projectWork = new ProjectWork("Not choose", PName.getText(), LeaderName.getText(),
+                            null, null, pPriorityCB.getValue(), "Not Started");
+                else {
+                    projectWork = new ProjectWork(categoryWorkCB.getValue(), PName.getText(), LeaderName.getText(),
+                            null, null, pPriorityCB.getValue(), "Not Started");
 
-                categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ProjectWork");
+                    categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ProjectWork",PName.getText());
 
+                }
+
+                dataList.addProjectWork(projectWork);
+                workDataSource.setData(dataList);
+                categoryDataSource.setData(categoryDataList);
+                PName.clear();
+                LeaderName.clear();
+                pPriorityCB.setValue(null);
+                categoryWorkCB.getSelectionModel().clearSelection();
+                PStatusLabel.setText("");
             }
-
-            dataList.addProjectWork(projectWork);
-            workDataSource.setData(dataList);
-            categoryDataSource.setData(categoryDataList);
-            PName.clear();
-            LeaderName.clear();
-            pPriorityCB.setValue(null);
-            categoryWorkCB.setValue(null);
-            PStatusLabel.setText("");
+            else {
+                PStatusLabel.setText("This work name is already use.!!");
+            }
         }
     }
 
