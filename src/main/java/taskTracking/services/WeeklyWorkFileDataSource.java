@@ -40,7 +40,7 @@ public class WeeklyWorkFileDataSource implements DataSource {
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
             if (data[0].equals("WeeklyWork")){
-                WeeklyWork weeklyWork = new WeeklyWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(), data[6].trim(), data[7].trim());
+                WeeklyWork weeklyWork = new WeeklyWork(data[1].trim(), data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(), data[6].trim(), data[7].trim(),data[8].trim());
                 dataList.addWeeklyWork(weeklyWork);
             }
 
@@ -77,7 +77,8 @@ public class WeeklyWorkFileDataSource implements DataSource {
                         + work.getStartTime() + ","
                         + work.getLastDate() + ","
                         + work.getPriority() + ","
-                        + work.getStatus();
+                        + work.getStatus() + ","
+                        + work.getWeeklyDate();
 
                 writer.append(line);
                 writer.newLine();

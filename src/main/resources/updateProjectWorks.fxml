@@ -241,5 +241,21 @@
             <DropShadow />
          </effect>
       </Label>
+      <Label layoutX="508.0" layoutY="427.0" prefHeight="48.0" prefWidth="120.0" text="Status" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow color="#7400ff" />
+         </effect>
+      </Label>
+      <Label fx:id="statusSTLabel" layoutX="822.0" layoutY="427.0" prefHeight="48.0" prefWidth="194.0" text="...." textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow color="#7400ff" />
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

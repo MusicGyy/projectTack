@@ -135,6 +135,7 @@ public class WorksAllController {
         configs.add(new StringConfiguration("title:End Time", "field:lastDate"));
         configs.add(new StringConfiguration("title:Priority", "field:priority"));
         configs.add(new StringConfiguration("title:Status", "field:status"));
+        configs.add(new StringConfiguration("title:Week Start", "field:weeklyDate"));
 
         for (StringConfiguration conf : configs) {
             TableColumn col = new TableColumn(conf.get("title"));

@@ -26,7 +26,7 @@ public class UpdateForwardWorksController {
     @FXML
     ChoiceBox<String> updateStatusF,categoryWorkCB;
     @FXML
-    Label workNameLabel,responsiblePersonLabel,assignedDateLabel,assignedTimeLabel,priorityFLabel,categoryLabel;
+    Label workNameLabel,responsiblePersonLabel,assignedDateLabel,assignedTimeLabel,priorityFLabel,categoryLabel,statusSTLabel;
     @FXML
     Button updateForward;
     @FXML
@@ -61,6 +61,7 @@ public class UpdateForwardWorksController {
     }
 
     private void showStudentData() {
+        showTableF.getColumns().clear();
         forwardWorkObservableList = FXCollections.observableArrayList(forwardList.getForwardWorksArrayList());
         showTableF.setItems(forwardWorkObservableList);
 
@@ -93,6 +94,7 @@ public class UpdateForwardWorksController {
             assignedDateLabel.setText(forwardWork.getAssignedDate());
             assignedTimeLabel.setText(forwardWork.getAssignedTime());
             categoryLabel.setText(forwardWork.getCategory());
+            statusSTLabel.setText(forwardWork.getStatus());
             updateForward.setDisable(true);
         }
 
@@ -104,6 +106,7 @@ public class UpdateForwardWorksController {
             assignedDateLabel.setText(forwardWork.getAssignedDate());
             assignedTimeLabel.setText(forwardWork.getAssignedTime());
             categoryLabel.setText(forwardWork.getCategory());
+            statusSTLabel.setText(forwardWork.getStatus());
             categoryWorkCB.setDisable(false);
             updateForward.setDisable(false);
             }
@@ -114,6 +117,7 @@ public class UpdateForwardWorksController {
                 assignedDateLabel.setText(forwardWork.getAssignedDate());
                 assignedTimeLabel.setText(forwardWork.getAssignedTime());
                 categoryLabel.setText(forwardWork.getCategory());
+                statusSTLabel.setText(forwardWork.getStatus());
                 categoryWorkCB.setDisable(true);
                 updateForward.setDisable(false);
             }
@@ -128,6 +132,7 @@ public class UpdateForwardWorksController {
         assignedDateLabel.setText("....");
         assignedTimeLabel.setText("....");
         categoryLabel.setText("....");
+        statusSTLabel.setText("....");
 
         updateForward.setDisable(true);
     }
@@ -161,6 +166,7 @@ public class UpdateForwardWorksController {
             selectedForwardWork.setCategory(categoryWorkCB.getValue());
             categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ForwardWork",selectedForwardWork.getName());
         }
+
 
         categoryWorkCB.setValue(null);
         addResponsiblePerson.clear();

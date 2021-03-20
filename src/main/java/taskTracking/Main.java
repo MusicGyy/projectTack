@@ -13,10 +13,6 @@ public class Main extends Application {
         configRoute();
 
         FXRouter.goTo("home");
-        //Parent root = FXMLLoader.load(getClass().getResource("../../resources/home.fxml"));
-        //primaryStage.setTitle("Hello World");
-        //primaryStage.setScene(new Scene(root, 300, 275));
-        //primaryStage.show();
     }
     private static void configRoute() {
         FXRouter.when("home", "home.fxml");

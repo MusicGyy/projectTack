@@ -28,7 +28,7 @@ public class UpdateProjectWorksController {
     @FXML
     ChoiceBox<String> updateStatusP,categoryWorkCB;
     @FXML
-    Label workNameLabel, leaderNameLabel, startDateLabel, endDateLabel, priorityPLabel,categoryLabel,statusLabel;
+    Label workNameLabel, leaderNameLabel, startDateLabel, endDateLabel, priorityPLabel,categoryLabel,statusLabel,statusSTLabel;
     @FXML
     Button updateProject;
 
@@ -78,6 +78,7 @@ public class UpdateProjectWorksController {
     }
 
     private void showStudentData() {
+        showTableP.getColumns().clear();
         projectWorkObservableList = FXCollections.observableArrayList(projectDataList.getProjectWorkArrayList());
         showTableP.setItems(projectWorkObservableList);
 
@@ -86,7 +87,7 @@ public class UpdateProjectWorksController {
         configs.add(new StringConfiguration("title:Work Name", "field:name"));
         configs.add(new StringConfiguration("title:Leader Name", "field:ProjectLeader"));
         configs.add(new StringConfiguration("title:Start Date", "field:madeDate"));
-        configs.add(new StringConfiguration("title:Finished Time", "field:startTime"));
+        configs.add(new StringConfiguration("title:Finished Date", "field:startTime"));
         configs.add(new StringConfiguration("title:Priority", "field:priority"));
         configs.add(new StringConfiguration("title:Status", "field:status"));
 
@@ -110,6 +111,7 @@ public class UpdateProjectWorksController {
             leaderNameLabel.setText(projectWork.getProjectLeader());
             endDateLabel.setText(projectWork.getStartTime());
             categoryLabel.setText(projectWork.getCategory());
+            statusSTLabel.setText(projectWork.getStatus());
             updateProject.setDisable(true);
         }
         else {
@@ -120,6 +122,7 @@ public class UpdateProjectWorksController {
                 leaderNameLabel.setText(projectWork.getProjectLeader());
                 endDateLabel.setText(projectWork.getStartTime());
                 categoryLabel.setText(projectWork.getCategory());
+                statusSTLabel.setText(projectWork.getStatus());
                 categoryWorkCB.setDisable(false);
                 updateProject.setDisable(false);
             }
@@ -130,6 +133,7 @@ public class UpdateProjectWorksController {
                 leaderNameLabel.setText(projectWork.getProjectLeader());
                 endDateLabel.setText(projectWork.getStartTime());
                 categoryLabel.setText(projectWork.getCategory());
+                statusSTLabel.setText(projectWork.getStatus());
                 categoryWorkCB.setDisable(true);
                 updateProject.setDisable(false);
             }
@@ -144,6 +148,7 @@ public class UpdateProjectWorksController {
         leaderNameLabel.setText("....");
         endDateLabel.setText("....");
         categoryLabel.setText("....");
+        statusSTLabel.setText("....");
 
         updateProject.setDisable(true);
     }
@@ -169,9 +174,17 @@ public class UpdateProjectWorksController {
     }
 
     public void handleUpdateProjectButton(ActionEvent actionEvent) {
-        if (updateStatusP.getValue()!=null)
-            selectedProjectWork.setStatus(updateStatusP.getValue());
-        if (EndDay.getValue()!=null && EndMonth.getValue()!=null && EndYear.getValue()!=null && sDay.getValue()!=null && sMonth.getValue()!=null && sYear.getValue()!=null)
+        if (categoryWorkCB.getValue()!= null){
+            selectedProjectWork.setCategory(categoryWorkCB.getValue());
+            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ProjectWork",selectedProjectWork.getName().trim());
+            clearSelectedStudent();
+            categoryWorkCB.setValue(null);
+            showTableP.refresh();
+            showTableP.getSelectionModel().clearSelection();
+            statusLabel.setText("");
+            showStudentData();
+        }
+        if (EndDay.getValue()!=null && EndMonth.getValue()!=null && EndYear.getValue()!=null && sDay.getValue()!=null && sMonth.getValue()!=null && sYear.getValue()!=null || updateStatusP.getValue()!=null)
         {
             if(EndYear.getValue() > sYear.getValue()) {
                 if ((sMonth.getValue()==2 && sDay.getValue() >= 29) || ((sMonth.getValue()==4 || sMonth.getValue()==6 || sMonth.getValue()==8 || sMonth.getValue()==11) && sDay.getValue() >30) ||
@@ -181,6 +194,19 @@ public class UpdateProjectWorksController {
                 else {
                 selectedProjectWork.setStartTime(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
                 selectedProjectWork.setMadeDate(sYear.getValue() + "/" + sMonth.getValue() + "/" + sDay.getValue());
+                selectedProjectWork.setStatus(updateStatusP.getValue());
+                clearSelectedStudent();
+                sYear.setValue(null);
+                sMonth.setValue(null);
+                sDay.setValue(null);
+                EndYear.setValue(null);
+                EndMonth.setValue(null);
+                EndDay.setValue(null);
+                updateStatusP.setValue(null);
+                showTableP.refresh();
+                showTableP.getSelectionModel().clearSelection();
+                statusLabel.setText("");
+                showStudentData();
                 }
             }
             else if (EndYear.getValue().equals(sYear.getValue()) && EndMonth.getValue() > sMonth.getValue()){
@@ -191,6 +217,19 @@ public class UpdateProjectWorksController {
                 else {
                     selectedProjectWork.setStartTime(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
                     selectedProjectWork.setMadeDate(sYear.getValue() + "/" + sMonth.getValue() + "/" + sDay.getValue());
+                    selectedProjectWork.setStatus(updateStatusP.getValue());
+                    clearSelectedStudent();
+                    sYear.setValue(null);
+                    sMonth.setValue(null);
+                    sDay.setValue(null);
+                    EndYear.setValue(null);
+                    EndMonth.setValue(null);
+                    EndDay.setValue(null);
+                    updateStatusP.setValue(null);
+                    showTableP.refresh();
+                    showTableP.getSelectionModel().clearSelection();
+                    statusLabel.setText("");
+                    showStudentData();
                 }
             }
             else if (EndYear.getValue().equals(sYear.getValue()) && EndMonth.getValue().equals(sMonth.getValue()) && EndDay.getValue() > sDay.getValue()){
@@ -201,28 +240,28 @@ public class UpdateProjectWorksController {
                 else {
                     selectedProjectWork.setStartTime(EndYear.getValue() + "/" + EndMonth.getValue() + "/" + EndDay.getValue());
                     selectedProjectWork.setMadeDate(sYear.getValue() + "/" + sMonth.getValue() + "/" + sDay.getValue());
+                    selectedProjectWork.setStatus(updateStatusP.getValue());
+                    clearSelectedStudent();
+                    sYear.setValue(null);
+                    sMonth.setValue(null);
+                    sDay.setValue(null);
+                    EndYear.setValue(null);
+                    EndMonth.setValue(null);
+                    EndDay.setValue(null);
+                    updateStatusP.setValue(null);
+                    showTableP.refresh();
+                    showTableP.getSelectionModel().clearSelection();
+                    statusLabel.setText("");
+                    showStudentData();
                 }
             }
             else {
                 statusLabel.setText("Please select a new date.!!");
             }
         }
-        if (categoryWorkCB.getValue()!= null){
-            selectedProjectWork.setCategory(categoryWorkCB.getValue());
-            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ProjectWork",selectedProjectWork.getName());
+        else {
+            statusLabel.setText("Please complete all information.!!");
         }
-        clearSelectedStudent();
-        categoryWorkCB.setValue(null);
-        sYear.setValue(null);
-        sMonth.setValue(null);
-        sDay.setValue(null);
-        EndYear.setValue(null);
-        EndMonth.setValue(null);
-        EndDay.setValue(null);
-        updateStatusP.setValue(null);
-        showTableP.refresh();
-        showTableP.getSelectionModel().clearSelection();
-        statusLabel.setText("");
 
         categoryDataSource.setData(categoryDataList);
         dataSource.setData(projectDataList);

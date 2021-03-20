@@ -82,15 +82,15 @@ public class ForwardWorkController {
         else {
             if (dataList.checkWorkName(FName.getText(),"ForwardWork")) {
                 if (categoryWorkCB.getValue().equals("Not choose"))
-                    forwardWork = new ForwardWork("Not choose", FName.getText(), namePerson.getText(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
+                    forwardWork = new ForwardWork("Not choose", FName.getText().trim(), namePerson.getText().trim(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
                             fHourStart.getValue() + ":" + fMinStart.getValue(),
                             fPriorityCB.getValue(), "Not Started");
                 else {
-                    forwardWork = new ForwardWork(categoryWorkCB.getValue(), FName.getText(), namePerson.getText(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
+                    forwardWork = new ForwardWork(categoryWorkCB.getValue(), FName.getText().trim(), namePerson.getText().trim(), fYear.getValue() + "/" + fMonth.getValue() + "/" + fDay.getValue(),
                             fHourStart.getValue() + ":" + fMinStart.getValue(),
                             fPriorityCB.getValue(), "Not Started");
 
-                    categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ForwardWork",FName.getText());
+                    categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ForwardWork",FName.getText().trim());
 
                 }
                 dataList.addForwardWork(forwardWork);

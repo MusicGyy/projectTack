@@ -24,6 +24,8 @@ public class WeeklyWorkController {
     @FXML
     ChoiceBox<String> weeklyDate, priorityWCB,categoryWorkCB;
     @FXML
+    ChoiceBox<Integer> year,month,day;
+    @FXML
     Button submitW;
     @FXML
     Label statusWLabel;
@@ -44,7 +46,13 @@ public class WeeklyWorkController {
                 dataList = workDataSource.getData();
                 for (int i = 1; i <= 3; i++){
                     priorityWCB.getItems().add(String.valueOf(i));}
-                weeklyDate.getItems().addAll("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
+                for (int i = 2021; i <= 2031; i++){
+                    year.getItems().add(i);}
+                for (int i = 1; i <= 12; i++){
+                    month.getItems().add(i);}
+                for (int i = 1; i <= 31; i++){
+                    day.getItems().add(i);}
+                weeklyDate.getItems().addAll("Mon","Tues","Wed","Thurs","Fri","Sat","Sun");
 
                 categoryWorkCB.getItems().add("Not choose");
                 for (CategoryWork categoryWork : categoryDataList.getCategoryArrayList()) {
@@ -55,14 +63,16 @@ public class WeeklyWorkController {
     }
 
     @FXML public void handleSubmitAction(ActionEvent event) throws IOException {
-        if (categoryWorkCB.getValue()==null || WName.getText().isEmpty() || weeklyDate.getValue()==null || priorityWCB.getValue()==null)
+        if (categoryWorkCB.getValue()==null || WName.getText().isEmpty() || weeklyDate.getValue()==null || priorityWCB.getValue()==null || year.getValue()==null || month.getValue()==null || day.getValue()==null)
             statusWLabel.setText("Please complete all information.!!");
+        if ((month.getValue()==2 && day.getValue() >= 29) || ((month.getValue()==4 || month.getValue()==6 || month.getValue()==8 || month.getValue()==11) && day.getValue() >30))
+            statusWLabel.setText(("Please select a new date.!!"));
         else {
             if (dataList.checkWorkName(WName.getText(), "WeeklyWork")) {
                 if (categoryWorkCB.getValue().equals("Not choose"))
-                    weeklyWork = new WeeklyWork("Not choose", WName.getText(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started");
+                    weeklyWork = new WeeklyWork("Not choose", WName.getText().trim(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started",year.getValue()+"/"+month.getValue()+"/"+day.getValue());
                 else {
-                    weeklyWork = new WeeklyWork(categoryWorkCB.getValue(), WName.getText(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started");
+                    weeklyWork = new WeeklyWork(categoryWorkCB.getValue(), WName.getText().trim(), weeklyDate.getValue(), "", "", priorityWCB.getValue(), "Not Started",year.getValue()+"/"+month.getValue()+"/"+day.getValue());
                     categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "WeeklyWork",WName.getText());
 
                 }
@@ -73,6 +83,9 @@ public class WeeklyWorkController {
                 WName.clear();
                 weeklyDate.setValue(null);
                 priorityWCB.setValue(null);
+                year.setValue(null);
+                month.setValue(null);
+                day.setValue(null);
                 categoryWorkCB.getSelectionModel().clearSelection();
                 statusWLabel.setText("");
             }

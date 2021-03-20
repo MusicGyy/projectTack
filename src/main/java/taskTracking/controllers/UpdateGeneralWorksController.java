@@ -28,7 +28,7 @@ public class UpdateGeneralWorksController {
     @FXML
     ChoiceBox<String> updateStatus,categoryWorkCB;
     @FXML
-    Label workNameLabel,madeDateLabel,timeStartLabel,priorityLabel,categoryLabel,statusLabel,endTimeLabel;
+    Label workNameLabel,madeDateLabel,timeStartLabel,priorityLabel,categoryLabel,statusLabel,endTimeLabel,statusSTLabel;
     @FXML
     Button updateGeneral;
 
@@ -71,6 +71,7 @@ public class UpdateGeneralWorksController {
     }
 
     private void showStudentData() {
+        showTable.getColumns().clear();
         generalObservableList = FXCollections.observableArrayList(generalList.getGeneralWorkArrayList());
         showTable.setItems(generalObservableList);
 
@@ -103,6 +104,7 @@ public class UpdateGeneralWorksController {
             timeStartLabel.setText(generalWork.getStartTime());
             categoryLabel.setText(generalWork.getCategory());
             endTimeLabel.setText(generalWork.getLastDate());
+            statusSTLabel.setText(generalWork.getStatus());
             updateGeneral.setDisable(true);
 
         }
@@ -114,6 +116,7 @@ public class UpdateGeneralWorksController {
                 timeStartLabel.setText(generalWork.getStartTime());
                 categoryLabel.setText(generalWork.getCategory());
                 endTimeLabel.setText(generalWork.getLastDate());
+                statusSTLabel.setText(generalWork.getStatus());
                 categoryWorkCB.setDisable(false);
                 updateGeneral.setDisable(false);
             }
@@ -124,11 +127,13 @@ public class UpdateGeneralWorksController {
                 timeStartLabel.setText(generalWork.getStartTime());
                 categoryLabel.setText(generalWork.getCategory());
                 endTimeLabel.setText(generalWork.getLastDate());
+                statusSTLabel.setText(generalWork.getStatus());
                 categoryWorkCB.setDisable(true);
                 updateGeneral.setDisable(false);
             }
         }
     }
+
 
     private void clearSelectedStudent() {
         selectedGeneralWork = null;
@@ -138,6 +143,7 @@ public class UpdateGeneralWorksController {
         timeStartLabel.setText("....");
         categoryLabel.setText("....");
         endTimeLabel.setText("....");
+        statusSTLabel.setText("....");
 
         updateGeneral.setDisable(true);
     }
@@ -163,47 +169,98 @@ public class UpdateGeneralWorksController {
     }
 
     public void handleUpdateGeneralButton(ActionEvent actionEvent) {
-        if (updateStatus.getValue()!=null)
-            selectedGeneralWork.setStatus(updateStatus.getValue());
-//        else {
-//            statusLabel.setText("");
-//        }
-        if (hourFin.getValue()!=null && minFin.getValue()!=null && hourS.getValue()!=null && minS.getValue()!=null) {
-            if (hourFin.getValue() == 0) {
-                selectedGeneralWork.setLastDate(hourFin.getValue() + ":" + minFin.getValue());
-                selectedGeneralWork.setStartTime(hourS.getValue() + ":" + minS.getValue());
-            }
-            else if (hourFin.getValue() > hourS.getValue()){
-                selectedGeneralWork.setLastDate(hourFin.getValue() + ":" + minFin.getValue());
-                selectedGeneralWork.setStartTime(hourS.getValue() + ":" + minS.getValue());
-            }
-            else if (hourFin.getValue().equals(hourS.getValue()) && minFin.getValue() > minS.getValue()){
-                selectedGeneralWork.setLastDate(hourFin.getValue() + ":" + minFin.getValue());
-                selectedGeneralWork.setStartTime(hourS.getValue() + ":" + minS.getValue());
-            }
-            else {
-                statusLabel.setText("Please enter a new time.!!");
-            }
-        }
-        else {
-            statusLabel.setText("Please enter a new time.!!");
-        }
         if (categoryWorkCB.getValue()!= null){
             selectedGeneralWork.setCategory(categoryWorkCB.getValue());
-            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "GeneralWork",selectedGeneralWork.getName());
+            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "GeneralWork",selectedGeneralWork.getName().trim());
+            categoryWorkCB.setValue(null);
+            statusLabel.setText("");
+            showTable.refresh();
+            showTable.getSelectionModel().clearSelection();
+            showStudentData();
 //            categoryDataList.addNameWorkToCategory(selectedGeneralWork.getName());
         }
+//        else if (updateStatus.getValue() != null){
+//            selectedGeneralWork.setStatus(updateStatus.getValue());
+//            updateStatus.setValue(null);
+//            showTable.refresh();
+//            showTable.getSelectionModel().clearSelection();
+//            statusLabel.setText("");
+//            showStudentData();
+//        }
+        else if (hourS.getValue() == null || hourFin.getValue() == null ||
+        minS.getValue() == null || minFin.getValue() == null || updateStatus.getValue() == null){
+            statusLabel.setText("Please complete all information.!!");
+        }
+        else {
+            if ((hourFin.getValue() == 0 && minFin.getValue() == 0) && (hourS.getValue() != 0 && minS.getValue() != 0 )) {
+                selectedGeneralWork.setLastDate(hourFin.getValue() + ":" + minFin.getValue());
+                selectedGeneralWork.setStartTime(hourS.getValue() + ":" + minS.getValue());
+                selectedGeneralWork.setStatus(updateStatus.getValue());
+                clearSelectedStudent();
+                updateStatus.setValue(null);
+                hourFin.setValue(null);
+                minFin.setValue(null);
+                hourS.setValue(null);
+                minS.setValue(null);
+//                updateStatus.setValue(null);
+                showTable.refresh();
+                showTable.getSelectionModel().clearSelection();
+                statusLabel.setText("");
+                showStudentData();
+            } else if (hourFin.getValue() > hourS.getValue()) {
+                selectedGeneralWork.setLastDate(hourFin.getValue() + ":" + minFin.getValue());
+                selectedGeneralWork.setStartTime(hourS.getValue() + ":" + minS.getValue());
+                selectedGeneralWork.setStatus(updateStatus.getValue());
+                clearSelectedStudent();
+                updateStatus.setValue(null);
+                hourFin.setValue(null);
+                minFin.setValue(null);
+                hourS.setValue(null);
+                minS.setValue(null);
+//                updateStatus.setValue(null);
+                showTable.refresh();
+                showTable.getSelectionModel().clearSelection();
+                statusLabel.setText("");
+                showStudentData();
+            } else if (hourFin.getValue().equals(hourS.getValue()) && minFin.getValue() > minS.getValue()) {
+                selectedGeneralWork.setLastDate(hourFin.getValue() + ":" + minFin.getValue());
+                selectedGeneralWork.setStartTime(hourS.getValue() + ":" + minS.getValue());
+                selectedGeneralWork.setStatus(updateStatus.getValue());
+                clearSelectedStudent();
+                updateStatus.setValue(null);
+                hourFin.setValue(null);
+                minFin.setValue(null);
+                hourS.setValue(null);
+                minS.setValue(null);
+//                updateStatus.setValue(null);
+                showTable.refresh();
+                showTable.getSelectionModel().clearSelection();
+                statusLabel.setText("");
+                showStudentData();
+            } else {
+                statusLabel.setText("Please enter a new time.!!");
+            }
+//             else {
+//                statusLabel.setText("Please enter a new time.!!");
+//            }
+        }
+//        if (categoryWorkCB.getValue()!= null){
+//            selectedGeneralWork.setCategory(categoryWorkCB.getValue());
+//            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "GeneralWork",selectedGeneralWork.getName());
+//            categoryWorkCB.setValue(null);
+////            categoryDataList.addNameWorkToCategory(selectedGeneralWork.getName());
+//        }
 
 
-        clearSelectedStudent();
-        hourFin.setValue(null);
-        minFin.setValue(null);
-        hourS.setValue(null);
-        minS.setValue(null);
-        updateStatus.setValue(null);
-        showTable.refresh();
-        showTable.getSelectionModel().clearSelection();
-        statusLabel.setText("");
+//        clearSelectedStudent();
+//        hourFin.setValue(null);
+//        minFin.setValue(null);
+//        hourS.setValue(null);
+//        minS.setValue(null);
+//        updateStatus.setValue(null);
+//        showTable.refresh();
+//        showTable.getSelectionModel().clearSelection();
+//        statusLabel.setText("");
 
         //CB.setVa(null)<-----เซต
         categoryDataSource.setData(categoryDataList);

@@ -64,10 +64,10 @@ public class ProjectWorkController {
         else {
             if (dataList.checkWorkName(PName.getText(), "ProjectWork")) {
                 if (categoryWorkCB.getValue().equals("Not choose"))
-                    projectWork = new ProjectWork("Not choose", PName.getText(), LeaderName.getText(),
+                    projectWork = new ProjectWork("Not choose", PName.getText().trim(), LeaderName.getText(),
                             null, null, pPriorityCB.getValue(), "Not Started");
                 else {
-                    projectWork = new ProjectWork(categoryWorkCB.getValue(), PName.getText(), LeaderName.getText(),
+                    projectWork = new ProjectWork(categoryWorkCB.getValue(), PName.getText().trim(), LeaderName.getText(),
                             null, null, pPriorityCB.getValue(), "Not Started");
 
                     categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ProjectWork",PName.getText());

@@ -41,7 +41,7 @@ public class DataList {
     public ArrayList<WeeklyWork> searchWeekly(String input){
         ArrayList<WeeklyWork> weeklyWorks = new ArrayList<>();
         for (WeeklyWork work : getWeeklyWorkArrayList()){
-            if (work.getStatus().equals(input)|| work.getCategory().equals(input))
+            if (work.getStatus().equals(input)|| work.getCategory().equals(input) || work.getWeeklyDate().equals(input))
                 weeklyWorks.add(work);
         }
         return weeklyWorks;

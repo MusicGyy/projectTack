@@ -1,12 +1,26 @@
 package taskTracking.controllers;
 
 import com.github.saacsos.FXRouter;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import taskTracking.services.OpenPDFFile;
 
 import java.io.IOException;
 
 public class HomeController {
+    private OpenPDFFile openPDFFileEz;
+
+    @FXML
+    public void initialize() {
+        Platform.runLater((Runnable)new Runnable() {
+            @Override
+            public void run() {
+                openPDFFileEz = new OpenPDFFile("data", "6210450563.pdf");
+            }
+        });
+    }
+
 
     @FXML
     public void handleImageFeeMemberCardButton(ActionEvent actionEvent) {
@@ -29,10 +43,9 @@ public class HomeController {
 
     public void handleHowToUseButton(ActionEvent actionEvent) {
         try {
-            FXRouter.goTo("howTo");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า howTo ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
+            openPDFFileEz.openPDFFileKu();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -53,5 +66,6 @@ public class HomeController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
+
 
 }

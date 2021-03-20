@@ -41,7 +41,7 @@ public class CategoryWork extends GeneralWork{
 
 
     public String getNameC() {
-        return nameC;
+        return nameC.trim();
     }
 
     public void setNameC(String nameC) {

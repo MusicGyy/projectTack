@@ -1,7 +1,5 @@
 package taskTracking.model.WorksCategory;
 
-import com.sun.xml.internal.stream.buffer.AttributesHolder;
-
 public class GeneralWork {
     private String name; // ชื่องาน
     private String madeDate; //วันที่ทำ
@@ -82,7 +80,6 @@ public class GeneralWork {
         else
             this.name = getName() + "//" + name;
     }
-
 
     public String getName() {
         return name;

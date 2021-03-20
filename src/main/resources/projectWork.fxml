@@ -47,7 +47,7 @@
          <effect>
             <DropShadow color="#84ff00" />
          </effect></TextField>
-      <Button fx:id="pSubmit" layoutX="383.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="37.0" prefWidth="127.0" stylesheets="@styles-2.css" text="AddWorks">
+      <Button fx:id="pSubmit" layoutX="383.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="37.0" prefWidth="127.0" stylesheets="@styles-2.css" text="AddWork">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>

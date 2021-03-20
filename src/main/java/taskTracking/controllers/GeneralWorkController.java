@@ -75,14 +75,14 @@ public class GeneralWorkController {
         else {
             if (dataList.checkWorkName(Name.getText(), "GeneralWork")) {
                 if (categoryWorkCB.getValue().equals("Not choose")){
-                    generalWork = new GeneralWork("Not choose", Name.getText(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
+                    generalWork = new GeneralWork("Not choose", Name.getText().trim(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
                             "", "", priorityCB.getValue(), "Not Started");
                 }
                 else {
-                    generalWork = new GeneralWork(categoryWorkCB.getValue(), Name.getText(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
+                    generalWork = new GeneralWork(categoryWorkCB.getValue(), Name.getText().trim(), year.getValue() + "/" + month.getValue() + "/" + day.getValue(),
                             "", "", priorityCB.getValue(), "Not Started");
 
-                    categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "GeneralWork",Name.getText());
+                    categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "GeneralWork",Name.getText().trim());
 //                    categoryDataList.addNameWorkToCategory(Name.getText());
                 }
 
@@ -91,12 +91,10 @@ public class GeneralWorkController {
                 categoryDataSource.setData(categoryDataList);
                 Name.clear();
                 year.setValue(null);
-//                year.getItems().clear();
                 month.setValue(null);
                 day.setValue(null);
                 priorityCB.setValue(null);
                 categoryWorkCB.getSelectionModel().clearSelection();
-//                categoryWorkCB.setValue(null);
                 statusLabel.setText("");
             }
             else {

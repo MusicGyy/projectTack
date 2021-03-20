@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import taskTracking.model.WorksCategory.CategoryWork;
+import taskTracking.model.WorksCategory.WorkNameList;
 import taskTracking.services.CategoryFileDataSource;
 import taskTracking.services.DataList;
 import taskTracking.services.DataSource;
@@ -26,6 +27,8 @@ public class CreateCategoryController {
     @FXML
     Label statusCategory;
     @FXML
+    TableView<WorkNameList> showTableC1;
+    @FXML
     TableView<CategoryWork> showTableC;
     @FXML
     TextArea categoryTA;
@@ -33,7 +36,9 @@ public class CreateCategoryController {
     private CategoryWork selectedCategoryWork;
     private DataList dataList;
     private DataSource workDataSource;
+    private ObservableList<WorkNameList> stringCategoryWorkObservableList;
     private ObservableList<CategoryWork> categoryWorkObservableList;
+    private ArrayList<WorkNameList> stringsCate;
 
 
     @FXML
@@ -44,6 +49,7 @@ public class CreateCategoryController {
                 workDataSource = new CategoryFileDataSource("data","category.csv");
                 dataList = workDataSource.getData();
                 showCategoryAll();
+
 
                 showTableC.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
@@ -66,6 +72,7 @@ public class CreateCategoryController {
         configs.add(new StringConfiguration("title:Total number of Weekly tasks", "field:countWeekly"));
         configs.add(new StringConfiguration("title:Total number of Forward tasks", "field:countForward"));
         configs.add(new StringConfiguration("title:Total number of Project tasks", "field:countProject"));
+        configs.add(new StringConfiguration("title:Works Name", "field:name"));
 
         for (StringConfiguration conf: configs) {
             TableColumn col = new TableColumn(conf.get("title"));
@@ -77,16 +84,34 @@ public class CreateCategoryController {
             }
         }
     }
-
     private void showSelectedCategory(CategoryWork categoryWork){
+        stringsCate = new  ArrayList<WorkNameList>();
         categoryTA.clear();
         selectedCategoryWork = categoryWork;
-        String[] data = selectedCategoryWork.getName().split("//");
-        for (int i = 0 ; i< data.length ; i++)
-            categoryTA.appendText(data[i]+"\n");
+        String [] data = selectedCategoryWork.getName().split("//");
+        for (String datum : data) {
+            categoryTA.appendText(datum + "\n");
+            stringsCate.add(new WorkNameList(datum));
+        }
+        showCategoryAll__();
     }
 
+    private void showCategoryAll__() {
+//        for (WorkNameList workNameList : stringsCate)
+//            System.out.println(workNameList.getName());
+        showTableC1.getColumns().clear();
+        stringCategoryWorkObservableList = FXCollections.observableArrayList(stringsCate);
+        showTableC1.setItems(stringCategoryWorkObservableList);
 
+        ArrayList<StringConfiguration> configs = new ArrayList<>();
+        configs.add(new StringConfiguration("title:Work name list", "field:name"));
+
+        for (StringConfiguration conf: configs) {
+            TableColumn col = new TableColumn(conf.get("title"));
+            col.setCellValueFactory(new PropertyValueFactory<>(conf.get("field")));
+            showTableC1.getColumns().add(col);
+        }
+    } 
 
     @FXML public void handleCreateButtonAction(ActionEvent event) throws IOException {
         if (createCategoryText.getText().isEmpty())
@@ -98,12 +123,11 @@ public class CreateCategoryController {
             if (dataList.checkCategory(createCategoryText.getText())) {
                 selectedCategoryWork = new CategoryWork(createCategoryText.getText(), 0, 0, 0, 0, 0,null);
 
-
-//            System.out.println(categoryWork.toString());
                 dataList.addCategory(selectedCategoryWork);
                 workDataSource.setData(dataList);
                 createCategoryText.clear();
                 statusCategory.setText("....");
+                showCategoryAll();
             }
             else {
                 statusCategory.setText("Repeat category name, please enter it again.!!");
