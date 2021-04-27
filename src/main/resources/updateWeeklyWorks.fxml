@@ -139,7 +139,7 @@
          </effect></Label>
       <ChoiceBox fx:id="hourETW" layoutX="82.0" layoutY="882.0" prefHeight="25.0" prefWidth="56.0" />
       <ChoiceBox fx:id="minuteETW" layoutX="157.0" layoutY="882.0" prefHeight="25.0" prefWidth="56.0" />
-      <Label layoutX="14.0" layoutY="886.0" text="Time snd" textFill="WHITE">
+      <Label layoutX="14.0" layoutY="886.0" text="Time end" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
@@ -253,6 +253,14 @@
          </font>
          <effect>
             <DropShadow color="#00ff8c" />
+         </effect>
+      </Label>
+      <Label fx:id="statusDone" layoutX="355.0" layoutY="878.0" prefHeight="50.0" prefWidth="89.0" text="...." textFill="#23ff00">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
          </effect>
       </Label>
    </children>

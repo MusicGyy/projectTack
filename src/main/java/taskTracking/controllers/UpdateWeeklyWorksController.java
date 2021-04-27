@@ -28,7 +28,7 @@ public class UpdateWeeklyWorksController {
     @FXML
     ChoiceBox<String> dateUpdate,updateStatusW,categoryWorkCB;
     @FXML
-    Label workNameWLabel,startDateLabel,timeStartLabel,timeEndLabel,priorityWLabel,statusLabel,categoryLabel,weekSLabel,statusSTLabel;
+    Label workNameWLabel,startDateLabel,timeStartLabel,timeEndLabel,priorityWLabel,statusLabel,categoryLabel,weekSLabel,statusSTLabel,statusDone;
     @FXML
     Button updateWeekly;
 
@@ -188,8 +188,9 @@ public class UpdateWeeklyWorksController {
                     minuteSTW.setValue(null);
                     hourETW.setValue(null);
                     minuteETW.setValue(null);
-                    statusLabel.setText("");
-
+                    statusDone.setText("Finish");
+                    clearSelectedStudent();
+                    showTableW.getSelectionModel().clearSelection();
                 }
                 else
                 {
@@ -215,9 +216,9 @@ public class UpdateWeeklyWorksController {
             dateUpdate.setValue(null);
             statusLabel.setText("");
         }
-        clearSelectedStudent();
+
         showTableW.refresh();
-        showTableW.getSelectionModel().clearSelection();
+
         showStudentData();
         categoryDataSource.setData(categoryDataList);
         dataSource.setData(weeklyList);

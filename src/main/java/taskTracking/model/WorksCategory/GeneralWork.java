@@ -1,5 +1,7 @@
 package taskTracking.model.WorksCategory;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 public class GeneralWork {
     private String name; // ชื่องาน
     private String madeDate; //วันที่ทำ
@@ -10,7 +12,7 @@ public class GeneralWork {
     private String category;
 
 
-    public GeneralWork(){
+    public GeneralWork() {
     }
 
     public GeneralWork(String name) {
@@ -20,11 +22,11 @@ public class GeneralWork {
     public GeneralWork(String category, String name, String priority, String status) {  /// ForwardWork
         this.name = name;
         this.priority = priority;
-        this.status = status ;
+        this.status = status;
         this.category = category;
     }
 
-    public GeneralWork(String category,String name, String madeDate, String priority, String status) { /// ProjectWork
+    public GeneralWork(String category, String name, String madeDate, String priority, String status) { /// ProjectWork
         this.name = name;
         this.madeDate = madeDate;
         this.priority = priority;
@@ -33,50 +35,34 @@ public class GeneralWork {
     }
 
 
-    public GeneralWork(String category,String name, String madeDate, String startTime, String priority, String status) {  /// GeneralWork
+    public GeneralWork(String category, String name, String madeDate, String startTime, String priority, String status) {  /// GeneralWork
         this.name = name;
         this.madeDate = madeDate;
-        this.startTime = startTime;
+        setStartTime(startTime);
         this.priority = priority;
         this.status = status;
         this.category = category;
     }
-
-
 
 
     public GeneralWork(String category, String name, String madeDate, String startTime, String lastDate, String priority, String status) {
         this.name = name;
         this.madeDate = madeDate;
-        this.startTime = startTime;
-        this.lastDate = lastDate;
+        setStartTime(startTime);
+        setLastDate(lastDate);
         this.priority = priority;
         this.status = status;
         this.category = category;
     }
 
-    public void addWeeklyDate (String madeDate){
+    public void addWeeklyDate(String madeDate) {
         if (!this.madeDate.contains(madeDate))
             this.madeDate = getMadeDate() + " | " + madeDate;
     }
 
-//    public String checkWorksName(String name){
-//        if (!this.name.equals(name))
-//            this.name = getName();
-//        return name;
-//    }
-
-
-//    public void addNameWork(String name){
-//        if (this.name.equals("null"))
-//            this.name =name;
-//        else
-//            this.name = getName() + "//" + name;
-//    }
-
-    public void addToTA(String name){
+    public void addToTA(String name) {
         if (this.name.equals("null"))
-            this.name =getName().replace("null",name);
+            this.name = getName().replace("null", name);
         else
             this.name = getName() + "//" + name;
     }
@@ -102,7 +88,14 @@ public class GeneralWork {
     }
 
     public void setStartTime(String startTime) {
-        this.startTime = startTime;
+        if (startTime.contains(":")) {
+            String[] array = startTime.split(":");
+            int hour = Integer.parseInt(array[0]);
+            int minute = Integer.parseInt(array[1]);
+            this.startTime = String.format("%02d:%02d", hour, minute);
+        } else {
+            this.startTime = startTime;
+        }
     }
 
     public String getLastDate() {
@@ -110,7 +103,14 @@ public class GeneralWork {
     }
 
     public void setLastDate(String lastDate) {
-        this.lastDate = lastDate;
+        if (lastDate.contains(":")) {
+            String[] array = lastDate.split(":");
+            int hour = Integer.parseInt(array[0]);
+            int minute = Integer.parseInt(array[1]);
+            this.lastDate = String.format("%02d:%02d", hour, minute);
+        } else {
+            this.lastDate = lastDate;
+        }
     }
 
     public String getPriority() {
