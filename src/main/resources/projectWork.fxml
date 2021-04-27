@@ -21,14 +21,14 @@
          <effect>
             <DropShadow color="RED" />
          </effect></TextField>
-      <Label layoutX="124.0" layoutY="109.0" prefHeight="50.0" prefWidth="89.0" text="Work Name">
+      <Label layoutX="124.0" layoutY="109.0" prefHeight="50.0" prefWidth="89.0" text="Work name">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
          <effect>
             <DropShadow color="#ea00ff" />
          </effect></Label>
-      <Label layoutX="491.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" text="Project Work">
+      <Label layoutX="491.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" text="Project work">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -36,7 +36,7 @@
             <DropShadow color="#ea00ff" />
          </effect>
       </Label>
-      <Label layoutX="124.0" layoutY="186.0" prefHeight="50.0" prefWidth="89.0" text="Leader Name">
+      <Label layoutX="124.0" layoutY="186.0" prefHeight="50.0" prefWidth="89.0" text="Leader name">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -47,7 +47,7 @@
          <effect>
             <DropShadow color="#84ff00" />
          </effect></TextField>
-      <Button fx:id="pSubmit" layoutX="383.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="37.0" prefWidth="127.0" stylesheets="@styles-2.css" text="AddWork">
+      <Button fx:id="pSubmit" layoutX="383.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="37.0" prefWidth="127.0" stylesheets="@styles-2.css" text="Add work">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
@@ -59,18 +59,18 @@
          <effect>
             <DropShadow />
          </effect></Label>
-      <Label layoutX="712.0" layoutY="238.0" prefHeight="50.0" prefWidth="89.0" text="priority" textFill="WHITE">
+      <Label layoutX="712.0" layoutY="238.0" prefHeight="50.0" prefWidth="89.0" text="Priority" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
          <effect>
             <DropShadow color="#ea00ff" />
          </effect></Label>
-      <Button layoutX="664.0" layoutY="504.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="37.0" prefWidth="127.0" stylesheets="@styles-2.css" text="back">
+      <Button layoutX="1038.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="37.0" prefWidth="127.0" stylesheets="@styles-2.css" text="Back">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
-      <Button layoutX="664.0" layoutY="421.0" mnemonicParsing="false" onAction="#handleUpdateProjectWorksControllerButton" prefHeight="37.0" prefWidth="127.0" stylesheets="@styles-2.css" text="UpdateProject">
+      <Button layoutX="1038.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleUpdateProjectWorksControllerButton" prefHeight="37.0" prefWidth="127.0" stylesheets="@styles-2.css" text="Update project">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>

@@ -17,7 +17,7 @@
             <Image url="@genneral.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="710.0" layoutY="797.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="194.0" stylesheets="@styles-2.css" text="BackToHome">
+      <Button layoutX="1039.0" layoutY="819.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="194.0" stylesheets="@styles-2.css" text="Back to home">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
@@ -25,11 +25,11 @@
          <effect>
             <DropShadow color="RED" />
          </effect></TableView>
-      <Button layoutX="710.0" layoutY="743.0" mnemonicParsing="false" onAction="#handleBackToGeneralWorkButton" prefHeight="34.0" prefWidth="193.0" stylesheets="@styles-2.css" text="BackToGeneralWork">
+      <Button layoutX="1040.0" layoutY="711.0" mnemonicParsing="false" onAction="#handleBackToGeneralWorkButton" prefHeight="34.0" prefWidth="193.0" stylesheets="@styles-2.css" text="Back to general work">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
-      <Label layoutX="392.0" layoutY="36.0" prefHeight="35.0" prefWidth="260.0" text="UpdateGeneralWork" textFill="WHITE">
+      <Label layoutX="392.0" layoutY="36.0" prefHeight="35.0" prefWidth="260.0" text="Update general work" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -37,11 +37,11 @@
             <DropShadow color="RED" />
          </effect>
       </Label>
-      <Button fx:id="updateGeneral" layoutX="573.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleUpdateGeneralButton" prefHeight="35.0" prefWidth="186.0" stylesheets="@styles-2.css" text="UpdateGeneral">
+      <Button fx:id="updateGeneral" layoutX="573.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleUpdateGeneralButton" prefHeight="35.0" prefWidth="186.0" stylesheets="@styles-2.css" text="Update general">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
-      <Label layoutX="488.0" layoutY="158.0" text="WorkName" textFill="WHITE">
+      <Label layoutX="488.0" layoutY="158.0" text="Work name" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -49,7 +49,7 @@
             <DropShadow color="RED" />
          </effect>
       </Label>
-      <Label layoutX="488.0" layoutY="190.0" prefHeight="48.0" prefWidth="90.0" text="MadeDate" textFill="WHITE">
+      <Label layoutX="488.0" layoutY="190.0" prefHeight="48.0" prefWidth="90.0" text="Made date" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -57,7 +57,7 @@
             <DropShadow color="RED" />
          </effect>
       </Label>
-      <Label layoutX="488.0" layoutY="238.0" prefHeight="48.0" prefWidth="90.0" text="TimeStart" textFill="WHITE">
+      <Label layoutX="488.0" layoutY="238.0" prefHeight="48.0" prefWidth="90.0" text="Time start" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -145,7 +145,7 @@
             <DropShadow color="RED" />
          </effect>
       </Label>
-      <Label layoutX="488.0" layoutY="286.0" prefHeight="48.0" prefWidth="90.0" text="End Time" textFill="WHITE">
+      <Label layoutX="488.0" layoutY="286.0" prefHeight="48.0" prefWidth="90.0" text="End time" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -161,7 +161,7 @@
             <DropShadow color="RED" />
          </effect>
       </Label>
-      <Label layoutX="474.0" layoutY="512.0" prefHeight="48.0" prefWidth="104.0" text="updateEndTime" textFill="WHITE">
+      <Label layoutX="457.0" layoutY="511.0" prefHeight="48.0" prefWidth="131.0" text="Update end time" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -185,7 +185,7 @@
          <effect>
             <DropShadow color="RED" />
          </effect></Label>
-      <Label layoutX="474.0" layoutY="474.0" prefHeight="48.0" prefWidth="114.0" text="updateStartTime" textFill="WHITE">
+      <Label layoutX="457.0" layoutY="474.0" prefHeight="48.0" prefWidth="131.0" text="Update start time" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -201,7 +201,7 @@
             <DropShadow color="RED" />
          </effect>
       </Label>
-      <Button layoutX="807.0" layoutY="662.0" mnemonicParsing="false" onAction="#handleShowWorkAllButton" prefHeight="34.0" prefWidth="193.0" stylesheets="@styles-2.css" text="GoToWorkAll">
+      <Button layoutX="1039.0" layoutY="765.0" mnemonicParsing="false" onAction="#handleShowWorkAllButton" prefHeight="34.0" prefWidth="193.0" stylesheets="@styles-2.css" text="Go to work all">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
@@ -215,7 +215,7 @@
             <DropShadow color="RED" />
          </effect>
       </Label>
-      <Label layoutX="590.0" layoutY="425.0" prefHeight="50.0" prefWidth="89.0" text="StatusError:" textFill="RED">
+      <Label layoutX="590.0" layoutY="425.0" prefHeight="50.0" prefWidth="89.0" text="Status error:" textFill="RED">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

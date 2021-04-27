@@ -17,7 +17,7 @@
             <Image url="@worksAll.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="1111.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="110.0" stylesheets="@styles-2.css" text="back">
+      <Button layoutX="1111.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="110.0" stylesheets="@styles-2.css" text="Back">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
@@ -37,19 +37,19 @@
          <effect>
             <DropShadow color="#00fa0e" />
          </effect></TableView>
-      <Label layoutX="179.0" layoutY="66.0" text="GeneralWorks" textFill="WHITE">
+      <Label layoutX="179.0" layoutY="66.0" text="General works" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Label>
-      <Label layoutX="527.0" layoutY="66.0" text="WeeklyWorks" textFill="WHITE">
+      <Label layoutX="527.0" layoutY="66.0" text="Weekly works" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Label>
-      <Label layoutX="179.0" layoutY="568.0" text="ForwardWorks" textFill="WHITE">
+      <Label layoutX="179.0" layoutY="568.0" text="Forward works" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Label>
-      <Label layoutX="527.0" layoutY="568.0" text="ProjectWorks" textFill="WHITE">
+      <Label layoutX="527.0" layoutY="568.0" text="Project works" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Label>
@@ -57,15 +57,15 @@
          <effect>
             <DropShadow color="#00ff95" />
          </effect></TableView>
-      <Label layoutX="851.0" layoutY="342.0" text="CategoryAll" textFill="WHITE">
+      <Label layoutX="851.0" layoutY="342.0" text="Category all" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Label>
-      <Button layoutX="171.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleUpdateGeneralWorksControllerButton" prefHeight="26.0" prefWidth="104.0" stylesheets="@styles-2.css" text="Update General" />
-      <Button layoutX="518.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleUpdateWeeklyWorksControllerButton" stylesheets="@styles-2.css" text="Update Weekly" />
-      <Button layoutX="170.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateForwardWorksControllerButton" stylesheets="@styles-2.css" text="Update Forward" />
-      <Button layoutX="519.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateProjectWorksControllerButton" stylesheets="@styles-2.css" text="Update Project" />
-      <Button layoutX="837.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleCreateCategoryButton" stylesheets="@styles-2.css" text="Create Category" />
+      <Button layoutX="171.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleUpdateGeneralWorksControllerButton" prefHeight="26.0" prefWidth="104.0" stylesheets="@styles-2.css" text="Update general" />
+      <Button layoutX="518.0" layoutY="487.0" mnemonicParsing="false" onAction="#handleUpdateWeeklyWorksControllerButton" stylesheets="@styles-2.css" text="Update weekly" />
+      <Button layoutX="170.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateForwardWorksControllerButton" stylesheets="@styles-2.css" text="Update forward" />
+      <Button layoutX="519.0" layoutY="973.0" mnemonicParsing="false" onAction="#handleUpdateProjectWorksControllerButton" stylesheets="@styles-2.css" text="Update project" />
+      <Button layoutX="837.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleCreateCategoryButton" stylesheets="@styles-2.css" text="Create category" />
       <TextField fx:id="searchText" layoutX="895.0" layoutY="93.0" prefHeight="26.0" prefWidth="287.0" promptText="Please enter the information you want to search.">
          <effect>
             <DropShadow color="#00ffdb" />

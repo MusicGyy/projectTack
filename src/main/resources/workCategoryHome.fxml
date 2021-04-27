@@ -15,7 +15,7 @@
             <Image url="@homeCategory.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="504.0" layoutY="73.0" prefHeight="58.0" prefWidth="272.0" text="Homeworks Type" textFill="WHITE">
+      <Label layoutX="544.0" layoutY="76.0" prefHeight="58.0" prefWidth="193.0" text="Homeworks type" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -23,7 +23,7 @@
             <DropShadow color="#00ff14" />
          </effect>
       </Label>
-      <Button layoutX="437.0" layoutY="208.0" mnemonicParsing="false" onAction="#handleGeneralWorkControllerButton" prefHeight="50.0" prefWidth="158.0" style="-fx-background-radius: 30;" stylesheets="@styles.css" text="General Works ">
+      <Button layoutX="561.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleGeneralWorkControllerButton" prefHeight="50.0" prefWidth="158.0" style="-fx-background-radius: 30;" stylesheets="@styles.css" text="General works ">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -31,7 +31,7 @@
             <DropShadow color="RED" />
          </effect>
       </Button>
-      <Button layoutX="437.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleWeeklyWorkControllerButton" prefHeight="50.0" prefWidth="158.0" stylesheets="@styles.css" text="Works of the week ">
+      <Button layoutX="561.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleWeeklyWorkControllerButton" prefHeight="50.0" prefWidth="158.0" stylesheets="@styles.css" text="Weekly work">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -39,21 +39,21 @@
             <DropShadow color="#2eff00" />
          </effect>
       </Button>
-      <Button layoutX="437.0" layoutY="387.0" mnemonicParsing="false" onAction="#handleForwardWorksControllerButton" prefHeight="50.0" prefWidth="158.0" stylesheets="@styles.css" text="Forward Works ">
+      <Button layoutX="561.0" layoutY="492.0" mnemonicParsing="false" onAction="#handleForwardWorksControllerButton" prefHeight="50.0" prefWidth="158.0" stylesheets="@styles.css" text="Forward work">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
          <effect>
             <DropShadow color="#0026ff" />
          </effect></Button>
-      <Button layoutX="437.0" layoutY="472.0" mnemonicParsing="false" onAction="#handleProjectControllerButton" prefHeight="50.0" prefWidth="158.0" stylesheets="@styles.css" text="Project Works ">
+      <Button layoutX="561.0" layoutY="577.0" mnemonicParsing="false" onAction="#handleProjectControllerButton" prefHeight="50.0" prefWidth="158.0" stylesheets="@styles.css" text="Project work ">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
          <effect>
             <DropShadow color="#ff00ee" />
          </effect></Button>
-      <Button layoutX="713.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="36.0" prefWidth="67.0" stylesheets="@styles-2.css" text="Back">
+      <Button layoutX="1089.0" layoutY="785.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="43.0" prefWidth="89.0" stylesheets="@styles-2.css" text="Back">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

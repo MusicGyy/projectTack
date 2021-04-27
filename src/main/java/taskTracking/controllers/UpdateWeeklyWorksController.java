@@ -177,104 +177,51 @@ public class UpdateWeeklyWorksController {
     }
 
     public void handleUpdateWeeklyButton(ActionEvent actionEvent) {
-//        if (updateStatusW.getValue()!=null){
-//            selectedWeeklyWork.setStatus(updateStatusW.getValue());
-//            updateStatusW.setValue(null);
-//            clearSelectedStudent();
-//            showTableW.refresh();
-//            showTableW.getSelectionModel().clearSelection();
-//            statusLabel.setText("");
-//
-//            showStudentData();
-//        }
-        if (dateUpdate.getValue()!=null){
-            selectedWeeklyWork.addWeeklyDate(dateUpdate.getValue());
-            clearSelectedStudent();
-            showTableW.refresh();
-            showTableW.getSelectionModel().clearSelection();
-            statusLabel.setText("");
-            dateUpdate.setValue(null);
-            showStudentData();
-        }
-        if (categoryWorkCB.getValue()!= null){
-            selectedWeeklyWork.setCategory(categoryWorkCB.getValue());
-            categoryDataList.addWorkToCategory(categoryWorkCB.getValue(), "ForwardWork",selectedWeeklyWork.getName().trim());
-            clearSelectedStudent();
-            categoryWorkCB.setValue(null);
-            showTableW.refresh();
-            showTableW.getSelectionModel().clearSelection();
-            statusLabel.setText("");
-            showStudentData();
-        }
-        if (hourETW.getValue()==null || minuteETW.getValue()==null || hourSTW.getValue()==null || minuteSTW.getValue()==null || updateStatusW.getValue()==null)
-        {
-            statusLabel.setText("Please complete all information.!!");
-        }
-        else {
-            if ((hourETW.getValue()==0 && minuteETW.getValue() == 0) && (hourSTW.getValue() != 0 && minuteSTW.getValue() != 0 )){
-            selectedWeeklyWork.setStartTime(hourSTW.getValue() + ":" + minuteSTW.getValue());
-            selectedWeeklyWork.setLastDate(hourETW.getValue() + ":" + minuteETW.getValue());
-            selectedWeeklyWork.setStatus(updateStatusW.getValue());
-            updateStatusW.setValue(null);
-            clearSelectedStudent();
-            hourSTW.setValue(null);
-            minuteSTW.setValue(null);
-            hourETW.setValue(null);
-            minuteETW.setValue(null);
-            showTableW.refresh();
-            showTableW.getSelectionModel().clearSelection();
-            statusLabel.setText("");
-            showStudentData();
-            }
-            else if (hourETW.getValue() > hourSTW.getValue()) {
-                selectedWeeklyWork.setStartTime(hourSTW.getValue() + ":" + minuteSTW.getValue());
-                selectedWeeklyWork.setLastDate(hourETW.getValue() + ":" + minuteETW.getValue());
-                selectedWeeklyWork.setStatus(updateStatusW.getValue());
-                updateStatusW.setValue(null);
-                clearSelectedStudent();
-                hourSTW.setValue(null);
-                minuteSTW.setValue(null);
-                hourETW.setValue(null);
-                minuteETW.setValue(null);
-                showTableW.refresh();
-                showTableW.getSelectionModel().clearSelection();
-                statusLabel.setText("");
-                showStudentData();
-            }
+        if (hourETW.getValue()!=null && minuteETW.getValue()!=null && hourSTW.getValue()!=null && minuteSTW.getValue()!=null && updateStatusW.getValue()!=null){
+            if (hourSTW.getValue() <= hourETW.getValue()) {
+                if (minuteSTW.getValue() < minuteETW.getValue()){
+                    selectedWeeklyWork.setStartTime(hourSTW.getValue() + ":" + minuteSTW.getValue());
+                    selectedWeeklyWork.setLastDate(hourETW.getValue() + ":" + minuteETW.getValue());
+                    selectedWeeklyWork.setStatus(updateStatusW.getValue());
+                    updateStatusW.setValue(null);
+                    hourSTW.setValue(null);
+                    minuteSTW.setValue(null);
+                    hourETW.setValue(null);
+                    minuteETW.setValue(null);
+                    statusLabel.setText("");
 
-            else if (hourETW.getValue().equals(hourSTW.getValue()) && minuteETW.getValue() > minuteSTW.getValue())
-            {
-                selectedWeeklyWork.setStartTime(hourSTW.getValue() + ":" + minuteSTW.getValue());
-                selectedWeeklyWork.setLastDate(hourETW.getValue() + ":" + minuteETW.getValue());
-                selectedWeeklyWork.setStatus(updateStatusW.getValue());
-                updateStatusW.setValue(null);
-                clearSelectedStudent();
-                hourSTW.setValue(null);
-                minuteSTW.setValue(null);
-                hourETW.setValue(null);
-                minuteETW.setValue(null);
-                showTableW.refresh();
-                showTableW.getSelectionModel().clearSelection();
-                statusLabel.setText("");
-                showStudentData();
+                }
+                else
+                {
+                    statusLabel.setText("Please enter a new time.!!");
+                }
             }
             else
                 {
                     statusLabel.setText("Please enter a new time.!!");
                 }
-            categoryDataSource.setData(categoryDataList);
-            dataSource.setData(weeklyList);
-//            clearSelectedStudent();
-//            hourSTW.setValue(null);
-//            minuteSTW.setValue(null);
-//            hourETW.setValue(null);
-//            minuteETW.setValue(null);
-////            dateUpdate.setValue(null);
-////            updateStatusW.setValue(null);
-////            categoryWorkCB.setValue(null);
-            showTableW.refresh();
-            showTableW.getSelectionModel().clearSelection();
         }
+        else
+        {
+            statusLabel.setText("Please complete time and status information.!!");
+        }
+        if (categoryWorkCB.getValue() != null){
+            selectedWeeklyWork.setCategory(categoryWorkCB.getValue());
+            categoryWorkCB.setValue(null);
+            statusLabel.setText("");
+        }
+        if (dateUpdate.getValue() != null){
+            selectedWeeklyWork.addWeeklyDate(dateUpdate.getValue());
+            dateUpdate.setValue(null);
+            statusLabel.setText("");
+        }
+        clearSelectedStudent();
+        showTableW.refresh();
+        showTableW.getSelectionModel().clearSelection();
+        showStudentData();
+        categoryDataSource.setData(categoryDataList);
+        dataSource.setData(weeklyList);
+
     }
 
     public void handleShowWorkAllButton(ActionEvent actionEvent) {

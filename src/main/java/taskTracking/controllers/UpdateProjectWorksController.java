@@ -184,7 +184,7 @@ public class UpdateProjectWorksController {
             statusLabel.setText("");
             showStudentData();
         }
-        if (EndDay.getValue()!=null && EndMonth.getValue()!=null && EndYear.getValue()!=null && sDay.getValue()!=null && sMonth.getValue()!=null && sYear.getValue()!=null || updateStatusP.getValue()!=null)
+        if (EndDay.getValue()!=null && EndMonth.getValue()!=null && EndYear.getValue()!=null && sDay.getValue()!=null && sMonth.getValue()!=null && sYear.getValue()!=null && updateStatusP.getValue()!=null)
         {
             if(EndYear.getValue() > sYear.getValue()) {
                 if ((sMonth.getValue()==2 && sDay.getValue() >= 29) || ((sMonth.getValue()==4 || sMonth.getValue()==6 || sMonth.getValue()==8 || sMonth.getValue()==11) && sDay.getValue() >30) ||
@@ -260,9 +260,8 @@ public class UpdateProjectWorksController {
             }
         }
         else {
-            statusLabel.setText("Please complete all information.!!");
+            statusLabel.setText("Please complete date and status information.!!");
         }
-
         categoryDataSource.setData(categoryDataList);
         dataSource.setData(projectDataList);
     }

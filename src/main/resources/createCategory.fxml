@@ -33,7 +33,7 @@
          <effect>
             <DropShadow color="#0acdff" />
          </effect></Button>
-      <Label layoutX="187.0" layoutY="46.0" text="CreateCategoryName" textFill="WHITE">
+      <Label layoutX="187.0" layoutY="46.0" text="Create category name" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -41,7 +41,7 @@
             <DropShadow color="RED" />
          </effect>
       </Label>
-      <Button layoutX="459.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="114.0" stylesheets="@styles-2.css" text="back">
+      <Button layoutX="459.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="114.0" stylesheets="@styles-2.css" text="Back">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
@@ -55,7 +55,7 @@
          <effect>
             <DropShadow />
          </effect></Label>
-      <Label layoutX="120.0" layoutY="300.0" prefHeight="50.0" prefWidth="89.0" text="StatusError:" textFill="RED">
+      <Label layoutX="120.0" layoutY="300.0" prefHeight="50.0" prefWidth="89.0" text="Status error:" textFill="RED">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -68,7 +68,7 @@
             <DropShadow color="RED" />
          </effect>
       </TableView>
-      <Label layoutX="198.0" layoutY="504.0" text="CategoryAll" textFill="WHITE">
+      <Label layoutX="198.0" layoutY="504.0" text="Category all" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
@@ -82,12 +82,12 @@
             <DropShadow color="RED" />
          </effect>
       </TableView>
-      <Label layoutX="484.0" layoutY="504.0" text="WorkNameList" textFill="WHITE">
+      <Label layoutX="484.0" layoutY="504.0" text="Work name list" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="830.0" layoutY="121.0" text="WorkNameList" textFill="WHITE">
+      <Label layoutX="830.0" layoutY="121.0" text="Work name list" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
